@@ -27,3 +27,7 @@ code {
   border: 1px solid yellow;
   float: right;
 }
+
+pre{
+  white-space:pre-wrap; 
+}

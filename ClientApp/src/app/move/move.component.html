@@ -1,24 +1,25 @@
-<h1 id="tableLabel">Движение</h1>
+<h1 *ngIf="! move" id="tableLabel">Движение</h1>
+<h1 *ngIf="move" id="tableLabel">{{ move.name }} ({{ move.id }})</h1>
 
-<p>движение движение - будем получать с сервера.</p>
 
-<p *ngIf="!forecasts?.length"><em>Loading...</em></p>
+<p *ngIf="! move">
+  <em>Загрузка ...</em>
+</p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts.length">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Temp. (C)</th>
-      <th>Temp. (F)</th>
-      <th>Summary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let forecast of forecasts">
-      <td>{{ forecast.date }}</td>
-      <td>{{ forecast.temperatureC }}</td>
-      <td>{{ forecast.temperatureF }}</td>
-      <td>{{ forecast.summary }}</td>
-    </tr>
-  </tbody>
-</table>
+
+<div id="player">
+  сюда вставить блок плеера
+</div>
+
+<div *ngIf="move">
+  
+  <strong>description:</strong> 
+  <pre>{{ move.description }}</pre> 
+  <br><br>
+  
+  <strong>video:</strong> 
+  <div *ngFor="let video of move.videos">
+    <a href="{{ video.url }}">{{ video.name }}</a>
+  </div>
+  
+</div>
