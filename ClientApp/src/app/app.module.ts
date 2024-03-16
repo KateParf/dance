@@ -10,6 +10,7 @@ import { HomeComponent }   from './home/home.component';
 import { DanceTypesComponent } from './dancetypes/dancetypes.component';
 import { DanceLevelsComponent } from './dancelevels/dancelevels.component';
 import { DanceEpochsComponent } from './danceepochs/danceepochs.component';
+import { DancesComponent }  from './dances/dances.component';
 import { DanceComponent }  from './dance/dance.component';
 import { MovesComponent }  from './moves/moves.component';
 import { MoveComponent }   from './move/move.component';
@@ -24,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DanceLevelsComponent,
     DanceEpochsComponent,
     DanceComponent,
+    DancesComponent,
     MovesComponent,
     MoveComponent
   ],
@@ -36,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'dancetypes',     component: DanceTypesComponent },
       { path: 'dancelevels',     component: DanceLevelsComponent },
       { path: 'danceepochs',     component: DanceEpochsComponent },
+      { path: 'dances',     component: DancesComponent },
       { path: 'dance/:id',  component: DanceComponent },
       { path: 'moves',      component: MovesComponent },
       { path: 'move/:id',   component: MoveComponent },

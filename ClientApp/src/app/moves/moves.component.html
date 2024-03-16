@@ -2,23 +2,20 @@
 
 <p>Каталог движений.</p>
 
-<p *ngIf="!forecasts?.length"><em>Loading...</em></p>
+<p *ngIf="!moves?.length"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts.length">
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="moves.length">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Temp. (C)</th>
-      <th>Temp. (F)</th>
-      <th>Summary</th>
+      <th>id</th>
+      <th>Name</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let forecast of forecasts">
-      <td>{{ forecast.date }}</td>
-      <td>{{ forecast.temperatureC }}</td>
-      <td>{{ forecast.temperatureF }}</td>
-      <td><a href="/move/{{ forecast.summary }}">{{ forecast.summary }}</a></td>
+    <tr *ngFor="let move of moves">
+      <td>{{ move.id }}</td>
+      <td><a href="/move/{{ move.id }}">{{ move.name }}</a></td>
     </tr>
   </tbody>
 </table>

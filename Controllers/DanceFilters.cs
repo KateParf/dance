@@ -7,10 +7,7 @@ namespace tanez.Controllers;
 [Route("api/[controller]")]
 public class DanceFilterController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+
 
     private readonly ILogger<DanceFilterController> _logger;
 
@@ -18,14 +15,18 @@ public class DanceFilterController : ControllerBase
     {
         _logger = logger;
     }
+    private static readonly string[] FilterTypes = new[]
+    {
+        "Направление", "Период", "Сложность", "С переходом", "Количество пар"
+    };
 
     [HttpGet]
-    public IEnumerable<Dance> Get()
+    public IEnumerable<DanceFilter> Get()
     {
-        return Enumerable.Range(1, 15).Select(index => new Dance
+        return Enumerable.Range(0, FilterTypes.Length).Select(index => new DanceFilter
         {
             Id = index,
-            Name = Summaries[Random.Shared.Next(Summaries.Length)]
+            Name = FilterTypes[index]
         })
         .ToArray();
     }

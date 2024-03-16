@@ -3,19 +3,19 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-catalog',
-  templateUrl: './moves.component.html'
+  templateUrl: './dances.component.html'
 })
-export class MovesComponent {
-  public moves: MovesCatalog[] = [];
+export class DancesComponent {
+  public dances: DancesCatalog[] = [];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<MovesCatalog[]>(baseUrl + 'api/movescatalog').subscribe(result => {
-      this.moves = result;
+    http.get<DancesCatalog[]>(baseUrl + 'api/dancescatalog').subscribe(result => {
+      this.dances = result;
     }, error => console.error(error));
   }
 }
 
-interface MovesCatalog {
+interface DancesCatalog {
   id: number;
   name: string;
 }
