@@ -1,4 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using tanez;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// DB
+builder.Services.AddDbContext<DanceContext>( options => {
+    options.UseSqlite("Data Source=tanez.db");
+        //builder.Configuration.GetConnectionString("DefaultConnectiion"));
+});
 
 // Add services to the container.
 

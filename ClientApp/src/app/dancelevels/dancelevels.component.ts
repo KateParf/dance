@@ -18,4 +18,5 @@ export class DanceLevelsComponent {
 interface DanceLevel {
   id: number;
   name: string;
+  imgName: string;
 }

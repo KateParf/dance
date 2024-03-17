@@ -14,7 +14,7 @@
     <tr *ngFor="let danceepoch of danceepochs">
       <td>{{ danceepoch.id }}</td>
       <td><a [routerLink]="['/dances']">{{ danceepoch.name }}</a></td>
-      <td><img src = "/Media/Images/DanceEpochs/{{ danceepoch.id }}.jpg" width="100" height="50"></td>
+      <td><img src = "/Media/Images/DanceEpochs/{{danceepoch.imgName}}" width="100" height="50"></td>
     </tr>
   </tbody>
 </table>

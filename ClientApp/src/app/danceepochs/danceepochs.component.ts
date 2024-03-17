@@ -18,4 +18,5 @@ export class DanceEpochsComponent {
 interface DanceEpoch {
   id: number;
   name: string;
+  imgName: string;
 }

@@ -7,24 +7,23 @@ namespace tanez.Controllers;
 [Route("api/[controller]")]
 public class DanceLevelsController : ControllerBase
 {
+    private readonly DanceContext _context;
     private readonly ILogger<DanceLevelsController> _logger;
-    public DanceLevelsController(ILogger<DanceLevelsController> logger) {
+    public DanceLevelsController(DanceContext context, ILogger<DanceLevelsController> logger) {
         _logger = logger;
+        _context = context;
     }
 
-    private static readonly string[] Names = new[]
-    {
-        "Легкие", "Средние", "Сложные"
-    };
 
     [HttpGet]
     public IEnumerable<DanceLevel> Get()
     {
-        return Enumerable.Range(0, Names.Length).Select(index => new DanceLevel
-        {
-            Id = index,
-            Name = Names[index]
-        })
-        .ToArray();
+        var danceLevels = _context.DanceLevel.ToArray<DanceLevel>();
+//        .Include(s => s.Enrollments)
+//        .ThenInclude(e => e.Course)
+//        .AsNoTracking()
+//        .FirstOrDefaultAsync(m => m.ID == id);
+
+        return danceLevels;
     }
 }

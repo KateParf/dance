@@ -9,7 +9,7 @@ export class DancesComponent {
   public dances: DancesCatalog[] = [];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<DancesCatalog[]>(baseUrl + 'api/dancescatalog').subscribe(result => {
+    http.get<DancesCatalog[]>(baseUrl + 'api/dances').subscribe(result => {
       this.dances = result;
     }, error => console.error(error));
   }

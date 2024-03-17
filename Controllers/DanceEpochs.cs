@@ -7,24 +7,23 @@ namespace tanez.Controllers;
 [Route("api/[controller]")]
 public class DanceEpochsController : ControllerBase
 {
+    private readonly DanceContext _context;
     private readonly ILogger<DanceEpochsController> _logger;
-    public DanceEpochsController(ILogger<DanceEpochsController> logger)  {
+    public DanceEpochsController(DanceContext context, ILogger<DanceEpochsController> logger)  {
         _logger = logger;
+        _context = context;
     }
 
-    private static readonly string[] Names = new[]
-    {
-        "Средние века", "18 век", "19 век", "20 век", "21 век"
-    };
 
     [HttpGet]
     public IEnumerable<DanceEpoch> Get()
     {
-        return Enumerable.Range(0, Names.Length).Select(index => new DanceEpoch
-        {
-            Id = index,
-            Name = Names[index]
-        })
-        .ToArray();
+        var danceEpochs = _context.DanceEpochs.ToArray<DanceEpoch>();
+//        .Include(s => s.Enrollments)
+//        .ThenInclude(e => e.Course)
+//        .AsNoTracking()
+//        .FirstOrDefaultAsync(m => m.ID == id);
+
+        return danceEpochs;
     }
 }

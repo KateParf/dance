@@ -16,7 +16,7 @@
     <tr *ngFor="let dancetype of dancetypes">
       <td>{{ dancetype.id }}</td>
       <td><a href="/dances/{{ dancetype.id }}">{{ dancetype.name }}</a></td>
-      <td><img src = "/Media/Images/DanceTypes/{{ dancetype.id }}.jpg" width="100" height="50"></td>
+      <td><img src = "/Media/Images/DanceTypes/{{dancetype.imgName}}" width="100" height="50"></td>
     </tr>
   </tbody>
 </table>
