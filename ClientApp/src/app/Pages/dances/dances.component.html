@@ -1,0 +1,35 @@
+<h1 id="tableLabel">Выбранный тип из направления-периода-сложности</h1>
+
+<p>Каталог танцев.</p>
+
+<p *ngIf="!dances?.length"><em>Loading...</em></p>
+
+<div *ngIf="dances.length">
+
+  <div class="container"><div class="row">
+    <div class="col-4 col-lg-3">
+      <label for="filterepochs" class="form-label">Эпохи</label>
+      <select id="filterepochs" class="form-select" aria-label="Default select example">  
+        <option *ngFor="let epoch of epochs" value="{{ epoch.id }}" >{{ epoch.name }}</option>
+      </select>
+    </div>
+  </div></div>
+
+  <br/>
+
+<table class='table table-striped' aria-labelledby="tableLabel">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dance of dances">
+      <td>{{ dance.id }}</td>
+      <td><a href="/dance/{{ dance.id }}">{{ dance.name }}</a></td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

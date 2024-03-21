@@ -1,0 +1,19 @@
+<h1 id="tableLabel">Каталог танцев</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!dancetypes?.length"><em>Loading...</em></p>
+
+<div class="container" *ngIf="dancetypes.length">
+<div class="row">
+
+  <div class="dancecard col-6 col-md-4 col-lg-3"
+    *ngFor="let dancetype of dancetypes">
+    <a class="dancecardlink" href="/dances">
+    <img src="/Media/Images/DanceTypes/{{dancetype.imgName}}" width="100%" height="auto">
+    <br/>
+    <div>{{ dancetype.name }}</div>
+    </a>
+  </div>
+
+</div></div>

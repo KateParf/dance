@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using tanez;
 using tanez.Models;
 
@@ -8,7 +9,7 @@ namespace tanez.Controllers;
 [Route("api/[controller]")]
 public class DancesController : ControllerBase {
 
-private readonly DanceContext _context;
+    private readonly DanceContext _context;
 
     private readonly ILogger<DancesController> _logger;
 
@@ -20,11 +21,13 @@ private readonly DanceContext _context;
     [HttpGet]
     public IEnumerable<Dance> Get()  {
 
-        var dances = _context.Dances.ToArray<Dance>();
-//        .Include(s => s.Enrollments)
-//        .ThenInclude(e => e.Course)
+        var dances = _context.Dances
+        .Include(d => d.Epoch)
+        .Include(d => d.Level)
+        .Include(d => d.Type)
 //        .AsNoTracking()
 //        .FirstOrDefaultAsync(m => m.ID == id);
+        .ToArray<Dance>();
 
         return dances;
     }

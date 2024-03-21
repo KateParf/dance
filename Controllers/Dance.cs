@@ -1,23 +1,38 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using tanez.Models;
 
 namespace tanez.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class DanceController : ControllerBase
-{
+[Produces("application/json")]
+public class DanceController : ControllerBase {
+    private readonly DanceContext _context;
+
     private readonly ILogger<DanceController> _logger;
 
-    public DanceController(ILogger<DanceController> logger) {
+    public DanceController(DanceContext context, ILogger<DanceController> logger) {
+        _context = context;
         _logger = logger;
     }
 
-    [HttpGet]
-    public Dance Get(int id)
-    {
-        var videos = new Collection<Media>();
+    [HttpGet("{id?}")]
+    public Dance Get(string id) {
+        int intId = Int32.Parse(id);
+
+        var dance = _context.Dances.Where(d => d.Id == intId)
+        .Include(d => d.Epoch)
+        .Include(d => d.Level)
+        .Include(d => d.Type)
+        .Include(d => d.Videos)
+        .Include(d => d.Music)
+        .FirstOrDefault<Dance>();
+        return dance;
+
+        //---
+        /*        
         videos.Add( new Media { 
             Url = "https://vk.com/page-3511581_49053163?z=video-3511581_456239855%2F54a7fc7f62066d59f2" , 
             Name = "Australian Swing Waltz"
@@ -31,7 +46,7 @@ public class DanceController : ControllerBase
         
         return new Dance
         {           
-            Id = id,
+            Id = intId,
             Name = "Австралийский вальс",
 
             History = @"Танец относится к 1939 г.
@@ -69,5 +84,6 @@ public class DanceController : ControllerBase
             Videos = videos,
             Music = music
         };
+        */
     }
 }

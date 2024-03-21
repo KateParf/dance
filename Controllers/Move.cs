@@ -16,8 +16,8 @@ public class MoveController : ControllerBase
     [HttpGet]
     public Move Get(int id) {
 
-        var Videos = new Collection<Media>();
-        Videos.Append( new Media{ Url = "11" , Name = "22"});
+        var Videos = new Collection<Video>();
+        Videos.Append( new Video{ Url = "11" , Name = "22"});
 
         return new Move
         {

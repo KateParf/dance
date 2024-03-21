@@ -17,16 +17,13 @@ public class Dance
     public string Scheme { get; set; }
 
     // тип
-    // форматированный текст
-    public string Type { get; set; }
+    public DanceType Type { get; set; }
 
     // эпоха
-    // форматированный текст
-    public string Epoch { get; set; }
+    public DanceEpoch Epoch { get; set; }
 
     // уровень сложности
-    // форматированный текст
-    public string Level { get; set; }
+    public DanceLevel Level { get; set; }
 
     // с переходом
     // тру фолз
@@ -38,10 +35,10 @@ public class Dance
 
     // видео - много - массив
     // ссылка на видеофайл, русское название видео
-    public IEnumerable<Media> Videos { get; set; }
+    public IEnumerable<Video> Videos { get; set; }
 
     // музыка - много - массив
     // ссылка на аудиофайл, русское название музыки
-    public IEnumerable<Media> Music { get; set; }
+    public IEnumerable<Music> Music { get; set; }
 
 }

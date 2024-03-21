@@ -28,6 +28,29 @@ code {
   float: right;
 }
 
-pre{
+pre {
   white-space:pre-wrap; 
+}
+
+.dancecard {
+  display: inline-block;
+  margin: 10px;
+  padding: 0px;
+}
+
+a.dancecardlink {
+  text-decoration: none;
+}
+
+a.dancecardlink div {
+  background-color: #606060;
+  color: white;
+  display: block;
+  font-size: 14pt;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+a.dancecardlink:hover div {
+  background-color: #909090;
 }

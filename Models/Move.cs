@@ -15,6 +15,6 @@ public class Move
 
     // видео - много - массив
     // ссылка на видеофайл, русское название видео
-    public IEnumerable<Media> Videos { get; set; }
+    public IEnumerable<Video> Videos { get; set; }
     
 }

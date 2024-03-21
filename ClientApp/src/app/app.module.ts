@@ -3,18 +3,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; 
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent }   from './home/home.component';
-import { DanceTypesComponent } from './dancetypes/dancetypes.component';
-import { DanceLevelsComponent } from './dancelevels/dancelevels.component';
-import { DanceEpochsComponent } from './danceepochs/danceepochs.component';
-import { DancesComponent }  from './dances/dances.component';
-import { DanceComponent }  from './dance/dance.component';
-import { MovesComponent }  from './moves/moves.component';
-import { MoveComponent }   from './move/move.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent }   from './Pages/home/home.component';
+import { DanceTypesComponent } from './Pages/dancetypes/dancetypes.component';
+import { DanceLevelsComponent } from './Pages/dancelevels/dancelevels.component';
+import { DanceEpochsComponent } from './Pages/danceepochs/danceepochs.component';
+import { DancesComponent }  from './Pages/dances/dances.component';
+import { DanceComponent }  from './Pages/dance/dance.component';
+import { MovesComponent }  from './Pages/moves/moves.component';
+import { MoveComponent }   from './Pages/move/move.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+
+    BsDropdownModule.forRoot(), 
+
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'dancetypes',     component: DanceTypesComponent },
@@ -43,7 +49,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'moves',      component: MovesComponent },
       { path: 'move/:id',   component: MoveComponent },
     ]),
-    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

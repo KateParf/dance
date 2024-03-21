@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tanez;
 
@@ -11,11 +10,9 @@ using tanez;
 namespace tanez.Migrations
 {
     [DbContext(typeof(DanceContext))]
-    [Migration("20240316174541_InitialCreate")]
-    partial class InitialCreate
+    partial class DanceContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
@@ -32,17 +29,15 @@ namespace tanez.Migrations
                     b.Property<int>("CountOfPairs")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Epoch")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("EpochId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("History")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Level")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("LevelId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -52,11 +47,16 @@ namespace tanez.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("TypeId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EpochId");
+
+                    b.HasIndex("LevelId");
+
+                    b.HasIndex("TypeId");
 
                     b.ToTable("Dances");
                 });
@@ -66,6 +66,10 @@ namespace tanez.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("ImgName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -82,6 +86,10 @@ namespace tanez.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ImgName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -97,6 +105,10 @@ namespace tanez.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ImgName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -104,40 +116,6 @@ namespace tanez.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DanceType");
-                });
-
-            modelBuilder.Entity("tanez.Models.Media", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("DanceId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("DanceId1")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("MoveId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DanceId");
-
-                    b.HasIndex("DanceId1");
-
-                    b.HasIndex("MoveId");
-
-                    b.ToTable("Media");
                 });
 
             modelBuilder.Entity("tanez.Models.Move", b =>
@@ -159,15 +137,98 @@ namespace tanez.Migrations
                     b.ToTable("Moves");
                 });
 
-            modelBuilder.Entity("tanez.Models.Media", b =>
+            modelBuilder.Entity("tanez.Models.Music", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("DanceId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DanceId");
+
+                    b.ToTable("Music");
+                });
+
+            modelBuilder.Entity("tanez.Models.Video", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("DanceId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("MoveId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DanceId");
+
+                    b.HasIndex("MoveId");
+
+                    b.ToTable("Video");
+                });
+
+            modelBuilder.Entity("tanez.Models.Dance", b =>
+                {
+                    b.HasOne("tanez.Models.DanceEpoch", "Epoch")
+                        .WithMany()
+                        .HasForeignKey("EpochId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("tanez.Models.DanceLevel", "Level")
+                        .WithMany()
+                        .HasForeignKey("LevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("tanez.Models.DanceType", "Type")
+                        .WithMany()
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Epoch");
+
+                    b.Navigation("Level");
+
+                    b.Navigation("Type");
+                });
+
+            modelBuilder.Entity("tanez.Models.Music", b =>
                 {
                     b.HasOne("tanez.Models.Dance", null)
                         .WithMany("Music")
                         .HasForeignKey("DanceId");
+                });
 
+            modelBuilder.Entity("tanez.Models.Video", b =>
+                {
                     b.HasOne("tanez.Models.Dance", null)
                         .WithMany("Videos")
-                        .HasForeignKey("DanceId1");
+                        .HasForeignKey("DanceId");
 
                     b.HasOne("tanez.Models.Move", null)
                         .WithMany("Videos")

@@ -17,6 +17,8 @@ namespace tanez
         public DbSet<DanceEpoch> DanceEpochs {get;set; }
         public DbSet<DanceLevel> DanceLevel {get;set; }
         public DbSet<DanceType> DanceType {get;set; }
+        public DbSet<Video> Video {get;set; }
+        public DbSet<Music> Music {get;set; }
 
     }
 }
