@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using tanez.Models;
 
 namespace tanez.Controllers;
@@ -8,23 +9,21 @@ namespace tanez.Controllers;
 [Route("api/[controller]")]
 public class MoveController : ControllerBase
 {
+    private readonly DanceContext _context;
     private readonly ILogger<MoveController> _logger;
-    public MoveController(ILogger<MoveController> logger) {
+    public MoveController(DanceContext context, ILogger<MoveController> logger) {
         _logger = logger;
+        _context = context;
     }
 
-    [HttpGet]
-    public Move Get(int id) {
+    [HttpGet("{id?}")]
+    public Move Get(string id) {
 
-        var Videos = new Collection<Video>();
-        Videos.Append( new Video{ Url = "11" , Name = "22"});
+        int intId = Int32.Parse(id);
 
-        return new Move
-        {
-            Id = id,
-            Name = "Соло-поворот",
-            Description = @"Кавалер и дама делают поворот на 360 градусов через левое плечо с продвижением по линии танца.",
-            Videos = Videos
-        };
+        var move = _context.Moves.Where(d => d.Id == intId)
+        .Include(d => d.Videos)
+        .FirstOrDefault<Move>();
+        return move;
     }
 }
