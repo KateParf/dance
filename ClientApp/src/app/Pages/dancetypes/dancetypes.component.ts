@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { DanceType } from 'src/app/Models/models';
+
 @Component({
   selector: 'app-catalog',
   templateUrl: './dancetypes.component.html'
@@ -13,10 +15,4 @@ export class DanceTypesComponent {
       this.dancetypes = result;
     }, error => console.error(error));
   }
-}
-
-interface DanceType {
-  id: number;
-  name: string;
-  imgName: string;
 }

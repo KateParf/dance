@@ -43,7 +43,7 @@ a.dancecardlink {
 }
 
 a.dancecardlink div {
-  background-color: #606060;
+  background-color: black;
   color: white;
   display: block;
   font-size: 14pt;
@@ -52,5 +52,14 @@ a.dancecardlink div {
 }
 
 a.dancecardlink:hover div {
-  background-color: #909090;
+  background-color: grey;
+}
+
+.filtercontainer {
+  background-color: grey;
+  color: white;
+  font-size: 14pt;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 5px;
 }
