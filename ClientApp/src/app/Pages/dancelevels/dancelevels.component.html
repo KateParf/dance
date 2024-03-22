@@ -2,19 +2,16 @@
 
 <p *ngIf="!dancelevels?.length"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="dancelevels.length">
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>Name</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let dancelevel of dancelevels">
-      <td>{{ dancelevel.id }}</td>
-      <td><a href="/dances">{{ dancelevel.name }}</a></td>
-      <td><img src="/Media/Images/DanceLevels/{{dancelevel.imgName}}" width="100" height="50"></td>
-    </tr>
-  </tbody>
-</table>
+<div class="container" *ngIf="dancelevels.length">
+  <div class="row d-flex justify-content-around">
+
+    <div class="dancecard col-6 col-md-4 col-lg-2" *ngFor="let dancelevel of dancelevels">
+      <a class="dancecardlink" href="/dances">
+        <img src="/Media/Images/DanceLevels/{{dancelevel.imgName}}" width="100%" height="auto">
+        <br />
+        <div>{{ dancelevel.name }}</div>
+      </a>
+    </div>
+
+  </div>
+</div>

@@ -2,19 +2,16 @@
 
 <p *ngIf="!danceepochs?.length"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="danceepochs.length">
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>Name</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let danceepoch of danceepochs">
-      <td>{{ danceepoch.id }}</td>
-      <td><a [routerLink]="['/dances']">{{ danceepoch.name }}</a></td>
-      <td><img src = "/Media/Images/DanceEpochs/{{danceepoch.imgName}}" width="100" height="50"></td>
-    </tr>
-  </tbody>
-</table>
+<div class="container" *ngIf="danceepochs.length">
+  <div class="row d-flex justify-content-start">
+
+    <div class="dancecard col-6 col-md-4 col-lg-2" *ngFor="let danceepoch of danceepochs">
+      <a class="dancecardlink" href="/dances">
+        <img src="/Media/Images/DanceEpochs/{{danceepoch.imgName}}" width="100%" height="auto">
+        <br />
+        <div>{{ danceepoch.name }}</div>
+      </a>
+    </div>
+
+  </div>
+</div>
