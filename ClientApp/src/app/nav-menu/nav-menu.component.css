@@ -16,3 +16,22 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
+.search-hover {
+	margin-top: 9px;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	outline: none;
+  background-color: #ffffff00;
+	background-size: 25px;
+	background-position: 25px;
+	border-radius: 10px;
+	width: 10px;
+	height: 10px;
+	padding: 12px;
+	transition: all 0.5s;
+}
+
+.search-hover:hover {
+	width: 300px;
+	padding-left: 50px;
+}

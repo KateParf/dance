@@ -1,76 +1,78 @@
-<h1 id="tableLabel">Выбранный тип из направления-периода-сложности</h1>
-
-<p>Каталог танцев.</p>
+<h1 id="tableLabel">Выбор танцев</h1>
+<br>
 
 <p *ngIf="!dances?.length"><em>Loading...</em></p>
 
-<div *ngIf="dances.length">
+<div class="row">
 
-  <div class="filtercontainer col-3">
-    <div class="row my-1">
-      <div class="col-12">
-        <label for="filtertypes" class="form-label mb-1">Направления</label>
-        <select id="filtertypes" class="form-select mb-1" aria-label="Default select example">
-          <option *ngFor="let type of types" value="{{ type.id }}">{{ type.name }}</option>
+  <div id="dancesFilter" class="filtercontainer col-3">
+    <form [formGroup]="form"> 
+
+    <div class="my-1">
+        <label for="sel_filterType" class="form-label mb-1">Направления</label>
+        <select class="form-control form-select mb-1" 
+          formControlName="filterType" id="filterType" >
+          <option [ngValue]="undefined"></option>
+          <option *ngFor="let type of types" [ngValue]="type.id" >{{ type.name }}</option>
         </select>
-      </div>
     </div>
 
-    <div class="row my-1">
-      <div class="col-12">
-        <label for="filterepochs" class="form-label mb-1">Эпохи</label>
-        <select id="filterepochs" class="form-select mb-1" aria-label="Default select example">
-          <option *ngFor="let epoch of epochs" value="{{ epoch.id }}">{{ epoch.name }}</option>
+    <div class="my-1">
+        <label for="filterEpoch" class="form-label mb-1">Эпохи</label>
+        <select class="form-control form-select mb-1" 
+          formControlName="filterEpoch" id="filterEpoch" >
+          <option value="undefined"></option>
+          <option *ngFor="let epoch of epochs" [ngValue]="epoch.id">{{ epoch.name }}</option>
         </select>
-      </div>
     </div>
 
-    <div class="row my-1">
-      <div class="col-12">
-        <label for="filterlevels" class="form-label mb-1">Сложность</label>
-        <select id="filterlevels" class="form-select mb-1" aria-label="Default select example">
-          <option *ngFor="let level of levels" value="{{ level.id }}">{{ level.name }}</option>
+    <div class="my-1">
+        <label for="filterLevel" class="form-label mb-1">Сложность</label>
+        <select class="form-control form-select mb-1" 
+          formControlName="filterLevel" id="filterLevel" >
+          <option value="undefined"></option>
+          <option *ngFor="let level of levels" [ngValue]="level.id">{{ level.name }}</option>
         </select>
+    </div>
+
+    <div class="my-1">
+      <div class="col-12">
+        <br>
+        <input type="checkbox" class="form-check-input me-1" 
+        formControlName="filterPartnerExch" id="filterPartnerExch" 
+        value="" >
+        <label class="form-check-label" for="filterPartnerExch">Со сменой партнера</label>
       </div>
     </div>
 
+    <br/>
     <div class="row my-1">
-      <div class="col-12">
-        <input class="form-check-input me-1" type="checkbox" value="" id="filterchangepartner">
-        <label class="form-check-label" for="filterchangepartner">Со сменой партнера</label>
-      </div>
-    </div>
-
-    <div class="row my-1">
-      <div class="col-12">
-        <div class="d-flex justify-content-between"><label>Количество пар</label>
-          <div class="col-3"><input class="form-control" type="number" name="countofpairs" min="1" max="6" value=""></div>
+        <div class="d-flex justify-content-between">
+          <label>Количество пар</label>
+          <div class="col-3"><input class="form-control" type="number" name="countofpairs" min="1" max="6" value="">
+          </div>
         </div>
         <input type="range" class="form-range" min="1" max="6" step="1" id="filtercountofpartners">
-      </div>
     </div>
 
-    <button type="submit" class="btn btn-primary mb-2" id="submitfilters">Применить фильтры</button>
-
-    <button type="reset" class="btn btn-primary mb-2" id="resetfilters">Очистить фильтры</button>
-
+    <br/>
+    <button type="submit" class="btn btn-primary mb-2" id="submitFilters" (click)="onSubmitFilter()">&nbsp; Найти &nbsp;</button>
+    &nbsp;
+    <button type="reset" class="btn btn-primary mb-2" id="resetFilters" (click)="onClearFilter()">Сбросить</button>
+  
+  </form>
   </div>
 
-  <br />
 
-  <table class='table table-striped' aria-labelledby="tableLabel">
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let dance of dances">
-        <td>{{ dance.id }}</td>
-        <td><a href="/dance/{{ dance.id }}">{{ dance.name }}</a></td>
-      </tr>
-    </tbody>
-  </table>
+  <div id="dancesTable" *ngIf="dances.length" class="col-9">
 
-</div>
+    <table class='table table-striped' aria-labelledby="tableLabel">
+      <tbody>
+        <tr *ngFor="let dance of dances">
+          <td>{{ dance.id }}</td>
+          <td><a href="/dance/{{ dance.id }}">{{ dance.name }}</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>

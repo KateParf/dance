@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using tanez;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // DB
@@ -13,7 +15,20 @@ builder.Services.AddDbContext<DanceContext>( options => {
 
 builder.Services.AddControllersWithViews();
 
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+//!! swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
 var app = builder.Build();
+
+//!! swagger
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -25,6 +40,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
 
 app.MapControllerRoute(
     name: "default",

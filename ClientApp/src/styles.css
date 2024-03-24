@@ -56,10 +56,15 @@ a.dancecardlink:hover div {
 }
 
 .filtercontainer {
-  background-color: grey;
-  color: white;
-  font-size: 14pt;
-  font-weight: 600;
+  background-color: #E0E0E0;
+  color: #000000;
+  font-size: 13pt;
+  font-weight: 400;
   padding: 10px;
   border-radius: 5px;
+}
+
+body {
+  background-image: url("/Media/Images/mainbg.jpg");
+  background-size: 100%;
 }
