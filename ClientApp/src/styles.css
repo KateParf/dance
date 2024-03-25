@@ -1,22 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+body {
+  background-image: url("/Media/Images/bg.jpg");
+  background-color: #E0E0E0;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
 }
 
+a {
+  color: #4a2a21;
+}
+a:hover, a:active, a:focus, a:active:focus{
+  color: #603a29;
+}
+
+/* кнопки */
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #4a2a21;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #603a29;
+  border-color: #603a29;
+  width: 147px;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:active:focus{
+  color: #fff;
+  background-color: #4a2a21;
+  border-color: #4a2a21;
 }
 
 code {
   color: #e01a76;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
 }
 
 #player {
@@ -32,6 +50,7 @@ pre {
   white-space:pre-wrap; 
 }
 
+/* карточки тип/эпоха/сложность*/
 .dancecard {
   display: inline-block;
   margin: 10px;
@@ -55,20 +74,50 @@ a.dancecardlink:hover div {
   background-color: grey;
 }
 
+/* фильтр-панель*/
 .filtercontainer {
-  background-color: #E0E0E0;
+  background-color: #d2cdc1;
   color: #000000;
   font-size: 13pt;
   font-weight: 400;
   padding: 10px;
   border-radius: 5px;
 }
-
-body {
-  background-image: url("/Media/Images/bg.jpg");
-  background-color: #E0E0E0;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #ffffff;
+.form-range::-webkit-slider-thumb{
+  background: #603a29;
 }
+.form-range::-webkit-slider-thumb:active {
+  background: #d2a380;
+  cursor: default;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  color: transparent;
+  cursor: pointer;
+  background-color: #b69c85;
+  border-color: transparent;
+  border-radius: 1rem;
+}
+.form-range{
+  width: 90%;
+}
+
+/* стили для чекбокса, находящегося в фокусе */
+.form-check-input:focus{
+  box-shadow: 0 0 0 0.2rem #603a2975;
+  background-color: #4a2a21;
+  border-color: #4a2a21;
+}
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+.form-check-input:checked {
+  background-color: #4a2a21;
+  border-color: #4a2a21;
+}
+
+tr:nth-child(even) {
+  background-color: #d2cdc175;
+}
+tr:nth-child(odd) {
+  background-color: #d2cdc175;
+}
+
