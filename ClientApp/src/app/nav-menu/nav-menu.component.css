@@ -21,11 +21,13 @@ html {
 
 .search-hover {
 	margin-top: 9px;
-	border: 1px solid #ffffff;
+	border: 0px solid #ffffff;
 	outline: none;
 	background-color: #ffffff00;
 	background-size: 25px;
-	background-position: 25px;
+	background-position: 0px;
+	background-image: url("/Media/Images/search.png");
+	background-repeat: no-repeat;
 	border-radius: 10px;
 	width: 10px;
 	height: 10px;
@@ -35,10 +37,14 @@ html {
 
 .search-hover:hover {
 	width: 300px;
-	padding-left: 50px;
+	padding-left: 35px;
+	border: 1px solid #ffffff;
+	background-color: white;
+	color: black;
 }
 
 input::placeholder {
 	opacity: 0.7;
-	color: #ffffff;
+	color: #909090;
   }
+
