@@ -1,27 +1,29 @@
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+	white-space: normal;
+	text-align: center;
+	word-break: break-all;
 }
 
 html {
-  font-size: 14px;
+	font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+	html {
+		font-size: 16px;
+	}
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+	box-shadow: 0 .25rem .75rem #cebebe71;
+	background-color: #ffffff30;
 }
 
 .search-hover {
 	margin-top: 9px;
-	border: 1px solid rgba(0, 0, 0, 0.5);
+	border: 1px solid #ffffff;
 	outline: none;
-  background-color: #ffffff00;
+	background-color: #ffffff00;
 	background-size: 25px;
 	background-position: 25px;
 	border-radius: 10px;
@@ -35,3 +37,8 @@ html {
 	width: 300px;
 	padding-left: 50px;
 }
+
+input::placeholder {
+	opacity: 0.7;
+	color: #ffffff;
+  }
