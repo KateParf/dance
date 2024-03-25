@@ -108,7 +108,7 @@ a.dancecardlink:hover div {
   background-color: #4a2a21;
   border-color: #4a2a21;
 }
-/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+/* стили для чекбокса, находящегося в состоянии checked */
 .form-check-input:checked {
   background-color: #4a2a21;
   border-color: #4a2a21;
