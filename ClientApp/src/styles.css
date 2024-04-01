@@ -3,31 +3,44 @@
 /* Provide sufficient contrast against white background */
 body {
   background-image: url("/Media/Images/bg.jpg");
-  background-color: #E0E0E0;
+  background-color: #fbf7f3;
   background-repeat: no-repeat;
   background-size: 100%;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #ffffff;
 }
 
 a {
   color: #4a2a21;
 }
-a:hover, a:active, a:focus, a:active:focus{
+
+a:hover,
+a:active,
+a:focus,
+a:active:focus {
   color: #603a29;
 }
 
 /* кнопки */
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #4a2a21;
 }
+
 .btn-primary {
   color: #fff;
   background-color: #603a29;
   border-color: #603a29;
   width: 147px;
 }
-.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:active:focus{
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:active:focus {
   color: #fff;
   background-color: #4a2a21;
   border-color: #4a2a21;
@@ -47,7 +60,7 @@ code {
 }
 
 pre {
-  white-space:pre-wrap; 
+  white-space: pre-wrap;
 }
 
 /* карточки тип/эпоха/сложность*/
@@ -85,9 +98,11 @@ a.dancecardlink:hover div {
   padding: 10px;
   border-radius: 5px;
 }
-.form-range::-webkit-slider-thumb{
+
+.form-range::-webkit-slider-thumb {
   background: #603a29;
 }
+
 .form-range::-webkit-slider-thumb:active {
   background: #d2a380;
   cursor: default;
@@ -100,16 +115,18 @@ a.dancecardlink:hover div {
   border-color: transparent;
   border-radius: 1rem;
 }
-.form-range{
+
+.form-range {
   width: 90%;
 }
 
 /* стили для чекбокса, находящегося в фокусе */
-.form-check-input:focus{
+.form-check-input:focus {
   box-shadow: 0 0 0 0.2rem #603a2975;
   background-color: #4a2a21;
   border-color: #4a2a21;
 }
+
 /* стили для чекбокса, находящегося в состоянии checked */
 .form-check-input:checked {
   background-color: #4a2a21;
@@ -119,7 +136,15 @@ a.dancecardlink:hover div {
 tr:nth-child(even) {
   background-color: #d2cdc175;
 }
+
 tr:nth-child(odd) {
   background-color: #d2cdc175;
 }
 
+.danceScheme,
+.danceHistory,
+.moveDescription {
+  display: block;
+  background-color: #fbf7f3;
+  color: #000000;
+}

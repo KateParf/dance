@@ -7,19 +7,19 @@
 </p>
 
 
-<div id="player">
-  сюда вставить блок плеера
-</div>
+<!--сюда вставить блок плеера -->
+<video id="player" playsinline controls>
+  <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4" />
+</video>
 
 <div *ngIf="move">
-  
-  <strong>description:</strong> 
-  <pre>{{ move.description }}</pre> 
+
+  <markdown class="moveDescription" [data]="move.description" />
   <br><br>
-  
-  <strong>video:</strong> 
+
+  <strong>video:</strong>
   <div *ngFor="let video of move.videos">
     <a href="{{ video.url }}">{{ video.name }}</a>
   </div>
-  
+
 </div>

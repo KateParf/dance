@@ -6,35 +6,32 @@
   <em>Загрузка ...</em>
 </p>
 
-
-
-  <!--сюда вставить блок плеера -->
-  <video id="player" playsinline controls poster="/Media/Images/mainbg.jpg">
-    <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4" />
-  </video>
+<!--сюда вставить блок плеера -->
+<video id="player" playsinline controls poster="/Media/Images/mainbg.jpg">
+  <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4" />
+</video>
 
 
 <div *ngIf="dance">
-  
-  <strong>scheme:</strong> 
-  <pre>{{ dance.scheme }}</pre> 
+  <markdown class="danceScheme" [data]="dance.scheme" />
+
   <br><br>
-  
-  <strong>video:</strong> 
+
+  <strong>video:</strong>
   <div *ngFor="let video of dance.videos">
     <a href="{{ video.url }}">{{ video.name }}</a>
   </div>
 
   <br>
-  <strong>music:</strong> 
+  <strong>music:</strong>
   <div *ngFor="let music of dance.music">
     <a href="{{ music.url }}">{{ music.name }}</a>
   </div>
 
   <br>
-  <strong>history:</strong> 
-  <pre>{{ dance.history }}</pre> 
-  
+  <strong>История и факты:</strong>
+  <markdown class="danceHistory" [data]="dance.history" />
+
 </div>
 
 

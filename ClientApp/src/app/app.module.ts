@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; 
+import { MarkdownModule } from 'ngx-markdown';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -39,6 +40,7 @@ import { MoveComponent }   from './Pages/move/move.component';
     BrowserAnimationsModule,
 
     BsDropdownModule.forRoot(), 
+    MarkdownModule.forRoot(),
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
