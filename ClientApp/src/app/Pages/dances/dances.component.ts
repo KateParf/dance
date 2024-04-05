@@ -39,6 +39,7 @@ export class DancesComponent {
     http.get<DanceLevel[]>(baseUrl + 'api/dancelevels').subscribe(result => {
       this.levels = result;
     }, error => console.error(error));
+    
 
     this.onSubmitFilter();
 

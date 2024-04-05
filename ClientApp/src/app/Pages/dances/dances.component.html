@@ -13,7 +13,7 @@
         <label for="sel_filterType" class="form-label mb-1">Направления</label>
         <select class="form-control form-select mb-1" 
           formControlName="filterType" id="filterType" >
-          <option [ngValue]="undefined"></option>
+          <option></option>
           <option *ngFor="let type of types" [ngValue]="type.id" >{{ type.name }}</option>
         </select>
     </div>
@@ -22,7 +22,7 @@
         <label for="filterEpoch" class="form-label mb-1">Эпохи</label>
         <select class="form-control form-select mb-1" 
           formControlName="filterEpoch" id="filterEpoch" >
-          <option value="undefined"></option>
+          <option></option>
           <option *ngFor="let epoch of epochs" [ngValue]="epoch.id">{{ epoch.name }}</option>
         </select>
     </div>
@@ -31,7 +31,7 @@
         <label for="filterLevel" class="form-label mb-1">Сложность</label>
         <select class="form-control form-select mb-1" 
           formControlName="filterLevel" id="filterLevel" >
-          <option value="undefined"></option>
+          <option></option>
           <option *ngFor="let level of levels" [ngValue]="level.id">{{ level.name }}</option>
         </select>
     </div>
