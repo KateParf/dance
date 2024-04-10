@@ -18,6 +18,12 @@ export class DanceComponent {
     void route.params.subscribe(params => this.danceId = params["id"]);
     http.get<Dance>(baseUrl + 'api/dance/' + this.danceId).subscribe(result => {
       this.dance = result;
+
+      // свой обработчик ссылок
+      this.markdownService.renderer.link = (href, title, text) => {                
+          return `>>> <a href=${href}>${text}</a> <<<`;
+      };
+      
       this.danceScheme = this.markdownService.parse(this.dance.scheme);
       this.danceHistory = this.markdownService.parse(this.dance.history);
     }, error => console.error(error));

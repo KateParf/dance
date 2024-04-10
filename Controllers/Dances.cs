@@ -44,4 +44,6 @@ public class Filter {
     public int? filterEpoch;
     public int? filterLevel;
     public bool? filterPartnerExch;
+    public bool? filterPartnerExchYes;
+    public bool? filterPartnerExchNo;
 }

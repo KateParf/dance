@@ -13,7 +13,9 @@
 
 
 <div *ngIf="dance">
-  <markdown class="danceScheme" [data]="dance.scheme" />
+  <hr>
+
+  <div class="danceScheme" [innerHTML]="danceScheme"></div>
 
   <br><br>
 
