@@ -7,69 +7,67 @@
 <div class="row">
 
   <div id="dancesFilter" class="filtercontainer col-3">
-    <form [formGroup]="form"> 
+    <form [formGroup]="form">
 
-    <div class="my-1">
+      <div class="my-1">
         <label for="sel_filterType" class="form-label mb-1">Направления</label>
-        <select class="form-control form-select mb-1" 
-          formControlName="filterType" id="filterType" >
+        <select class="form-control form-select mb-1" formControlName="filterType" id="filterType">
           <option></option>
-          <option *ngFor="let type of types" [ngValue]="type.id" >{{ type.name }}</option>
+          <option *ngFor="let type of types" [ngValue]="type.id">{{ type.name }}</option>
         </select>
-    </div>
+      </div>
 
-    <div class="my-1">
+      <div class="my-1">
         <label for="filterEpoch" class="form-label mb-1">Эпохи</label>
-        <select class="form-control form-select mb-1" 
-          formControlName="filterEpoch" id="filterEpoch" >
+        <select class="form-control form-select mb-1" formControlName="filterEpoch" id="filterEpoch">
           <option></option>
           <option *ngFor="let epoch of epochs" [ngValue]="epoch.id">{{ epoch.name }}</option>
         </select>
-    </div>
+      </div>
 
-    <div class="my-1">
+      <div class="my-1">
         <label for="filterLevel" class="form-label mb-1">Сложность</label>
-        <select class="form-control form-select mb-1" 
-          formControlName="filterLevel" id="filterLevel" >
+        <select class="form-control form-select mb-1" formControlName="filterLevel" id="filterLevel">
           <option></option>
           <option *ngFor="let level of levels" [ngValue]="level.id">{{ level.name }}</option>
         </select>
-    </div>
-
-    <div class="my-1">
-      <div class="col-12">
-        <br>
-        <input type="checkbox" class="form-check-input me-1" 
-        formControlName="filterPartnerExch" id="filterPartnerExch" 
-        value="" >
-        <label class="form-check-label" for="filterPartnerExch">Со сменой партнера</label>
-
-        <br><br>
-        <div class="PartnerExchButton">
-          <label class="form-check-label col-12 mb-2" for="PartnerExchButton">Со сменой партнера</label>
-          <button class="btn btn-primary" formControlName="filterPartnerExchYes" id="filterPartnerExchYes">Да</button>
-          <button class="btn btn-primary" formControlName="filterPartnerExchNo" id="filterPartnerExchNo">Нет</button>
-        </div> 
-
       </div>
-    </div>
 
-    <br/>
-    <div class="row my-1">
+      <div class="my-4">
+        <div class="col-12">
+          <div class="PartnerExchButton ">
+            <label class="form-check-label col-8 mb-2" for="PartnerExchButton">Со сменой партнера</label>
+            <div class="btn-group" role="group">
+              <input type="checkbox" class="btn-check" autocomplete="off" formControlName="filterPartnerExchYes"
+                id="filterPartnerExchYes">
+              <label class="btn btn-outline-primary" for="filterPartnerExchYes">Да</label>
+
+              <input type="checkbox" class="btn-check" autocomplete="off" formControlName="filterPartnerExchNo"
+                id="filterPartnerExchNo">
+              <label class="btn btn-outline-primary" for="filterPartnerExchNo">Нет</label>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row my-1">
         <div class="d-flex justify-content-between">
           <label>Количество пар</label>
           <div class="col-3"><input class="form-control" type="number" name="countofpairs" min="1" max="6" value="">
           </div>
         </div>
         <input type="range" class="form-range mt-1 ms-3" min="1" max="6" step="1" id="filtercountofpartners">
-    </div>
+      </div>
 
-    <br/>
-    <button type="submit" class="btn btn-primary mb-2" id="submitFilters" (click)="onSubmitFilter()">&nbsp; Найти &nbsp;</button>
-    &nbsp;
-    <button type="reset" class="btn btn-primary mb-2" id="resetFilters" (click)="onClearFilter()">Сбросить</button>
-  
-  </form>
+      <br />
+      <button type="submit" class="btn btn-primary mb-2" id="submitFilters" (click)="onSubmitFilter()">&nbsp; Найти
+        &nbsp;</button>
+      &nbsp;
+      <button type="reset" class="btn btn-primary mb-2" id="resetFilters" (click)="onClearFilter()">Сбросить</button>
+
+    </form>
   </div>
 
 

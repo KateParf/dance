@@ -19,7 +19,7 @@ public class DancesController : ControllerBase {
     }
   
     [HttpGet]
-    public IEnumerable<Dance> Get(string? filterType, string? filterLevel, string? filterEpoch, string? filterPartnerExch)  {
+    public IEnumerable<Dance> Get(string? filterType, string? filterLevel, string? filterEpoch, string? filterPartnerExchYes, string? filterPartnerExchNo)  {
 
         var dances = _context.Dances
         .Include(d => d.Epoch)
@@ -28,7 +28,10 @@ public class DancesController : ControllerBase {
         .Where(d => filterType  == null || (d.Type.Id  == Int32.Parse(filterType)) )
         .Where(d => filterLevel == null || (d.Level.Id == Int32.Parse(filterLevel)) )
         .Where(d => filterEpoch == null || (d.Epoch.Id == Int32.Parse(filterEpoch)) )
-        .Where(d => filterPartnerExch == "null" || (d.ChangePartner == Convert.ToBoolean(filterPartnerExch)) )
+        .Where(d => 
+            (filterPartnerExchYes == "true" && (d.ChangePartner == true)) ||
+            (filterPartnerExchNo  == "true" && (d.ChangePartner == false)) 
+        )
 
 //        .AsNoTracking()
 //        .FirstOrDefaultAsync(m => m.ID == id);

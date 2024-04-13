@@ -22,7 +22,8 @@ export class DancesComponent {
     filterType:  new FormControl(undefined, Validators.required),
     filterEpoch: new FormControl(undefined, Validators.required),
     filterLevel: new FormControl(undefined, Validators.required),
-    filterPartnerExch: new FormControl(undefined, Validators.required),
+    filterPartnerExchYes: new FormControl(true, Validators.required),
+    filterPartnerExchNo:  new FormControl(true, Validators.required),
   });
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
@@ -61,7 +62,8 @@ export class DancesComponent {
       filterParams += "&filterLevel=" + this.form.value["filterLevel"]; 
     if (this.form.value["filterEpoch"])
       filterParams += "&filterEpoch=" + this.form.value["filterEpoch"]; 
-    filterParams += "&filterPartnerExch=" + this.form.value["filterPartnerExch"]; 
+    filterParams += "&filterPartnerExchYes=" + this.form.value["filterPartnerExchYes"]; 
+    filterParams += "&filterPartnerExchNo="  + this.form.value["filterPartnerExchNo"]; 
 
     this.http.get<DancesCatalog[]>(this.baseUrl + 'api/dances' + filterParams).subscribe(result => {
       this.dances = result;
