@@ -1,10 +1,8 @@
-<h1 id="tableLabel">Выбор танцев</h1>
-<br>
+<h1 id="tableLabel" class="mainalign">Выбор танцев</h1>
 
-<p *ngIf="!dances?.length"><em>Loading...</em></p>
+<p *ngIf="!dances?.length" class="mainalign"><em>Loading...</em></p>
 
-
-<div class="row">
+<div class="row contentcontainer mainalign">
 
   <div id="dancesFilter" class="filtercontainer col-3">
     <form [formGroup]="form">
@@ -73,7 +71,7 @@
   </div>
 
 
-  <div id="dancesTable" *ngIf="dances.length" class="col-9">
+  <div id="dancesTable" *ngIf="dances.length" class="dancesTable col-9">
 
     <table class='table table-striped' aria-labelledby="tableLabel">
       <tbody>

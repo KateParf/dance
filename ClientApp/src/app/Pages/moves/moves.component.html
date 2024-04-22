@@ -1,21 +1,15 @@
-<h1 id="tableLabel">Движения</h1>
+<h1 id="tableLabel" class="mainalign">Движения</h1>
 
-<p>Каталог движений.</p>
+<div class="contentcontainer mainalign movesTable" *ngIf="moves.length">
 
-<p *ngIf="!moves?.length"><em>Loading...</em></p>
+  <p *ngIf="!moves?.length"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="moves.length">
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>Name</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let move of moves">
-      <td>{{ move.id }}</td>
-      <td><a href="/move/{{ move.id }}">{{ move.name }}</a></td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table table-striped" aria-labelledby="tableLabel" *ngIf="moves.length">
+    <tbody>
+      <tr *ngFor="let move of moves">
+        <td>{{ move.id }}</td>
+        <td><a href="/move/{{ move.id }}">{{ move.name }}</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -21,6 +21,18 @@ a:active:focus {
   color: #603a29;
 }
 
+.contentcontainer {
+  background: #fbf7f3;
+  padding-top: 3%;
+  height: 100vh;
+}
+
+.mainalign {
+  padding-right: 5%;
+  padding-left: 5%;
+  max-width: 1600px;
+}
+
 /* кнопки */
 .btn:focus,
 .btn:active:focus,
@@ -69,7 +81,7 @@ a:active:focus {
   --bs-gradient: none;
 }
 
-.btn-check:checked+.btn{
+.btn-check:checked+.btn {
   color: #fff;
   background-color: #4a2a21;
 }
@@ -104,22 +116,37 @@ a.dancecardlink {
   text-decoration: none;
 }
 
+a.dancecardlink img {
+  border-radius: 3px 3px 0px 0px;
+  box-shadow: 0px -2px 8px -6px #4a2a219f;
+}
+
 a.dancecardlink div {
-  background-color: black;
-  color: white;
+  background-color: #f1e4dc;
+  color: #4a2a21;
   display: block;
   font-size: 14pt;
-  font-weight: 600;
   padding: 5px 10px;
+  border-radius: 0px 0px 3px 3px;
+  box-shadow: 0px 4px 8px -6px #4a2a219f;
+}
+
+/* Для малых экранов */
+@media screen and (max-width: 767px) {
+  a.dancecardlink div {
+    height: 65px;
+    word-break: break-word
+  }
 }
 
 a.dancecardlink:hover div {
-  background-color: grey;
+  background-color: #d2b49a;
+  color: #4a2a21;
 }
 
 /* фильтр-панель*/
 .filtercontainer {
-  background-color: #d2cdc1;
+  background-color: #f1e4dc;
   color: #000000;
   font-size: 13pt;
   font-weight: 400;
@@ -132,7 +159,7 @@ a.dancecardlink:hover div {
 }
 
 .form-range::-webkit-slider-thumb:active {
-  background: #d2a380;
+  background: #603a29;
   cursor: default;
 }
 
@@ -161,12 +188,20 @@ a.dancecardlink:hover div {
   border-color: #4a2a21;
 }
 
+.dancesTable a, .movesTable a{
+  text-decoration: none;
+}
+
+td {
+  text-decoration: none;
+}
+
 tr:nth-child(even) {
-  background-color: #d2cdc175;
+  background-color: #f1e4dc;
 }
 
 tr:nth-child(odd) {
-  background-color: #d2cdc175;
+  background-color: #603a2930;
 }
 
 .danceScheme,

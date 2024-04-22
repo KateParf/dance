@@ -1,18 +1,17 @@
-<h1 *ngIf="! dance" id="tableLabel">Танец</h1>
-<h1 *ngIf="dance" id="tableLabel">{{ dance.name }} ({{ dance.id }})</h1>
-
+<h1 *ngIf="! dance" id="tableLabel" class="mainalign">Танец</h1>
+<h1 *ngIf="dance" id="tableLabel" class="mainalign">{{ dance.name }} ({{ dance.id }})</h1>
 
 <p *ngIf="! dance">
   <em>Загрузка ...</em>
 </p>
 
-<!--сюда вставить блок плеера -->
-<video id="player" playsinline controls poster="/Media/Images/mainbg.jpg">
-  <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4" />
-</video>
+<div class="contentcontainer mainalign" *ngIf="dance">
 
+  <!--сюда вставить блок плеера -->
+  <video id="player" playsinline controls poster="/Media/Images/mainbg.jpg">
+    <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4" />
+  </video>
 
-<div *ngIf="dance">
   <hr>
 
   <div class="danceScheme" [innerHTML]="danceScheme"></div>

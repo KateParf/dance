@@ -1,15 +1,15 @@
-<h1 id="tableLabel">Танцы по направлениям</h1>
+<h1 id="tableLabel" class="mainalign">Танцы по направлениям</h1>
 
 <p *ngIf="!dancetypes?.length"><em>Loading...</em></p>
 
-<div class="container" *ngIf="dancetypes.length">
-  <div class="row d-flex justify-content-start">
+<div class="contentcontainer mainalign" *ngIf="dancetypes.length">
+  <div class="row d-flex justify-content-around row-cols-sm-auto">
 
-    <div class="dancecard col-6 col-md-4 col-lg-2" *ngFor="let dancetype of dancetypes">
+    <div class="dancecard col-6 col-sm-4 col-md-4 col-lg-4 col-xl-2" *ngFor="let dancetype of dancetypes">
       <a class="dancecardlink" href="/dances">
         <img src="/Media/Images/DanceTypes/{{dancetype.imgName}}" width="100%" height="auto">
         <br />
-        <div>{{ dancetype.name }}</div>
+        <div class="text-center">{{ dancetype.name }}</div>
       </a>
     </div>
 

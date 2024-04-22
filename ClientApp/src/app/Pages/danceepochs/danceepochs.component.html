@@ -1,15 +1,15 @@
-<h1 id="tableLabel">Танцы по периодам</h1>
+<h1 id="tableLabel" class="mainalign">Танцы по периодам</h1>
 
 <p *ngIf="!danceepochs?.length"><em>Loading...</em></p>
 
-<div class="container" *ngIf="danceepochs.length">
-  <div class="row d-flex justify-content-start">
+<div class="contentcontainer mainalign" *ngIf="danceepochs.length">
+  <div class="row d-flex justify-content-around">
 
     <div class="dancecard col-6 col-md-4 col-lg-2" *ngFor="let danceepoch of danceepochs">
       <a class="dancecardlink" href="/dances">
         <img src="/Media/Images/DanceEpochs/{{danceepoch.imgName}}" width="100%" height="auto">
         <br />
-        <div>{{ danceepoch.name }}</div>
+        <div class="text-center">{{ danceepoch.name }}</div>
       </a>
     </div>
   </div>
