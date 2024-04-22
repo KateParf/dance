@@ -7,64 +7,34 @@
 
 <div class="contentcontainer mainalign" *ngIf="dance">
 
-  <!--сюда вставить блок плеера -->
-  <video id="player" playsinline controls poster="/Media/Images/mainbg.jpg">
-    <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4" />
-  </video>
+  <div class="danceContent">
+   <div class="danceTitle">Схема танца</div>
+    <div class="danceScheme" [innerHTML]="danceScheme"></div>
 
-  <hr>
-
-  <div class="danceScheme" [innerHTML]="danceScheme"></div>
-
-  <br><br>
-
-  <strong>video:</strong>
-  <div *ngFor="let video of dance.videos">
-    <a href="{{ video.url }}">{{ video.name }}</a>
+    <br>
+    <div class="danceTitle">История и факты</div>
+    <markdown class="danceHistory" [data]="dance.history" />
+  
   </div>
 
-  <br>
-  <strong>music:</strong>
-  <div *ngFor="let music of dance.music">
-    <a href="{{ music.url }}">{{ music.name }}</a>
-  </div>
+  <div class="danceMedia">
+    <video id="player" playsinline controls poster="/Media/Images/mainbg.jpg">
+      <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4" />
+    </video>
+  
+    <br>
+    <br>
+    <div class="danceTitle">Видео</div>
+    <div *ngFor="let video of dance.videos">
+      (>) <a href="{{ video.url }}">{{ video.name }}</a> &nbsp; 2:44
+    </div>
 
-  <br>
-  <strong>История и факты:</strong>
-  <markdown class="danceHistory" [data]="dance.history" />
+    <br>
+    <div class="danceTitle">Музыка</div>
+    <div *ngFor="let music of dance.music">
+      (>) <a href="{{ music.url }}">{{ music.name }}</a> &nbsp; 2:44
+    </div>
+  </div>
 
 </div>
 
-
-<hr>
-<pre>
-  Тут схема танца.
-
-  Танец состоит из частей - 1 часть , 2 часть.
-
-  В каждой части - набор движений.
-
-  Каждое движение - это какое то описательное предложение - типа - [[спин поворот|спин поворот]] влево с наклоном, останавливаемся лицом к соседу.
-
-  Внутри этого предложения в каком то формате будем помещать ссылки на <a href="/move/0">базовое движение</a> (в примере выше, первое это текс, 2е - ссылка)
-  
-  Все базовые движения будут в отдельной таблице, по имени.
-
-  А саму схему кажется можно описывать просто в текстовом виде, с каким то движком форматирования
-  (а не формально где то в бд где на каждый пункт по строке)
-
-  Еще можно к каждому пункту прикладывать в каком то виде ссылку на видео с привязкой ко времени.
-  Чтоб надал - и рядом в плеере шаг воспроизвелся
-
-  И под плеером можно вынести для легкого доступа кнопки для скорости воспроизведения - в 2 \ 4 
-   8 раз медленее
-
-  Еще если страницу считать просто страницей про танец а не схему
-  то можно еще сделать раздел (закладку) с музыкой для танца (несколько мелодий, с плеером)
-  и закладку с историей
-
-  --
-
-  кроме схемы можно еще 1-н видео файлов.
-  Значит надо видеоплеер
-</pre>

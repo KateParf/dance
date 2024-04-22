@@ -23,14 +23,22 @@ a:active:focus {
 
 .contentcontainer {
   background: #fbf7f3;
-  padding-top: 3%;
-  height: 100vh;
+  padding-top: 1em;
+  min-height: 80vh;
 }
 
 .mainalign {
-  padding-right: 5%;
+  padding-right: calc(5% - 10px);
   padding-left: 5%;
-  max-width: 1600px;
+  max-width: 1600px !important;
+}
+
+h1.mainalign {
+  margin-bottom: 0.6em;
+}
+
+.row {
+  margin: 0px;
 }
 
 /* кнопки */
@@ -90,15 +98,6 @@ code {
   color: #e01a76;
 }
 
-#player {
-  width: 40vw;
-  min-width: 300px;
-  height: 50vh;
-  min-height: 150px;
-  background: black;
-  float: right;
-}
-
 pre {
   white-space: pre-wrap;
 }
@@ -109,7 +108,7 @@ pre {
   padding-top: 0;
   padding-left: 0;
   padding-right: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 }
 
 a.dancecardlink {
@@ -210,4 +209,32 @@ tr:nth-child(odd) {
   display: block;
   background-color: #fbf7f3;
   color: #000000;
+}
+
+.danceTitle {
+  font-weight: 500;
+  color: #615350;
+  font-size: 22pt; 
+}
+
+.danceContent {
+  width: 48%;
+  display: inline-block;
+}
+
+.danceMedia {
+  width: 48%;
+  color: #303030;
+  float: right;
+  display: inline-block;
+}
+
+#player {
+  margin-top: 10px;
+  width: 45vw;
+  min-width: 300px;
+  height: 50vh;
+  min-height: 150px;
+  background: black;
+  border-radius: 10px;
 }
