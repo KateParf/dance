@@ -1,0 +1,57 @@
+<h1 id="tableLabel" class="mainalign">Редактор танца</h1>
+
+<p *ngIf="! dance">
+  <em>Загрузка ...</em>
+</p>
+
+<div class="contentcontainer mainalign" *ngIf="dance">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="id" />
+
+    <div class="fieldHdr">Название</div>
+    <input style="width:100%;" formControlName="name" />
+    <br><br>
+
+    <div class="fieldHdr">Направление</div>
+    <select style="width:25%;" formControlName="type">
+      <option *ngFor="let type of types" [ngValue]="type.id">{{ type.name }}</option>
+    </select>
+
+    <div class="fieldHdr">Эпоха</div>
+    <select style="width:25%;" formControlName="epoch">
+      <option *ngFor="let epoch of epochs" [ngValue]="epoch.id">{{ epoch.name }}</option>
+    </select>
+
+    <div class="fieldHdr">Сложность</div>
+    <select style="width:25%;" formControlName="level">
+      <option *ngFor="let level of levels" [ngValue]="level.id">{{ level.name }}</option>
+    </select>
+
+    <div class="fieldHdr">Со сменой партнера</div>
+    <select style="width:25%;" formControlName="changePartner">
+      <option [ngValue]="true">true</option>
+      <option [ngValue]="false">false</option>
+    </select>
+
+    <div class="fieldHdr">Количество пар</div>
+    <input style="width:25%;" formControlName="countOfPairs" type="number" min="1" max="6" />
+
+    <br><br>
+    <div class="fieldHdr">Схема танца</div>
+    <textarea style="width:100%; height: 300px;" formControlName="scheme"></textarea>
+
+    <br>
+    <div class="fieldHdr">История и факты</div>
+    <textarea style="width:100%; height: 200px;" formControlName="history"></textarea>
+    <hr>
+    <div class="fieldHdr">Видео</div>
+    <textarea style="width:100%; height: 100px;" formControlName="videos"></textarea>
+
+    <div class="fieldHdr">Музыка</div>
+    <textarea style="width:100%; height: 100px;" formControlName="audios"></textarea>
+
+    <br>
+    <button type="submit" class="btn btn-primary" id="submitDance">Сохранить</button>
+
+  </form>
+</div>

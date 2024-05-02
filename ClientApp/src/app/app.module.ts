@@ -11,13 +11,18 @@ import { MarkdownModule } from 'ngx-markdown';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent }   from './Pages/home/home.component';
-import { DanceTypesComponent } from './Pages/dancetypes/dancetypes.component';
+
+import { DanceTypesComponent }  from './Pages/dancetypes/dancetypes.component';
 import { DanceLevelsComponent } from './Pages/dancelevels/dancelevels.component';
 import { DanceEpochsComponent } from './Pages/danceepochs/danceepochs.component';
-import { DancesComponent }  from './Pages/dances/dances.component';
+import { DancesComponent } from './Pages/dances/dances.component';
 import { DanceComponent }  from './Pages/dance/dance.component';
 import { MovesComponent }  from './Pages/moves/moves.component';
 import { MoveComponent }   from './Pages/move/move.component';
+
+import { AdminDancesComponent }  from './Pages/admin/dances/dances.component';
+import { AdminDanceComponent }   from './Pages/admin/dance/dance.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +35,10 @@ import { MoveComponent }   from './Pages/move/move.component';
     DanceComponent,
     DancesComponent,
     MovesComponent,
-    MoveComponent
+    MoveComponent,
+
+    AdminDancesComponent,
+    AdminDanceComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,13 +52,18 @@ import { MoveComponent }   from './Pages/move/move.component';
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'dancetypes',     component: DanceTypesComponent },
+      { path: 'dancetypes',      component: DanceTypesComponent },
       { path: 'dancelevels',     component: DanceLevelsComponent },
       { path: 'danceepochs',     component: DanceEpochsComponent },
       { path: 'dances',     component: DancesComponent },
       { path: 'dance/:id',  component: DanceComponent },
       { path: 'moves',      component: MovesComponent },
       { path: 'move/:id',   component: MoveComponent },
+
+      { path: 'admin',            component: AdminDancesComponent },
+      { path: 'admin/',           component: AdminDancesComponent },
+      { path: 'admin/dance/:id',  component: AdminDanceComponent },
+
     ]),
   ],
   providers: [],

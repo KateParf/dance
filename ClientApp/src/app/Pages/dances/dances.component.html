@@ -4,7 +4,7 @@
 
 <div class="row contentcontainer mainalign">
 
-  <div id="dancesFilter" class="filtercontainer col-3">
+  <div id="dancesFilter" class="filtercontainer col-lg-3 col-sm-6 mb-2">
     <form [formGroup]="form">
 
       <div class="my-1">
@@ -33,7 +33,7 @@
 
       <div class="my-4">
         <div class="col-12">
-          <div class="PartnerExchButton ">
+          <div class="PartnerExchButton">
             <label class="form-check-label col-8 mb-2" for="PartnerExchButton">Со сменой партнера</label>
             <div class="btn-group" role="group">
               <input type="checkbox" class="btn-check" autocomplete="off" formControlName="filterPartnerExchYes"
@@ -62,16 +62,16 @@
       </div>
 
       <br />
-      <button type="submit" class="btn btn-primary mb-2" id="submitFilters" (click)="onSubmitFilter()">&nbsp; Найти
+      <button type="submit" class="btn btn-primary mb-2 col-6" id="submitFilters" (click)="onSubmitFilter()">&nbsp; Найти
         &nbsp;</button>
       &nbsp;
-      <button type="reset" class="btn btn-primary mb-2" id="resetFilters" (click)="onClearFilter()">Сбросить</button>
+      <button type="reset" class="btn btn-primary mb-2 col-6" id="resetFilters" (click)="onClearFilter()">Сбросить</button>
 
     </form>
   </div>
 
 
-  <div id="dancesTable" *ngIf="dances.length" class="dancesTable col-9">
+  <div id="dancesTable" *ngIf="dances.length" class="dancesTable col-lg-9 col-sm-6">
 
     <table class='table table-striped' aria-labelledby="tableLabel">
       <tbody>

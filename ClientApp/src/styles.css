@@ -147,6 +147,7 @@ a.dancecardlink:hover div {
 .filtercontainer {
   background-color: #f1e4dc;
   color: #000000;
+  height: fit-content;
   font-size: 13pt;
   font-weight: 400;
   padding: 10px;
@@ -213,7 +214,7 @@ tr:nth-child(odd) {
 
 .danceTitle {
   font-weight: 500;
-  color: #615350;
+  color: #603a29;
   font-size: 22pt; 
 }
 
@@ -237,4 +238,9 @@ tr:nth-child(odd) {
   min-height: 150px;
   background: black;
   border-radius: 10px;
+}
+
+.fieldHdr {
+  font-weight: bold;
+  color: black;
 }
