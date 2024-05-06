@@ -1,5 +1,7 @@
 <h1 *ngIf="! dance" id="tableLabel" class="mainalign">Танец</h1>
-<h1 *ngIf="dance" id="tableLabel" class="mainalign">{{ dance.name }} ({{ dance.id }})</h1>
+<h1 *ngIf="dance" id="tableLabel" class="mainalign">{{ dance.name }}</h1>
+
+<p *ngIf="dance" id="tableLabel" class="mainalign">{{ danceEpoch }}&nbsp;&nbsp;&nbsp;&nbsp;Сложность: {{ danceLevel }}</p>
 
 <p *ngIf="! dance">
   <em>Загрузка ...</em>
@@ -8,23 +10,34 @@
 <div class="contentcontainer mainalign" *ngIf="dance">
 
   <div class="danceContent">
-   <div class="danceTitle">Схема танца</div>
+    <div class="danceTitle">Схема танца</div>
     <div class="danceScheme" [innerHTML]="danceScheme"></div>
 
     <br>
     <div class="danceTitle">История и факты</div>
     <markdown class="danceHistory" [data]="dance.history" />
-  
+
   </div>
 
   <div class="danceMedia">
-    <video id="player" playsinline controls poster="/Media/Images/mainbg.jpg">
+
+    <!--<video id="player1" 
+      class="video-js vjs-default-skin player"
+      playsinline controls poster="/Media/Images/mainbg.jpg"
+      data-setup="{}"
+      >
       <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4" />
+    </video>-->
+
+
+    <video id="player2" class="video-js vjs-default-skin player" controls data-setup='{ "techOrder": ["youtube"] }'>
+      <source src="{{dance.videos[0].url}}" type="video/youtube" />
     </video>
-  
+
     <br>
     <br>
     <div class="danceTitle">Видео</div>
+
     <div *ngFor="let video of dance.videos">
       (>) <a href="{{ video.url }}">{{ video.name }}</a> &nbsp; 2:44
     </div>
@@ -37,4 +50,3 @@
   </div>
 
 </div>
-

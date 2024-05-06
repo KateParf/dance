@@ -222,6 +222,10 @@ tr:nth-child(odd) {
   width: 48%;
   display: inline-block;
 }
+.danceContent h2{
+  color: #603a29;
+  font-size: 18pt;
+}
 
 .danceMedia {
   width: 48%;
@@ -230,7 +234,7 @@ tr:nth-child(odd) {
   display: inline-block;
 }
 
-#player {
+.player {
   margin-top: 10px;
   width: 45vw;
   min-width: 300px;
@@ -238,6 +242,12 @@ tr:nth-child(odd) {
   min-height: 150px;
   background: black;
   border-radius: 10px;
+}
+
+.vjs-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .fieldHdr {

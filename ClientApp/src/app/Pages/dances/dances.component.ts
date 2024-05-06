@@ -5,6 +5,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { DanceEpoch } from 'src/app/Models/models';
 import { DanceType } from 'src/app/Models/models';
 import { DanceLevel } from 'src/app/Models/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
@@ -17,15 +18,18 @@ export class DancesComponent implements OnInit {
   public levels: DanceLevel[] = [];
 
   private baseUrl: string = "";
+  private queryType: number|null = null;
+  private queryLevel: number|null = null;
+  private queryEpoch: number|null = null;
 
   form = new FormGroup({
-    filterType: new FormControl(undefined, Validators.required),
-    filterEpoch: new FormControl(undefined, Validators.required),
-    filterLevel: new FormControl(undefined, Validators.required),
+    filterType: new FormControl(0, Validators.required),
+    filterEpoch: new FormControl(0, Validators.required),
+    filterLevel: new FormControl(0, Validators.required),
     filterPartnerExchYes: new FormControl(true, Validators.required),
     filterPartnerExchNo: new FormControl(true, Validators.required),
-    filterCountOfPartners:  new FormControl(1, Validators.required),
-    filterCountOfPartnersR: new FormControl(1, Validators.required),
+    filterCountOfPartners:  new FormControl(0, Validators.required),
+    filterCountOfPartnersR: new FormControl(0, Validators.required),
   });
 
   ngOnInit() {
@@ -35,11 +39,10 @@ export class DancesComponent implements OnInit {
     });
     this.form.controls["filterCountOfPartnersR"].valueChanges.subscribe(data => {
       this.form.controls["filterCountOfPartners"].setValue( ((data || 0) > 0) ? data : null, { emitEvent: false});
-    });
-
+    });    
   }
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute) {
     this.baseUrl = baseUrl;
 
     http.get<DanceType[]>(baseUrl + 'api/dancetypes').subscribe(result => {
@@ -53,6 +56,16 @@ export class DancesComponent implements OnInit {
     http.get<DanceLevel[]>(baseUrl + 'api/dancelevels').subscribe(result => {
       this.levels = result;
     }, error => console.error(error));
+
+    // берем св-ва из адресной строки
+    this.route.queryParams.subscribe(params => {
+      this.queryType = Number(params['type']);
+      this.queryLevel = Number(params['level']);
+      this.queryEpoch = Number(params['epoch']);
+    });
+    this.form.controls["filterType"].setValue(this.queryType);
+    this.form.controls["filterEpoch"].setValue(this.queryEpoch);
+    this.form.controls["filterLevel"].setValue(this.queryLevel);
 
     this.onSubmitFilter();
   }

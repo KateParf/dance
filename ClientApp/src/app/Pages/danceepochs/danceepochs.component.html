@@ -6,7 +6,7 @@
   <div class="row d-flex justify-content-around">
 
     <div class="dancecard col-6 col-md-4 col-lg-2" *ngFor="let danceepoch of danceepochs">
-      <a class="dancecardlink" href="/dances">
+      <a class="dancecardlink" href="/dances?epoch={{danceepoch.id}}">
         <img src="/Media/Images/DanceEpochs/{{danceepoch.imgName}}" width="100%" height="auto">
         <br />
         <div class="text-center">{{ danceepoch.name }}</div>
