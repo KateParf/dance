@@ -30,7 +30,8 @@ export class DanceComponent {
             return "";//`<strong><a href="" onclick="alert('1111'); return false;" >(>) ${text.substring(4)}</a></strong>`;
           } else
           if (prefix == "mov") {
-            return "";//`<strong><a href="/move/${href}">${text.substring(4)}</a></strong>`;
+            console.log(href);
+            return `<strong><a href="/move/${text.substring(4)}">${href}</a></strong>`;
           } else
             return `>>> <a href=${href}>${text}</a> <<<`;
       };

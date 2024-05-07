@@ -16,12 +16,13 @@ public class MoveController : ControllerBase
         _context = context;
     }
 
-    [HttpGet("{id?}")]
-    public Move Get(string id) {
+    [HttpGet("{name?}")]
+    public Move Get(string name) {
 
-        int intId = Int32.Parse(id);
+        //int intId = Int32.Parse(id);
+        //d.Id == intId;
 
-        var move = _context.Moves.Where(d => d.Id == intId)
+        var move = _context.Moves.Where(d => name.Equals(d.Name))
         .Include(d => d.Videos)
         .FirstOrDefault<Move>();
         return move;

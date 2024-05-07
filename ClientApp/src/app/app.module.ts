@@ -58,7 +58,7 @@ import { AdminDanceComponent }   from './Pages/admin/dance/dance.component';
       { path: 'dances',     component: DancesComponent },
       { path: 'dance/:id',  component: DanceComponent },
       { path: 'moves',      component: MovesComponent },
-      { path: 'move/:id',   component: MoveComponent },
+      { path: 'move/:name',   component: MoveComponent },
 
       { path: 'admin',            component: AdminDancesComponent },
       { path: 'admin/',           component: AdminDancesComponent },
