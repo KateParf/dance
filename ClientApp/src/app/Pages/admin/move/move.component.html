@@ -1,0 +1,27 @@
+<h1 id="tableLabel" class="mainalign">Редактор движения</h1>
+
+<p *ngIf="! move">
+  <em>Загрузка ...</em>
+</p>
+
+<div class="contentcontainer mainalign" *ngIf="move">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="id" />
+
+    <div class="fieldHdr">Название</div>
+    <input style="width:100%;" formControlName="name" />
+
+    <br><br>
+    <div class="fieldHdr">Описание</div>
+    <textarea style="width:100%; height: 300px;" formControlName="description"></textarea>
+
+    <br>
+    <hr>
+    <div class="fieldHdr">Видео танца из которого движение</div>
+    <textarea style="width:100%; height: 100px;" formControlName="videos"></textarea>
+
+    <br>
+    <button type="submit" class="btn btn-primary" id="submitmove">Сохранить</button>
+
+  </form>
+</div>

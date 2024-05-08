@@ -1,19 +1,19 @@
-<h1 id="tableLabel" class="mainalign">Список танцев</h1>
+<h1 id="tableLabel" class="mainalign">Список движений</h1>
 
-<p *ngIf="!dances?.length" class="mainalign"><em>Loading...</em></p>
+<p *ngIf="!moves?.length" class="mainalign"><em>Loading...</em></p>
 
 <div class="row contentcontainer mainalign">
 
-  <div id="dancesTable" *ngIf="dances.length" class="dancesTable">
+  <div id="movesTable" *ngIf="moves.length" class="movesTable">
 
-    <a href="/admin/dance/0">Добавить</a>
+    <a href="/admin/move/new">Добавить</a>
     <br><br>
 
     <table class='table table-striped' aria-labelledby="tableLabel">
       <tbody>
-        <tr *ngFor="let dance of dances">
-          <td>{{ dance.id }}</td>
-          <td><a href="/admin/dance/{{ dance.id }}">{{ dance.name }}</a></td>
+        <tr *ngFor="let move of moves">
+          <td>{{ move.id }}</td>
+          <td><a href="/admin/move/{{ move.name }}">{{ move.name }}</a></td>
         </tr>
       </tbody>
     </table>

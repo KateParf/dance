@@ -3,7 +3,7 @@
 <p *ngIf="!dancelevels?.length"><em>Loading...</em></p>
 
 <div class="contentcontainer mainalign" *ngIf="dancelevels.length">
-  <div class="row d-flex justify-content-around">
+  <div class="row d-flex justify-content-between">
 
     <div class="dancecard col-6 col-md-4" *ngFor="let dancelevel of dancelevels">
       <a class="dancecardlink" href="/dances?level={{dancelevel.id}}">

@@ -3,7 +3,7 @@
 <p *ngIf="!dancetypes?.length"><em>Loading...</em></p>
 
 <div class="contentcontainer mainalign" *ngIf="dancetypes.length">
-  <div class="row d-flex justify-content-around row-cols-sm-auto">
+  <div class="row d-flex justify-content-between row-cols-sm-auto">
 
     <div class="dancecard col-6 col-sm-4 col-md-4 col-lg-4 col-xl-2" *ngFor="let dancetype of dancetypes">
       <a class="dancecardlink" href="/dances?type={{dancetype.id}}">

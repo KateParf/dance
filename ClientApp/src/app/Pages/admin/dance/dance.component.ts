@@ -95,7 +95,7 @@ export class AdminDanceComponent {
           console.log("data", resdata);
           if (resdata == data.name) {
             console.log("save ok. goto list");
-            this.router.navigate(['/admin/']);
+            this.router.navigate(['/admin/dances']);
           }
         },
         err => {
