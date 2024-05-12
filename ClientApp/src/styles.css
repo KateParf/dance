@@ -204,6 +204,12 @@ tr:nth-child(odd) {
   background-color: #603a2930;
 }
 
+.tableText {
+  margin-bottom: 0px;
+  font-size: 14px;
+  color:#603a29
+}
+
 .danceScheme,
 .danceHistory,
 .moveDescription {

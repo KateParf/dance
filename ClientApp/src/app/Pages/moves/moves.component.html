@@ -7,7 +7,6 @@
   <table class="table table-striped" aria-labelledby="tableLabel" *ngIf="moves.length">
     <tbody>
       <tr *ngFor="let move of moves">
-        <td>{{ move.id }}</td>
         <td><a href="/move/{{ move.name }}">{{ move.name }}</a></td>
       </tr>
     </tbody>

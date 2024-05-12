@@ -8,7 +8,7 @@
     <form [formGroup]="form">
 
       <div class="my-1">
-        <label for="sel_filterType" class="form-label mb-1">Направления</label>
+        <label for="filterType" class="form-label mb-1">Направления</label>
         <select class="form-control form-select mb-1" formControlName="filterType" id="filterType">
           <option></option>
           <option *ngFor="let type of types" [ngValue]="type.id">{{ type.name }}</option>
@@ -53,19 +53,21 @@
       <div class="row my-1">
         <div class="d-flex justify-content-between">
           <label for="filterCountOfPartners">Количество пар</label>
-          <div class="col-3"><input class="form-control" type="number" min="1" max="6" 
-            id="filterCountOfPartners" formControlName="filterCountOfPartners" >
+          <div class="col-3"><input class="form-control" type="number" min="1" max="6" id="filterCountOfPartners"
+              formControlName="filterCountOfPartners">
           </div>
         </div>
-        <input type="range" class="form-range mt-1 ms-3" min="0" max="6" step="1" 
-          id="filterCountOfPartnersR" formControlName="filterCountOfPartnersR">
+        <input type="range" class="form-range mt-1 ms-3" min="0" max="6" step="1" id="filterCountOfPartnersR"
+          formControlName="filterCountOfPartnersR">
       </div>
 
       <br />
-      <button type="submit" class="btn btn-primary mb-2 col-6" id="submitFilters" (click)="onSubmitFilter()">&nbsp; Найти
+      <button type="submit" class="btn btn-primary mb-2 col-6" id="submitFilters" (click)="onSubmitFilter()">&nbsp;
+        Найти
         &nbsp;</button>
       &nbsp;
-      <button type="reset" class="btn btn-primary mb-2 col-6" id="resetFilters" (click)="onClearFilter()">Сбросить</button>
+      <button type="reset" class="btn btn-primary mb-2 col-6" id="resetFilters"
+        (click)="onClearFilter()">Сбросить</button>
 
     </form>
   </div>
@@ -76,8 +78,10 @@
     <table class='table table-striped' aria-labelledby="tableLabel">
       <tbody>
         <tr *ngFor="let dance of dances">
-          <td>{{ dance.id }}</td>
-          <td><a href="/dance/{{ dance.id }}">{{ dance.name }}</a></td>
+          <td><a href="/dance/{{ dance.id }}">{{ dance.name }}</a>
+            <p class="tableText">Направление: {{dance.type.name}} &nbsp;&nbsp; Эпоха: {{dance.epoch.name}}
+              &nbsp;&nbsp; Сложность: {{dance.level.name}}</p>
+          </td>
         </tr>
       </tbody>
     </table>
