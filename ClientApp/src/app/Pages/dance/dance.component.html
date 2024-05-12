@@ -1,7 +1,8 @@
 <h1 *ngIf="! dance" id="tableLabel" class="mainalign">Танец</h1>
 <h1 *ngIf="dance" id="tableLabel" class="mainalign">{{ dance.name }}</h1>
 
-<p *ngIf="dance" id="tableLabel" class="mainalign">{{ danceEpoch }}&nbsp;&nbsp;&nbsp;&nbsp;Сложность: {{ danceLevel }}</p>
+<p *ngIf="dance" id="tableLabel" class="mainalign">{{ danceEpoch }}&nbsp;&nbsp;&nbsp;&nbsp;Сложность: {{ danceLevel }}
+</p>
 
 <p *ngIf="! dance">
   <em>Загрузка ...</em>
@@ -29,10 +30,15 @@
       <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4" />
     </video>-->
 
-
+    <!-- ютуб -->
     <video id="player2" class="video-js vjs-default-skin player" controls data-setup='{ "techOrder": ["youtube"] }'>
       <source src="{{dance.videos[0].url}}" type="video/youtube" />
     </video>
+
+    <!-- вк 
+    <iframe class="video-js vjs-default-skin player" src="{{dance.videos[1].url}}"
+      allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen>
+    </iframe> -->
 
     <br>
     <br>
@@ -43,10 +49,16 @@
     </div>
 
     <br>
-    <div class="danceTitle">Музыка</div>
+    <div class="danceTitle mb-1">Музыка</div>
     <div *ngFor="let music of dance.music">
-      (>) <a href="{{ music.url }}">{{ music.name }}</a> &nbsp; 2:44
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ music.url }}">{{ music.name }}</a>
+      <br>
+      <audio controls src="/Media/Music/ABBA_-_Dancing_Queen.mp3">
+        Your browser does not support the
+        <code>audio</code> element.
+      </audio>
     </div>
+
   </div>
 
 </div>

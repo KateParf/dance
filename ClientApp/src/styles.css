@@ -188,7 +188,8 @@ a.dancecardlink:hover div {
   border-color: #4a2a21;
 }
 
-.dancesTable a, .movesTable a{
+.dancesTable a,
+.movesTable a {
   text-decoration: none;
 }
 
@@ -207,7 +208,7 @@ tr:nth-child(odd) {
 .tableText {
   margin-bottom: 0px;
   font-size: 14px;
-  color:#603a29
+  color: #603a29
 }
 
 .danceScheme,
@@ -221,14 +222,15 @@ tr:nth-child(odd) {
 .danceTitle {
   font-weight: 500;
   color: #603a29;
-  font-size: 22pt; 
+  font-size: 22pt;
 }
 
 .danceContent {
   width: 48%;
   display: inline-block;
 }
-.danceContent h2{
+
+.danceContent h2 {
   color: #603a29;
   font-size: 18pt;
 }
@@ -259,4 +261,8 @@ tr:nth-child(odd) {
 .fieldHdr {
   font-weight: bold;
   color: black;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #fbf7f3;
 }
