@@ -52,6 +52,8 @@ TestResult.xml
 [Rr]eleasePS/
 dlldata.c
 
+.gradle
+
 *_i.c
 *_p.c
 *_i.h

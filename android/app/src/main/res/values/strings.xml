@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">My Application1</string>
+    <string name="name_header_main">Хореографическая книжка</string>
+    <string name="directions">Направления</string>
+
+
+    <string name="period">Периоды</string>
+    <string name="mideval">Средние века</string>
+    <string name="eighteen">18 век</string>
+    <string name="nineteen">19 век</string>
+    <string name="twenty">20 век</string>
+    <string name="twentyone">21 век</string>
+
+    <string name="level">Сложность</string>
+    <string name="hard">Сложный</string>
+    <string name="middle">Средний</string>
+    <string name="light">Легкий</string>
+
+    <string name="movements">Движения</string>
+
+    <string-array name="levels_array">
+        <item>Легкий</item>
+        <item>Средний</item>
+        <item>Сложный</item>
+    </string-array>
+    <string-array name="types_array">
+        <item>Аллеманды</item>
+        <item>Бранли</item>
+        <item>Вальсы</item>
+        <item>Галопы</item>
+        <item>Кадрили</item>
+        <item>Контрдансы</item>
+        <item>Котильоны</item>
+        <item>Лэндлеры</item>
+        <item>Мазурки</item>
+        <item>Марши</item>
+        <item>Менуэты</item>
+        <item>Народные</item>
+        <item>Паваны</item>
+        <item>Полонезы</item>
+        <item>Польки</item>
+        <item>Современные</item>
+        <item>Танго</item>
+        <item>Тустепы</item>
+    </string-array>
+
+    <string-array name="periods_array">
+        <item>Средние века</item>
+        <item>18 век</item>
+        <item>19 век</item>
+        <item>20 век</item>
+        <item>21 век</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
