@@ -27,6 +27,15 @@ a:active:focus {
   min-height: 80vh;
 }
 
+.homecontainer{
+  background: #a18c8ca4;
+  padding: 5px;
+  border-radius: 5px;
+}
+.homecontainer a{
+  color:#ffffff;
+}
+
 .mainalign {
   padding-right: calc(5% - 10px);
   padding-left: 5%;
@@ -128,14 +137,6 @@ a.dancecardlink div {
   padding: 5px 10px;
   border-radius: 0px 0px 3px 3px;
   box-shadow: 0px 4px 8px -6px #4a2a219f;
-}
-
-/* Для малых экранов */
-@media screen and (max-width: 767px) {
-  a.dancecardlink div {
-    height: 65px;
-    word-break: break-word
-  }
 }
 
 a.dancecardlink:hover div {
@@ -249,7 +250,6 @@ tr:nth-child(odd) {
   height: 50vh;
   min-height: 150px;
   background: black;
-  border-radius: 10px;
 }
 
 .vjs-poster img {
@@ -265,4 +265,37 @@ tr:nth-child(odd) {
 
 audio::-webkit-media-controls-panel {
   background-color: #fbf7f3;
+}
+
+/* Для малых экранов */
+@media screen and (max-width: 767px) {
+  a.dancecardlink div {
+    height: 65px;
+    word-break: break-word
+  }
+  body {
+    background-size: auto;
+  }
+  .row .dancesTable, .row .movesTable{ 
+    --bs-gutter-x: auto;
+  }
+
+  .danceContent {
+    width: 98%;
+    display: inline-block;
+  }
+    
+  .danceMedia {
+    width: 98%;
+    color: #303030;
+    float: right;
+    display: inline-block;
+  }
+
+  .player {
+    margin-top: 10px;
+    height: auto;
+    background: black;
+  }
+  
 }

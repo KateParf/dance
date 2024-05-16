@@ -7,11 +7,6 @@
 
 <div class="contentcontainer mainalign" *ngIf="move">
 
-  <div class="danceContent">
-    <div class="danceTitle">Схема движения</div>
-    <div class="moveDescription" [innerHTML]="moveDescription"></div>
-  </div>
- 
   <div class="danceMedia">
 
     <!--<video id="player1" 
@@ -32,10 +27,13 @@
     <div class="danceTitle">Видео</div>
 
     <div *ngFor="let video of move.videos">
-      (>) <a href="{{ video.url }}">{{ video.name }}</a> &nbsp; 2:44
+      <a href="{{ video.url }}">{{ video.name }}</a> &nbsp;
     </div>
   </div>
 
-  
+  <div class="danceContent">
+    <div class="danceTitle">Схема движения</div>
+    <div class="moveDescription" [innerHTML]="moveDescription"></div>
+  </div>
 
 </div>

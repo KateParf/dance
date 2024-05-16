@@ -10,16 +10,6 @@
 
 <div class="contentcontainer mainalign" *ngIf="dance">
 
-  <div class="danceContent">
-    <div class="danceTitle">Схема танца</div>
-    <div class="danceScheme" [innerHTML]="danceScheme"></div>
-
-    <br>
-    <div class="danceTitle">История и факты</div>
-    <markdown class="danceHistory" [data]="dance.history" />
-
-  </div>
-
   <div class="danceMedia">
 
     <!--<video id="player1" 
@@ -45,11 +35,15 @@
     <div class="danceTitle">Видео</div>
 
     <div *ngFor="let video of dance.videos">
-      (>) <a href="{{ video.url }}">{{ video.name }}</a> &nbsp; 2:44
+      <a href="{{ video.url }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-play-circle mx-2" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+        </svg>{{ video.name }}</a> &nbsp;
     </div>
 
     <br>
-    <div class="danceTitle mb-1">Музыка</div>
+    <div class="danceTitle mb-1" *ngIf="dance.music.length > 0">Музыка</div>
     <div *ngFor="let music of dance.music">
       &nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ music.url }}">{{ music.name }}</a>
       <br>
@@ -58,7 +52,14 @@
         <code>audio</code> element.
       </audio>
     </div>
-
   </div>
 
+  <div class="danceContent">
+    <div class="danceTitle">Схема танца</div>
+    <div class="danceScheme" [innerHTML]="danceScheme"></div>
+
+    <br>
+    <div class="danceTitle">История и факты</div>
+    <markdown class="danceHistory" [data]="dance.history" />
+  </div>
 </div>
