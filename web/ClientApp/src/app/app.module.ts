@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NgxIndexedDBModule } from 'ngx-indexed-db';
+import { dbConfig } from './Pages/favorites/dbConfig';
+
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { MarkdownModule } from 'ngx-markdown';
 
@@ -19,6 +22,7 @@ import { DancesComponent } from './Pages/dances/dances.component';
 import { DanceComponent } from './Pages/dance/dance.component';
 import { MovesComponent } from './Pages/moves/moves.component';
 import { MoveComponent } from './Pages/move/move.component';
+import { FavoritesComponent } from './Pages/favorites/favorites.component';
 
 import { AdminHomeComponent } from './Pages/admin/home/home.component';
 import { AdminDancesComponent } from './Pages/admin/dances/dances.component';
@@ -39,6 +43,7 @@ import { AdminMoveComponent } from './Pages/admin/move/move.component';
     DancesComponent,
     MovesComponent,
     MoveComponent,
+    FavoritesComponent,
 
     AdminHomeComponent,
     AdminDancesComponent,
@@ -53,6 +58,8 @@ import { AdminMoveComponent } from './Pages/admin/move/move.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
 
+    NgxIndexedDBModule.forRoot(dbConfig),
+
     BsDropdownModule.forRoot(),
     MarkdownModule.forRoot(),
 
@@ -65,6 +72,7 @@ import { AdminMoveComponent } from './Pages/admin/move/move.component';
       { path: 'dance/:id', component: DanceComponent },
       { path: 'moves', component: MovesComponent },
       { path: 'move/:name', component: MoveComponent },
+      { path: 'favorites', component: FavoritesComponent },
 
       { path: 'admin', component: AdminHomeComponent },
       { path: 'admin/dances', component: AdminDancesComponent },

@@ -1,0 +1,27 @@
+<h1 id="tableLabel" class="mainalign">Избранное</h1>
+
+<div class="contentcontainer mainalign">
+    <h2 id="tableLabel">Танцы</h2>
+    <div *ngIf="dances.length" class="dancesTable">
+        <table class='table table-striped' aria-labelledby="tableLabel">
+            <tbody>
+                <tr *ngFor="let dance of dances">
+                    <td><a href="/dance/{{ dance.id }}">{{ dance.name }}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <h2 id="tableLabel">Движения</h2>
+    <div *ngIf="moves.length" class="movesTable">
+        <table class="table table-striped" aria-labelledby="tableLabel" *ngIf="moves.length">
+            <tbody>
+                <tr *ngFor="let move of moves">
+                    <td><a href="/move/{{ move.name }}">{{ move.name }}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

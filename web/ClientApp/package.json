@@ -26,6 +26,7 @@
     "bootstrap": "^5.2.3",
     "jquery": "^3.6.4",
     "ngx-bootstrap": "^10.3.0",
+    "ngx-indexed-db": "^18.0.0",
     "ngx-markdown": "^15.1.2",
     "oidc-client": "^1.11.5",
     "popper.js": "^1.16.0",

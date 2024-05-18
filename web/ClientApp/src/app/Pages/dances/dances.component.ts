@@ -106,6 +106,6 @@ interface DancesCatalog {
   name: string;
   type: DanceType;
   level: DanceLevel;
-  epoch: DanceType;
+  epoch: DanceEpoch;
 }
 

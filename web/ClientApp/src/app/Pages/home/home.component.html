@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-6 col-12">
       <h1>Клуб танцев</h1>
-      <h4>Студии салонных танцев им. С. Болдырева</h4>
+      <h4 style="color:#fff">Студии салонных танцев им. С. Болдырева</h4>
       <br>
 
       <div class="homecontainer">
@@ -19,14 +19,14 @@
         </p>
       </div>
       <hr>
-      <div class="homecontainer">
-        <h4>Новости сайта</h4>
+      <div *ngIf="info" class="homecontainer">
+        <h4 style="color:#fff">Новости сайта</h4>
         <p>
-          Сейчас на сайте <b>{{ cntDances }}</b> танцев и <b>{{ cntMoves }}</b> движений. </p>
+          Сейчас на сайте <b>{{ info.cntDances }}</b> танцев и <b>{{ info.cntMoves }}</b> движений. </p>
         <p>
-          Недавно добавили новый танец <a href="/dance/{{ dances[cntDances-1].id }}">{{ dances[cntDances-1].name }}</a>
+          Недавно добавили новый танец <a href="/dance/{{ info.lastDanceId }}">{{ info.lastDanceName }}</a>
           <br>
-          и движение <a href="/move/{{ moves[cntMoves-1].name }}">{{ moves[cntMoves-1].name }}</a>
+          и движение <a href="/move/{{ info.lastMoveName }}">{{ info.lastMoveName }}</a>
         </p>
       </div>
     </div>
