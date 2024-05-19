@@ -325,3 +325,8 @@ audio::-webkit-media-controls-panel {
   }
 
 }
+
+.vidbtn {
+  margin: 5px;
+  border-radius: 8px;
+}

@@ -104,7 +104,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/videojs/video.js"
+           ]
           }
         },
         "server": {

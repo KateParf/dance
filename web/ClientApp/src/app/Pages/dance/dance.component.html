@@ -32,18 +32,21 @@
 
   <div class="danceMedia">
 
-    <!--<video id="player1" 
-      class="video-js vjs-default-skin player"
-      playsinline controls poster="/Media/Images/mainbg.jpg"
-      data-setup="{}"
-      >
-      <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4" />
-    </video>-->
+    <!-- демо плеер для отладки -->
+    <!--
+    <video id="player1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264">
+      <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4">
+    </video>
+  -->
 
-    <!-- ютуб -->
-    <video id="player2" class="video-js vjs-default-skin player" controls data-setup='{ "techOrder": ["youtube"] }'>
+    <!-- основной видео плеер -->
+    <video id="player1" class="video-js vjs-default-skin player" controls data-setup='{ "techOrder": ["youtube"] }'>
       <source src="{{dance.videos[0].url}}" type="video/youtube" />
     </video>
+    <button class=vidbtn (click)="playSegment(1, 30, 2, 45)">(1:30 - 2:45)</button>
+    <button class=vidbtn (click)="setPlaybackRate(2)">x2</button>
+    <button class=vidbtn (click)="setPlaybackRate(1)">1:1</button>
+    <button class=vidbtn (click)="setPlaybackRate(0.5)">1/2</button>
 
     <!-- вк 
     <iframe class="video-js vjs-default-skin player" src="{{dance.videos[1].url}}"
