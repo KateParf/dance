@@ -2,7 +2,6 @@ package com.example.myapplication1;
 
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +20,7 @@ public class levels extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_levels);
+        HatFragment hatFragment = (HatFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_hat);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.levels), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -29,7 +29,7 @@ public class levels extends AppCompatActivity {
     }
 public void goOnMovement(View v){
 
-    Intent intent=new Intent(this,movement.class);
+    Intent intent=new Intent(this, dances.class);
     // Получаем уникальный идентификатор карточки по её ID из XML разметки
     int cardId = v.getId();
 

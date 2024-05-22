@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +17,7 @@ public class types extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        HatFragment hatFragment = (HatFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_hat);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_types);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.types), (v, insets) -> {
@@ -29,7 +28,7 @@ public class types extends AppCompatActivity {
     }
     public void goOnMovement(View v){
 
-        Intent intent=new Intent(this,movement.class);
+        Intent intent=new Intent(this, dances.class);
         // Получаем уникальный идентификатор карточки по её ID из XML разметки
         int cardId = v.getId();
 
