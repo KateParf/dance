@@ -22,7 +22,7 @@ export class MoveComponent {
       http.get<Move>(baseUrl + 'api/move/' + this.moveName).subscribe(result => {
         this.move = result;
         this.moveDescription = this.markdownService.parse(this.move.description);
-        //this.getFav();
+        this.getFav();
       }, error => console.error(error));
     });
   }

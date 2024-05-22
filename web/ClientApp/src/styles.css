@@ -6,7 +6,7 @@ body {
   background-color: #fbf7f3;
   background-repeat: no-repeat;
   background-size: 100%;
-  sfont-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  xfont-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-family: Philosopher; 
   color: #ffffff;
 }
@@ -219,7 +219,7 @@ tr:nth-child(odd) {
 
 .tableText {
   margin-bottom: 0px;
-  font-size: 14px;
+  font-size: 16px;
   color: #603a29
 }
 

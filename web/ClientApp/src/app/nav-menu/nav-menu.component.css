@@ -4,6 +4,10 @@ a.navbar-brand {
 	xx-word-break: break-all;
 }
 
+.nav-link {
+	font-size: 17px;
+}
+
 html {
 	font-size: 14px;
 }

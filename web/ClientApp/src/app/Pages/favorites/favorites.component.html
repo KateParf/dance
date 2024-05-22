@@ -1,27 +1,36 @@
 <h1 id="tableLabel" class="mainalign">Избранное</h1>
 
 <div class="contentcontainer mainalign">
-    <h2 id="tableLabel">Танцы</h2>
-    <div *ngIf="dances.length" class="dancesTable">
-        <table class='table table-striped' aria-labelledby="tableLabel">
-            <tbody>
-                <tr *ngFor="let dance of dances">
-                    <td><a href="/dance/{{ dance.id }}">{{ dance.name }}</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-    </div>
-
-    <h2 id="tableLabel">Движения</h2>
-    <div *ngIf="moves.length" class="movesTable">
-        <table class="table table-striped" aria-labelledby="tableLabel" *ngIf="moves.length">
-            <tbody>
-                <tr *ngFor="let move of moves">
-                    <td><a href="/move/{{ move.name }}">{{ move.name }}</a></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row">
+        <div class="col-12 col-lg-6 p-0">
+            <h2 id="tableLabel">Танцы</h2>
+            <div class="contentcontainer overflow-hidden" *ngIf="dances.length">
+                <div class="row row-cols-sm-auto d-flex justify-content-lg-start justify-content-center">
+                    <div class="card col-6 col-md-4 border rounded shadow mb-3 me-3 p-3"
+                        style="width: 18rem; height: auto;" *ngFor="let dance of dances">
+                        <h5 class="card-title">
+                            <a href="/dance/{{ dance.id }}" class="card-link">{{ dance.name }}</a>
+                        </h5>
+                        <p class="tableText">Направление: {{dance.type}}</p>
+                        <p class="tableText">Эпоха: {{dance.epoch}}</p>
+                        <p class="tableText">Сложность: {{dance.level}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h2 id="tableLabel">Движения</h2>
+            <div class="contentcontainer overflow-hidden" *ngIf="dances.length">
+                <div *ngIf="moves.length" class="movesTable">
+                    <table class="table table-striped" aria-labelledby="tableLabel" *ngIf="moves.length">
+                        <tbody>
+                            <tr *ngFor="let move of moves">
+                                <td><a href="/move/{{ move.name }}">{{ move.name }}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
