@@ -9,7 +9,7 @@
                     <div class="card col-6 col-md-4 border rounded shadow mb-3 me-3 p-3"
                         style="width: 18rem; height: auto;" *ngFor="let dance of dances">
                         <h5 class="card-title">
-                            <a href="/dance/{{ dance.id }}" class="card-link">{{ dance.name }}</a>
+                            <a href="/dance/{{ dance.globalId }}" class="card-link">{{ dance.name }}</a>
                         </h5>
                         <p class="tableText">Направление: {{dance.type}}</p>
                         <p class="tableText">Эпоха: {{dance.epoch}}</p>
