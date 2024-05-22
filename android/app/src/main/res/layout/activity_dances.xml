@@ -18,10 +18,11 @@
             android:layout_height="match_parent"
             android:name="com.example.myapplication1.HatFragment"
             app:layout_constraintTop_toTopOf="parent"/>
+
         <RelativeLayout
             android:id="@+id/pnlFilter"
             android:layout_width="match_parent"
-            android:layout_height="321dp"
+            android:layout_height="255dp"
             android:layout_margin="10dp"
             android:background="#D1CDC2"
             tools:ignore="MissingConstraints">
@@ -30,90 +31,91 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="90dp"
                 android:text="Со сменой партнера"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <RadioGroup
                 android:id="@+id/GroupRadio"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="110dp"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/YesRadio"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Да"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <RadioButton
                     android:id="@+id/NoRadio"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Нет"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <RadioButton
                     android:id="@+id/AllRadio"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Все"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </RadioGroup>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="150dp"
                 android:text="Количество пар"
                 android:textSize="18sp" />
-
-            <SeekBar
-                android:id="@+id/volumeSeekBar"
-                android:layout_width="297dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="230dp"
-                android:max="6"
-                android:progress="1" />
 
             <TextView
                 android:id="@+id/outputSeekbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="295dp"
-                android:layout_marginTop="229dp"
+                android:layout_marginTop="180dp"
                 android:text="1"
                 android:textSize="15sp" />
+
+            <SeekBar
+                android:id="@+id/volumeSeekBar"
+                android:layout_width="297dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="180dp"
+                android:max="6"
+                android:progress="1" />
 
             <Button
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="260dp"
+                android:layout_marginTop="205dp"
                 android:backgroundTint="#482C23"
                 android:onClick="onFilterSubmit"
                 android:text="Найти"
 
                 android:textSize="15sp" />
+
             <Button
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="170dp"
-                android:layout_marginTop="260dp"
+                android:layout_marginTop="205dp"
                 android:backgroundTint="#482C23"
                 android:text="Сбросить"
                 android:textSize="15sp" />
 
 
             <TableLayout
-                android:layout_width="298dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="10dp">
 
                 <TableRow
                     android:layout_width="match_parent"

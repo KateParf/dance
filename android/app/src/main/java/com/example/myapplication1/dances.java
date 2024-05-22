@@ -30,16 +30,16 @@ public class dances extends AppCompatActivity {
     SeekBar seekBar;
     TextView textSeek;
 
-    String[] types = {"Аллеманды", "Бранли", "Котильоны",
+    String[] types = {"", "Аллеманды", "Бранли", "Котильоны",
             "Контрдансы", "Народные", "Галопы", "Лендлеры", "Марши",
             "Вальсы", "Кадрили", "Мазурки", "Минуэты", "Паваны",
             "Полонезы", "Польки", "Современные", "Танго", "Тустепы"
     };
 
-    String[] period = {"Средние века", "18 век", "19 век",
+    String[] period = {"", "Средние века", "18 век", "19 век",
             "20 век", "21 век"
     };
-    String[] levels = {"Легкие", "Средние", "Сложные"
+    String[] levels = {"", "Легкие", "Средние", "Сложные"
     };
 
 
@@ -79,7 +79,6 @@ public class dances extends AppCompatActivity {
             String pageId = intent.getStringExtra("pageId");
 
             if (Objects.equals(pageId, "levelsId")) {
-
 
                 if (intent.hasExtra("cardId")) {
                     Spinner spinner_levels = findViewById(R.id.spinner_levels);
@@ -246,7 +245,6 @@ public class dances extends AppCompatActivity {
 
         }
 
-
     }
 
     // обработчик кнопки Найти
@@ -255,13 +253,13 @@ public class dances extends AppCompatActivity {
         layout.removeAllViews();
 
         Spinner spinner_types = findViewById(R.id.spinner_types);//тип
-        String spinner_typesValue = spinner_types.getSelectedItem().toString();
+        String spinner_typesValue = Objects.toString(spinner_types.getSelectedItem(), "");
 
         Spinner spinner_period = findViewById(R.id.spinner_period);//эпоха
-        String spinner_periodValue = spinner_period.getSelectedItem().toString();
+        String spinner_periodValue = Objects.toString(spinner_period.getSelectedItem(), "");
 
         Spinner spinner_levels = findViewById(R.id.spinner_levels);//уровень
-        String spinner_levelsValue = spinner_levels.getSelectedItem().toString();
+        String spinner_levelsValue = Objects.toString(spinner_levels.getSelectedItem(), "");
 
         RadioGroup radioGroup = findViewById(R.id.GroupRadio);//смена партнера
         int selectedId = radioGroup.getCheckedRadioButtonId();
@@ -270,20 +268,20 @@ public class dances extends AppCompatActivity {
         } else {
             changePartn = false;
         }
+        boolean finalChangePartn = changePartn;
 
         SeekBar volumeSeekBar = findViewById(R.id.volumeSeekBar);//кол-во пар
         int seekBarValue = volumeSeekBar.getProgress();
 
-
-
         // запуск задачи получения данных с сервера
-        boolean finalChangePartn = changePartn;
         new JsonTask(this,
                 (resStatus, resObj, resError) -> {
                     if (!resStatus) {
                         Log.e("JSON parse error", resError);
                     } else
-                        DrawDances(resObj,spinner_typesValue,spinner_periodValue,spinner_levelsValue, finalChangePartn,seekBarValue);
+                        DrawDances(resObj,
+                                spinner_typesValue, spinner_periodValue, spinner_levelsValue, finalChangePartn, seekBarValue
+                        );
                     return null;
                 }
         ).execute("http://85.236.190.126:5001/api/dances");
@@ -292,23 +290,27 @@ public class dances extends AppCompatActivity {
     // рисуем список танцев на странице, которые получили с сервера
 
     public void DrawDances(JSONArray dances, String spinner_typesValue, String spinner_periodValue, String spinner_levelsValue, boolean changePartn , int seekBarValue) {
+        Log.e("DANCE", "DrawDances begin");
         String r = "";
         LinearLayout linearLayout = findViewById(R.id.pnlDance);
-
 
         for (int i = 0; i < dances.length(); i++) {
             try {
                 JSONObject dance = dances.getJSONObject(i);
-                String type=dance.getJSONObject("type").getString("name");
-                String epoch= dance.getJSONObject("epoch").getString("name");
-                String level =dance.getJSONObject("level").getString("name");
-                boolean changePartner=dance.getBoolean("changePartner");
-                int countOfPairs=dance.getInt("countOfPairs");
-                if(((spinner_typesValue.equals(type) &&spinner_levelsValue.equals(level))
-                        && (spinner_periodValue.equals(epoch)
-                        && (changePartn == changePartner) ))&&
-                        ((seekBarValue == countOfPairs))){
+                String type = dance.getJSONObject("type").getString("name");
+                String epoch = dance.getJSONObject("epoch").getString("name");
+                String level = dance.getJSONObject("level").getString("name");
+                boolean changePartner = dance.getBoolean("changePartner");
+                int countOfPairs = dance.getInt("countOfPairs");
 
+                if (
+                        ((spinner_typesValue  == "") || spinner_typesValue.equals(type)) &&
+                        ((spinner_levelsValue == "") || spinner_levelsValue.equals(level)) &&
+                        ((spinner_periodValue == "") || spinner_periodValue.equals(epoch)) &&
+                        (changePartn == changePartner) &&
+                        (seekBarValue == countOfPairs)
+                    )
+                {
 
                     String name = dance.getString("name");
                     String direction = "Направление: " + type;
