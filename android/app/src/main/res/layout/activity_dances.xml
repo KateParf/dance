@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".dances">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
@@ -17,7 +17,10 @@
             android:id="@+id/pnlFilter"
             android:layout_width="match_parent"
             android:layout_height="321dp"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="85dp"
             android:background="#D1CDC2"
             tools:ignore="MissingConstraints">
 
@@ -186,10 +189,15 @@
 
         </ScrollView>
 
+        <fragment
+            android:id="@+id/hatFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.example.myapplication1.HatFragment"
+            app:layout_constraintTop_toTopOf="parent"/>
 
 
 
-
-    </LinearLayout>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
