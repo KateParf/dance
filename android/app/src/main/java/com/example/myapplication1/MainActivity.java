@@ -5,20 +5,10 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -79,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goOnMovement(View v){
-        Intent intent = new Intent(this, movement.class);
+    public void goOnDances(View v){
+        Intent intent = new Intent(this, dances.class);
         startActivity(intent);
     }
 

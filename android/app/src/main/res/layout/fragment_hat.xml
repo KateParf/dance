@@ -1,12 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:ignore="ExtraText"
-    android:background="@color/main_background">
+    tools:context=".HatFragment"
+    android:id="@+id/fragment_hat">
 
     <RelativeLayout
         android:id="@+id/header_main"
@@ -44,6 +42,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/goOnDirection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5sp"
@@ -58,6 +57,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/goOnPeriod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5sp"
@@ -71,6 +71,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/goOnLevel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5sp"
@@ -84,6 +85,7 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/goOnMovement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5sp"
@@ -91,13 +93,11 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="start"
-                android:onClick="goOnDances"
-                android:text="@string/dances"
+                android:onClick="goOnMovement"
+                android:text="@string/movements"
                 android:textColorHint="#112A46"
                 android:textSize="22sp" />
 
         </LinearLayout>
     </RelativeLayout>
-
-
-</RelativeLayout>
+</FrameLayout>

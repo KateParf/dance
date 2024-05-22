@@ -4,9 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +18,8 @@ public class period extends AppCompatActivity {
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //  Получите ссылку на фрагмент шапки
+        HatFragment hatFragment = (HatFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_hat);
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_period);
@@ -35,7 +34,7 @@ public class period extends AppCompatActivity {
 
     public void goOnMovement(View v){
 
-        Intent intent=new Intent(this,movement.class);
+        Intent intent=new Intent(this, dances.class);
         // Получаем уникальный идентификатор карточки по её ID из XML разметки
         int cardId = v.getId();
 

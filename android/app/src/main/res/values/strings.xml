@@ -17,6 +17,7 @@
     <string name="light">Легкий</string>
 
     <string name="movements">Движения</string>
+    <string name="dances">Танцы</string>
 
     <string-array name="levels_array">
         <item>Легкий</item>

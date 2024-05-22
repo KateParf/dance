@@ -3,6 +3,7 @@ package com.example.myapplication1;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -61,6 +62,7 @@ class JsonTask extends AsyncTask<String, String, String> {
 
         try {
             URL url = new URL(params[0]);
+            Log.e("DANCE GET URL", params[0]);
             connection = (HttpURLConnection) url.openConnection();
             connection.connect();
 
@@ -76,11 +78,16 @@ class JsonTask extends AsyncTask<String, String, String> {
             // получили строку - парсим ее в джейсон
             // https://docs.oracle.com/javaee/7/api/javax/json/JsonArray.html
             try {
-                resObj = new JSONArray(buffer.toString());
+                String resTxt = buffer.toString();
+                if (resTxt.substring(0,1).compareTo("[") != 0)
+                    resTxt = "[" + resTxt + "]";
+                //Log.e("DANCE GET RESPONSE", resTxt);
+                resObj = new JSONArray(resTxt);
                 resStatus = true;
-            } catch (Throwable tx) {
+            } catch (Throwable e) {
                 // если ошибка парса джейсона то запоминаем в строку ошибки
-                resError = tx.toString();
+                resError = e.toString();
+                e.printStackTrace();
             }
 
         } catch (MalformedURLException e) {
