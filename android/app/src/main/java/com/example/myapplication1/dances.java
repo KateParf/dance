@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,15 +31,15 @@ public class dances extends AppCompatActivity {
     TextView textSeek;
 
     String[] types = {"Аллеманды", "Бранли", "Котильоны",
-            "Контрдансы", "Народные", "Галопы", "Лендеры", "Марши",
+            "Контрдансы", "Народные", "Галопы", "Лендлеры", "Марши",
             "Вальсы", "Кадрили", "Мазурки", "Минуэты", "Паваны",
             "Полонезы", "Польки", "Современные", "Танго", "Тустепы"
     };
 
-    String[] period = {"Средний век", "18 век", "19 век",
+    String[] period = {"Средние века", "18 век", "19 век",
             "20 век", "21 век"
     };
-    String[] levels = {"Легкий", "Средний", "Сложный"
+    String[] levels = {"Легкие", "Средние", "Сложные"
     };
 
 
@@ -87,11 +88,11 @@ public class dances extends AppCompatActivity {
 // Определяем, какое значение установить в Spinner на основе ID карточки
                     String spinnerValue = null;
                     if (cardId == R.id.card_light) {
-                        spinnerValue = "Легкий";
+                        spinnerValue = "Легкие";
                     } else if (cardId == R.id.card_mid) {
-                        spinnerValue = "Средний";
+                        spinnerValue = "Средние";
                     } else if (cardId == R.id.card_hard) {
-                        spinnerValue = "Сложный";
+                        spinnerValue = "Сложные";
                     }
 
                     // Устанавливаем значение в Spinner
@@ -145,7 +146,7 @@ public class dances extends AppCompatActivity {
                     } else if (cardId == R.id.card_cotillions) {
                         spinnerTypesValue = "Котильоны";
                     } else if (cardId == R.id.card_landlers) {
-                        spinnerTypesValue = "Лэндлеры";
+                        spinnerTypesValue = "Лeндлеры";
                     } else if (cardId == R.id.card_mazurkas) {
                         spinnerTypesValue = "Мазурки";
                     } else if (cardId == R.id.card_marches) {
@@ -250,13 +251,39 @@ public class dances extends AppCompatActivity {
 
     // обработчик кнопки Найти
     public void onFilterSubmit(View v) {
+        LinearLayout layout = (LinearLayout) findViewById(R.id.pnlDance);
+        layout.removeAllViews();
+
+        Spinner spinner_types = findViewById(R.id.spinner_types);//тип
+        String spinner_typesValue = spinner_types.getSelectedItem().toString();
+
+        Spinner spinner_period = findViewById(R.id.spinner_period);//эпоха
+        String spinner_periodValue = spinner_period.getSelectedItem().toString();
+
+        Spinner spinner_levels = findViewById(R.id.spinner_levels);//уровень
+        String spinner_levelsValue = spinner_levels.getSelectedItem().toString();
+
+        RadioGroup radioGroup = findViewById(R.id.GroupRadio);//смена партнера
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        boolean changePartn = true;
+        if (selectedId == R.id.YesRadio) {
+        } else {
+            changePartn = false;
+        }
+
+        SeekBar volumeSeekBar = findViewById(R.id.volumeSeekBar);//кол-во пар
+        int seekBarValue = volumeSeekBar.getProgress();
+
+
+
         // запуск задачи получения данных с сервера
+        boolean finalChangePartn = changePartn;
         new JsonTask(this,
                 (resStatus, resObj, resError) -> {
                     if (!resStatus) {
                         Log.e("JSON parse error", resError);
                     } else
-                        DrawDances(resObj);
+                        DrawDances(resObj,spinner_typesValue,spinner_periodValue,spinner_levelsValue, finalChangePartn,seekBarValue);
                     return null;
                 }
         ).execute("http://85.236.190.126:5001/api/dances");
@@ -264,50 +291,64 @@ public class dances extends AppCompatActivity {
 
     // рисуем список танцев на странице, которые получили с сервера
 
-    public void DrawDances(JSONArray dances) {
+    public void DrawDances(JSONArray dances, String spinner_typesValue, String spinner_periodValue, String spinner_levelsValue, boolean changePartn , int seekBarValue) {
         String r = "";
         LinearLayout linearLayout = findViewById(R.id.pnlDance);
+
 
         for (int i = 0; i < dances.length(); i++) {
             try {
                 JSONObject dance = dances.getJSONObject(i);
-                String name = dance.getString("name");
-                String direction = "Направление: " + dance.getJSONObject("type").getString("name");
-                String epoch = "Эпоха: " + dance.getJSONObject("epoch").getString("name");
-                String level = "Сложность: " + dance.getJSONObject("level").getString("name");
+                String type=dance.getJSONObject("type").getString("name");
+                String epoch= dance.getJSONObject("epoch").getString("name");
+                String level =dance.getJSONObject("level").getString("name");
+                boolean changePartner=dance.getBoolean("changePartner");
+                int countOfPairs=dance.getInt("countOfPairs");
+                if(((spinner_typesValue.equals(type) &&spinner_levelsValue.equals(level))
+                        && (spinner_periodValue.equals(epoch)
+                        && (changePartn == changePartner) ))&&
+                        ((seekBarValue == countOfPairs))){
 
-                LinearLayout cardLayout = new LinearLayout(this);
-                int id = Integer.parseInt(dance.getString("id"));
-                cardLayout.setOnClickListener(v -> onClickDance(id));
 
-                cardLayout.setBackgroundColor(Color.parseColor((i % 2 == 0) ? "#DFDBD0" : "#DBDFD0"));
-                cardLayout.setOrientation(LinearLayout.VERTICAL);
+                    String name = dance.getString("name");
+                    String direction = "Направление: " + type;
+                    String period = "Эпоха: " + epoch;
+                    String complex = "Сложность: " + level;
 
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                );
-                layoutParams.setMargins(10, 10, 10, 10); // Отступы слева, сверху, справа, снизу
-                cardLayout.setLayoutParams(layoutParams);
-                cardLayout.setPadding(10, 10, 10, 10);
+                    LinearLayout cardLayout = new LinearLayout(this);
+                    int id = Integer.parseInt(dance.getString("id"));
+                    cardLayout.setOnClickListener(v -> onClickDance(id));
 
-                TextView txtName = new TextView(this);
-                txtName.setText(name);
-                cardLayout.addView(txtName);
+                    cardLayout.setBackgroundColor(Color.parseColor((i % 2 == 0) ? "#DFDBD0" : "#DBDFD0"));
+                    cardLayout.setOrientation(LinearLayout.VERTICAL);
 
-                TextView txtDirection = new TextView(this);
-                txtDirection.setText(direction);
-                cardLayout.addView(txtDirection);
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+                    layoutParams.setMargins(10, 10, 10, 10); // Отступы слева, сверху, справа, снизу
+                    cardLayout.setLayoutParams(layoutParams);
+                    cardLayout.setPadding(10, 10, 10, 10);
 
-                TextView txtEpoch = new TextView(this);
-                txtEpoch.setText(epoch);
-                cardLayout.addView(txtEpoch);
+                    TextView txtName = new TextView(this);
+                    txtName.setText(name);
+                    cardLayout.addView(txtName);
 
-                TextView txtComplexity = new TextView(this);
-                txtComplexity.setText(level);
-                cardLayout.addView(txtComplexity);
+                    TextView txtDirection = new TextView(this);
+                    txtDirection.setText(direction);
+                    cardLayout.addView(txtDirection);
 
-                linearLayout.addView(cardLayout); // Добавляем карточку в корневой Layout
+                    TextView txtEpoch = new TextView(this);
+                    txtEpoch.setText(period);
+                    cardLayout.addView(txtEpoch);
+
+                    TextView txtComplexity = new TextView(this);
+                    txtComplexity.setText(complex);
+                    cardLayout.addView(txtComplexity);
+
+                    linearLayout.addView(cardLayout); // Добавляем карточку в корневой Layout
+                }
+                else continue;
             } catch (JSONException e) {
                 r += "!!! ERROR !!!" + "\n\n";
             }

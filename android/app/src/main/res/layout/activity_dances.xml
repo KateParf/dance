@@ -7,20 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".dances">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
-
+        <fragment
+            android:id="@+id/hatFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.example.myapplication1.HatFragment"
+            app:layout_constraintTop_toTopOf="parent"/>
         <RelativeLayout
             android:id="@+id/pnlFilter"
             android:layout_width="match_parent"
             android:layout_height="321dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="85dp"
+            android:layout_margin="10dp"
             android:background="#D1CDC2"
             tools:ignore="MissingConstraints">
 
@@ -97,7 +99,6 @@
                 android:text="Найти"
 
                 android:textSize="15sp" />
-
             <Button
                 android:layout_width="150dp"
                 android:layout_height="40dp"
@@ -189,15 +190,7 @@
 
         </ScrollView>
 
-        <fragment
-            android:id="@+id/hatFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.example.myapplication1.HatFragment"
-            app:layout_constraintTop_toTopOf="parent"/>
 
-
-
-    </FrameLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
