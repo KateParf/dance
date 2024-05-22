@@ -6,7 +6,8 @@ body {
   background-color: #fbf7f3;
   background-repeat: no-repeat;
   background-size: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  sfont-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Philosopher; 
   color: #ffffff;
 }
 
@@ -199,19 +200,6 @@ a.dancecardlink:hover div {
   width: 90%;
 }
 
-/* стили для чекбокса, находящегося в фокусе */
-.form-check-input:focus {
-  box-shadow: 0 0 0 0.2rem #603a2975;
-  background-color: #4a2a21;
-  border-color: #4a2a21;
-}
-
-/* стили для чекбокса, находящегося в состоянии checked */
-.form-check-input:checked {
-  background-color: #4a2a21;
-  border-color: #4a2a21;
-}
-
 .dancesTable a,
 .movesTable a {
   text-decoration: none;
@@ -326,7 +314,16 @@ audio::-webkit-media-controls-panel {
 
 }
 
+.videoButtonGroup {
+  background-color: #4a2a21;
+  border-radius: 5px;
+  width: 45vw;
+  min-width: 300px;
+}
+
 .vidbtn {
-  margin: 5px;
-  border-radius: 8px;
+  color: #4a2a21;
+  background-color: #f1e4dc;
+  border: 1px solid #4a2a21;
+  border-radius: 5px;
 }

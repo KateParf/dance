@@ -10,6 +10,7 @@ import { dbConfig } from './Pages/favorites/dbConfig';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { MarkdownModule } from 'ngx-markdown';
+import { SafeHtmlPipe } from './pipes/keep-html.pipe';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -33,6 +34,7 @@ import { AdminMoveComponent } from './Pages/admin/move/move.component';
 
 @NgModule({
   declarations: [
+    SafeHtmlPipe,
     AppComponent,
     NavMenuComponent,
     HomeComponent,

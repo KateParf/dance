@@ -1,4 +1,4 @@
-import { Component, Inject, AfterViewInit } from '@angular/core';
+import { Component, Inject, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from "@angular/router";
 import { MarkdownService } from 'ngx-markdown';
@@ -33,7 +33,7 @@ export class DanceComponent {
 
       this.setupMarkdownRenderer();
 
-      this.danceScheme = this.markdownService.parse(this.dance.scheme);
+      this.danceScheme = this.markdownService.parse(this.dance.scheme, { disableSanitizer: true, });
       this.danceHistory = this.markdownService.parse(this.dance.history);
       this.danceEpoch = this.dance.epoch.name;
       this.danceLevel = this.dance.level.name;
@@ -46,61 +46,91 @@ export class DanceComponent {
     this.markdownService.renderer.link = (href, title, text) => {
       let prefix = text.substring(0, 3);
       if (prefix == "vid") {
-        return `<strong><a [routerLink]="d" (click)="onPlayTime()" onClick="onPlayTime()" >(>) ${text.substring(4)}</a></strong>`;
+        return `<a class="vidbtn vid" viddata="${text.substring(4)}">(>) ${text.substring(4)}</a>`;
       } else
         if (prefix == "mov") {
-          console.log(href);
           return `<strong><a href="/move/${href}">${text.substring(4)}</a></strong>`;
         } else
           return `>>> <a href=${href}>${text}</a> <<<`;
-    };    
+    };
   }
 
+  //-- marked click listener
+  @HostListener('click', ['$event'])
+
+  onClick(event: any): void {
+    console.log("onClick");
+
+    // find button                   
+    const vidbtn = event.target.closest("a");
+    if (!vidbtn) return;
+
+    let data: string = (vidbtn.getAttribute("viddata"));
+    //console.log(data);
+    if (!data) return;
+    let datas = data.split("-").map((v, i, a) => v.trim());
+    console.log(datas);
+
+    // передаем команду плееру
+    event.preventDefault();
+    this.playFromToFormat(datas[0], datas[1]);
+  }
 
   //-- player
-
   private player: any;
 
   public getPlayer() {
     if (!this.player) {
-      this.player = videojs('player1');    
+      this.player = videojs('player1');
       this.player.ready(() => {
         console.log('Player is ready', this.player);
+
+        this.player.on('timeupdate', () => {
+          if (this._loopEnabled) {
+            if (this.player.currentTime() < this._startTime || this.player.currentTime() >= this._endTime) {
+              this.player.currentTime(this._startTime);
+            }
+          }
+        });
+
       });
     }
     return this.player;
   }
 
-  public onPlayTime() {
-    console.log("play time");
+  public playFromToFormat(start: string, end: string) {
+    let startMinutes = Number(start.split(':')[0]);
+    let startSeconds = Number(start.split(':')[1]);
+
+    let endMinutes = Number(end.split(':')[0]);
+    let endSeconds = Number(end.split(':')[1]);
+
+    this.playSegment(startMinutes, startSeconds, endMinutes, endSeconds);
   }
+
+  private _startTime: number = 0;
+  private _endTime: number = 0;
+  private _loopEnabled = false;
 
   // проигрывает отрезок видео по времени
   playSegment(startMinutes: number, startSeconds: number, endMinutes: number, endSeconds: number) {
-    const startTime = startMinutes * 60 + startSeconds;
-    const endTime = endMinutes * 60 + endSeconds;
-    var loopEnabled = true;
-
     let player = this.getPlayer();    
-    player.on('timeupdate', () => {
-        if (loopEnabled){
-            if (player.currentTime() < startTime || player.currentTime() >= endTime ) {
-              player.currentTime(startTime);
-            }
-        }
-    });
+    player.pause();
 
-    player.currentTime(startTime);
+    this._startTime = startMinutes * 60 + startSeconds;
+    this._endTime = endMinutes * 60 + endSeconds;
+    this._loopEnabled = true;
+
+    player.currentTime(this._startTime);
     player.play();
   }
 
+  // устанавливает скорость видео
   setPlaybackRate(rate: number) {
     this.getPlayer().playbackRate(rate);
   }
 
-
   //-- favorites
-
   public inFav: boolean = false;
 
   async getFav() {

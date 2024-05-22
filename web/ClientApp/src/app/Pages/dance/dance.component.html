@@ -12,14 +12,12 @@
     </button>
 
     <button *ngIf="inFav" (click)="onRemoveFromFav(dance)" class="submitFav">
-    <img src="/Media/Images/heartNo.png" onmouseover="this.src='/Media/Images/heartYes.png';"
-      onmouseout="this.src='/Media/Images/heartNo.png';">
+      <img src="/Media/Images/heartNo.png" onmouseover="this.src='/Media/Images/heartYes.png';"
+        onmouseout="this.src='/Media/Images/heartNo.png';">
     </button>
 
   </h1>
 </div>
-
-<a (click)="onPlayTime()">111222333</a>
 
 <p *ngIf="dance" id="tableLabel" class="mainalign">{{ danceEpoch }}&nbsp;&nbsp;&nbsp;&nbsp;Сложность: {{ danceLevel }}
 </p>
@@ -33,29 +31,42 @@
   <div class="danceMedia">
 
     <!-- демо плеер для отладки -->
-    <!--
-    <video id="player1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264">
+    <video id="player1" class="video-js vjs-default-skin player" controls preload="auto">
       <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4">
     </video>
-  -->
 
-    <!-- основной видео плеер -->
+    <!-- основной видео плеер
     <video id="player1" class="video-js vjs-default-skin player" controls data-setup='{ "techOrder": ["youtube"] }'>
-      <source src="{{dance.videos[0].url}}" type="video/youtube" />
-    </video>
-    <button class=vidbtn (click)="playSegment(1, 30, 2, 45)">(1:30 - 2:45)</button>
-    <button class=vidbtn (click)="setPlaybackRate(2)">x2</button>
-    <button class=vidbtn (click)="setPlaybackRate(1)">1:1</button>
-    <button class=vidbtn (click)="setPlaybackRate(0.5)">1/2</button>
+      <source src="{{ dance.videos[0].url }}" type="video/youtube" />
+    </video> -->
 
-    <!-- вк 
-    <iframe class="video-js vjs-default-skin player" src="{{dance.videos[1].url}}"
-      allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen>
-    </iframe> -->
+    <div class="videoButtonGroup mt-2 p-2 d-flex justify-content-between">
+
+      <div style="color: #FFF;">
+        <button class="vidbtn" (click)="playSegment(1, 30, 2, 45)">Зациклить</button>
+        c 1:30 по 2:45
+      </div>
+
+      <div>
+        <button class="vidbtn me-1" (click)="setPlaybackRate(0.5)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rewind-fill" viewBox="0 1 16 16">
+            <path d="M8.404 7.304a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696z" />
+            <path d="M.404 7.304a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696z" />
+          </svg> 0.5
+        </button>
+        <button class="vidbtn me-1" (click)="setPlaybackRate(1)">1:1</button>
+        <button class="vidbtn me-1" (click)="setPlaybackRate(2)">2 
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fast-forward-fill" viewBox="0 1 16 16">
+            <path d="M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z" />
+            <path d="M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
 
     <br>
-    <br>
-    <div class="danceTitle">Видео</div>
+    <div class="danceTitle mb-1">Видео</div>
 
     <div *ngFor="let video of dance.videos">
       <a href="{{ video.url }}">
@@ -81,7 +92,7 @@
 
   <div class="danceContent">
     <div class="danceTitle">Схема танца</div>
-    <div class="danceScheme" [innerHTML]="danceScheme"></div>
+    <div class="danceScheme" [innerHTML]="danceScheme | safeHtml"></div>
 
     <br>
     <div class="danceTitle">История и факты</div>
