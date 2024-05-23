@@ -67,6 +67,8 @@ public class dance extends AppCompatActivity {
             TextView txtLevel = findViewById(R.id.txtLevel);
             TextView txtScheme = findViewById(R.id.txtScheme);
             TextView txtHistory = findViewById(R.id.txtHistory);
+
+
             txtName.setText(name);
             txtEpoch.setText(epoch);
             txtLevel.setText(level);

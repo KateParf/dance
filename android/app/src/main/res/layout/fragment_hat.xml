@@ -13,6 +13,7 @@
         android:layout_height="55dp"
         >
         <TextView
+            android:id="@+id/txtMain"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_marginStart="65sp"
@@ -20,7 +21,11 @@
             android:text="@string/name_header_main"
             android:textColor="@color/white"
             android:textSize="25sp"
-            android:fontFamily="@font/philosopher"/>
+            android:fontFamily="@font/philosopher"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="goOnMain"
+            />
 
 
         <ImageButton

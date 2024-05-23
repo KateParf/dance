@@ -26,6 +26,12 @@ public class HatFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_hat, container, false);
 
         // Найдите TextView по ID
+        TextView myTextView0 = view.findViewById(R.id.txtMain);
+
+        // Зарегистрируйте обработчик onClick
+        myTextView0.setOnClickListener(this::goOnMain);
+
+        // Найдите TextView по ID
         TextView myTextView = view.findViewById(R.id.goOnDirection);
 
         // Зарегистрируйте обработчик onClick
@@ -80,6 +86,7 @@ public class HatFragment extends Fragment {
                     isHeaderExpanded = true;
                 }
             }
+
         });
 
         return view;
@@ -105,18 +112,12 @@ public class HatFragment extends Fragment {
         startActivity(intent);
     }
 
-    public void onClick(View view) {
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) headerLayout.getLayoutParams();
-        if (isHeaderExpanded) {
-            params.height = originalHeaderHeight;
-            headerLayout.setLayoutParams(params);
-            sectionsLayout.setVisibility(View.GONE);
-            isHeaderExpanded = false;
-        } else {
-            params.height = 500; // Новая высота шапки
-            headerLayout.setLayoutParams(params);
-            sectionsLayout.setVisibility(View.VISIBLE);
-            isHeaderExpanded = true;
-        }
-    }
+public void goOnMain(View view){
+    Intent intent = new Intent(getActivity(), MainActivity.class);
+    startActivity(intent);
+}
+
+
+
+
 }
