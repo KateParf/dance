@@ -4,5 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main_background">#fbf7f3</color>
 
-
+    <color name="new_button_color">#462B23</color> <!-- Новый цвет кнопки при нажатии -->
+    <color name="button_tint">#5B3C2C</color>
 </resources>

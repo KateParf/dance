@@ -12,17 +12,17 @@
     <string name="twentyone">21 век</string>
 
     <string name="level">Сложность</string>
-    <string name="hard">Сложный</string>
-    <string name="middle">Средний</string>
-    <string name="light">Легкий</string>
+    <string name="hard">Сложные</string>
+    <string name="middle">Средние</string>
+    <string name="light">Легкие</string>
 
     <string name="movements">Движения</string>
     <string name="dances">Танцы</string>
 
     <string-array name="levels_array">
-        <item>Легкий</item>
-        <item>Средний</item>
-        <item>Сложный</item>
+        <item>Легкие</item>
+        <item>Средние</item>
+        <item>Сложные</item>
     </string-array>
     <string-array name="types_array">
         <item>Аллеманды</item>

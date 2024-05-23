@@ -1,6 +1,7 @@
 package com.example.myapplication1;
 
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -272,6 +274,10 @@ public class dances extends AppCompatActivity {
 
         SeekBar volumeSeekBar = findViewById(R.id.volumeSeekBar);//кол-во пар
         int seekBarValue = volumeSeekBar.getProgress();
+        // Изменяем цвет кнопки при нажатии
+        Button button = (Button) v;
+        button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#462B23"))); // Изменяем цвет нажатой кнопки
+
 
         // запуск задачи получения данных с сервера
         new JsonTask(this,
@@ -286,7 +292,51 @@ public class dances extends AppCompatActivity {
                 }
         ).execute("http://85.236.190.126:5001/api/dances");
     }
+    public void BtnReset(View v) {
+        String[] types = {"","Аллеманды", "Бранли", "Котильоны", "Контрдансы", "Народные", "Галопы", "Лендлеры", "Марши",
+                "Вальсы", "Кадрили", "Мазурки", "Минуэты", "Паваны", "Полонезы", "Польки", "Современные", "Танго", "Тустепы"
+        };
 
+        String[] period = {"", "Средние века", "18 век", "19 век", "20 век", "21 век"};
+
+        String[] levels = {"", "Легкие", "Средние", "Сложные"};
+        LinearLayout layout = (LinearLayout) findViewById(R.id.pnlDance);
+        layout.removeAllViews();
+
+        //очищаем типы
+        Spinner spinner_types = findViewById(R.id.spinner_types);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, types);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_types.setAdapter(adapter);
+        spinner_types.setSelection(0);
+
+        //очищаем периоды
+        Spinner spinner_period = findViewById(R.id.spinner_period);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, period);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_period.setAdapter(adapter1);
+        spinner_period.setSelection(0);
+
+
+        //очищаем уровни
+        Spinner spinner_levels = findViewById(R.id.spinner_levels);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, levels);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_levels.setAdapter(adapter2);
+        spinner_levels.setSelection(0); // Устанавливает выбранным значение с индексом
+
+        RadioGroup radioGroup = findViewById(R.id.GroupRadio);
+
+        SeekBar volumeSeekBar = findViewById(R.id.volumeSeekBar);
+        // Сброс значения SeekBar до 0
+        volumeSeekBar.setProgress(1);
+        // Очистка значения RadioGroup
+        radioGroup.clearCheck();
+        // Изменяем цвет кнопки при нажатии
+        Button button = (Button) v;
+        button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5B3C2C"))); // Изменяем цвет нажатой кнопки
+
+    }
     // рисуем список танцев на странице, которые получили с сервера
 
     public void DrawDances(JSONArray dances, String spinner_typesValue, String spinner_periodValue, String spinner_levelsValue, boolean changePartn , int seekBarValue) {
@@ -321,7 +371,7 @@ public class dances extends AppCompatActivity {
                     int id = Integer.parseInt(dance.getString("id"));
                     cardLayout.setOnClickListener(v -> onClickDance(id));
 
-                    cardLayout.setBackgroundColor(Color.parseColor((i % 2 == 0) ? "#DFDBD0" : "#DBDFD0"));
+                    cardLayout.setBackgroundColor(Color.parseColor((i % 2 == 0) ? "#D0C8C3" : "#EFE4DD"));
                     cardLayout.setOrientation(LinearLayout.VERTICAL);
 
                     LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
