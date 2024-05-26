@@ -15,6 +15,63 @@
         android:layout_height="match_parent"
         android:scrollbars="horizontal|vertical">
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <fragment
+                android:id="@+id/hatFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="com.example.myapplication1.HatFragment"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/android_fon_dance"
+                android:padding="10dp">
+                <TextView
+                    android:id="@+id/txtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Танец"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="25dp"
+                    tools:layout_editor_absoluteY="117dp"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/white"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:id="@+id/txtEpoch"
+                        android:layout_width="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_height="30dp"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="197dp"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:id="@+id/txtLevel"
+                        android:layout_width="250dp"
+                        android:layout_height="30dp"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="227dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </LinearLayout>
+        <LinearLayout
             android:backgroundTint="@color/main_background"
             android:id="@+id/pnlDance"
             android:layout_width="match_parent"
@@ -23,30 +80,6 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <TextView
-                android:id="@+id/txtName"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:text="Танец"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="25dp"
-                tools:layout_editor_absoluteY="117dp" />
-
-            <TextView
-                android:id="@+id/txtEpoch"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="197dp" />
-
-            <TextView
-                android:id="@+id/txtLevel"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="227dp" />
 
             <TextView
                 android:id="@+id/txtScheme"
@@ -64,6 +97,6 @@
                 tools:layout_editor_absoluteX="-16dp"
                 tools:layout_editor_absoluteY="494dp" />
         </LinearLayout>
-
+        </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
