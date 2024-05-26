@@ -1,3 +1,10 @@
+import org.gradle.accessors.dm.LibrariesForLibs
+
+val LibrariesForLibs.Markwon: Any
+    get() {
+        TODO("Not yet implemented")
+    }
+
 plugins {
     alias(libs.plugins.androidApplication)
 }
@@ -29,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation ("io.noties.markwon:core:4.1.2")
 
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -37,4 +45,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 }
+

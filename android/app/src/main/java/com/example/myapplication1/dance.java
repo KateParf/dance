@@ -2,8 +2,6 @@ package com.example.myapplication1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -12,12 +10,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-
-import java.util.Objects;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import io.noties.markwon.Markwon;
 
 public class dance extends AppCompatActivity {
 
@@ -53,13 +49,15 @@ public class dance extends AppCompatActivity {
         txtRes.setText("!!! ERROR !!! " + error);
     }
 
+
+
     private void DrawDanceActivity(JSONArray dances) {
         try {
             JSONObject dance = dances.getJSONObject(0);
             String name = dance.getString("name");
             String epoch = dance.getJSONObject("epoch").getString("name");
             String level = "Сложность: " + dance.getJSONObject("level").getString("name");
-            String scheme = "Схема танца: " + dance.getString("scheme");
+            String schemeMarkdown = dance.getString("scheme");
             String history = "История и факты: " + dance.getString("history");
 
             TextView txtName = findViewById(R.id.txtName);
@@ -68,16 +66,19 @@ public class dance extends AppCompatActivity {
             TextView txtScheme = findViewById(R.id.txtScheme);
             TextView txtHistory = findViewById(R.id.txtHistory);
 
+            // Создаем экземпляр Markwon и применяем Markdown к txtScheme
+            Markwon markwon = Markwon.create(this);
+            markwon.setMarkdown(txtScheme, "## Схема танца:\n " + schemeMarkdown);
 
             txtName.setText(name);
             txtEpoch.setText(epoch);
             txtLevel.setText(level);
-            txtScheme.setText(scheme);
             txtHistory.setText(history);
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
     }
+
 
 }

@@ -28,21 +28,24 @@
             tools:ignore="MissingConstraints">
 
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="160dp"
+                android:layout_marginTop="200dp"
                 android:text="Со сменой партнера"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textColor="#5B3C2C"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
 
             <RadioGroup
                 android:id="@+id/GroupRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="190dp"
+                android:layout_marginStart="220dp"
+                android:layout_marginTop="195dp"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -50,30 +53,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Да"
-                    android:textSize="14sp" />
+                    android:textStyle="bold"
+                    android:textColor="#5B3C2C"
+                    android:textSize="18sp" />
 
                 <RadioButton
                     android:id="@+id/NoRadio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Нет"
-                    android:textSize="14sp" />
+                    android:textStyle="bold"
+                    android:textColor="#5B3C2C"
+                    android:textSize="18sp" />
 
-                <RadioButton
-                    android:id="@+id/AllRadio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Все"
-                    android:textSize="14sp" />
+<!--                <RadioButton-->
+<!--                    android:id="@+id/AllRadio"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Все"-->
+<!--                    android:textSize="14sp" />-->
             </RadioGroup>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="230dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="240dp"
                 android:text="Количество пар"
-                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textColor="#5B3C2C"
                 android:textSize="18sp" />
 
             <TextView
@@ -90,13 +98,15 @@
                 android:id="@+id/volumeSeekBar"
                 android:layout_width="297dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="260dp"
+                android:layout_marginTop="270dp"
+                android:layout_marginStart="4dp"
                 android:max="6"
                 android:progress="1"
                 android:progressDrawable="@drawable/seekbar_progress"
                 android:thumb="@drawable/seekbar_thumb"/>
 
             <Button
+                android:id="@+id/BtnFind"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"
@@ -105,10 +115,8 @@
                 android:onClick="onFilterSubmit"
                 android:text="Найти"
                 android:textSize="15sp" />
-
-
-
             <Button
+                android:id="@+id/BtnRes"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="170dp"
@@ -134,8 +142,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Направления"
-                        android:textColor="@color/black"
-                        android:textSize="15sp" />
+                        android:textStyle="bold"
+                        android:textColor="#5B3C2C"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="7dp"/>
 
 
                 </TableRow>
@@ -145,7 +155,8 @@
                     android:background="@drawable/white_rectangle"
                     android:layout_height="match_parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" /></TableRow>
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginBottom="10dp"/></TableRow>
 
                 <TableRow>
 
@@ -154,8 +165,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Эпохи"
-                        android:textColor="@color/black"
-                        android:textSize="15sp" />
+                        android:textStyle="bold"
+                        android:textColor="#5B3C2C"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="7dp"/>
 
 
                 </TableRow>
@@ -165,7 +178,8 @@
                     android:background="@drawable/white_rectangle"
                     android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" /></TableRow>
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginBottom="10dp"/></TableRow>
 
                 <TableRow>
 
@@ -174,8 +188,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Сложность"
-                        android:textColor="@color/black"
-                        android:textSize="15sp" />
+                        android:textStyle="bold"
+                        android:textColor="#5B3C2C"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="7dp"/>
 
                 </TableRow>
                 <TableRow>
@@ -185,7 +201,8 @@
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" /></TableRow>
+                    app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginBottom="10dp"/></TableRow>
             </TableLayout>
 
 

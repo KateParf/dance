@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         android:scrollbars="horizontal|vertical">
         <LinearLayout
+            android:backgroundTint="@color/main_background"
             android:id="@+id/pnlDance"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

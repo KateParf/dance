@@ -1,12 +1,11 @@
 package com.example.myapplication1;
 
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-
-import android.content.Intent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,11 +20,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.Objects;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Objects;
 
 
 public class dances extends AppCompatActivity {
@@ -277,6 +276,9 @@ public class dances extends AppCompatActivity {
         // Изменяем цвет кнопки при нажатии
         Button button = (Button) v;
         button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#462B23"))); // Изменяем цвет нажатой кнопки
+        // Изменяем цвет другой кнопки при нажатии
+        Button other_button = findViewById(R.id.BtnRes);
+        other_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5B3C2C"))); // Изменяем цвет отжатой кнопки
 
 
         // запуск задачи получения данных с сервера
@@ -334,7 +336,10 @@ public class dances extends AppCompatActivity {
         radioGroup.clearCheck();
         // Изменяем цвет кнопки при нажатии
         Button button = (Button) v;
-        button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5B3C2C"))); // Изменяем цвет нажатой кнопки
+        button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#462B23"))); // Изменяем цвет нажатой кнопки
+        // Изменяем цвет другой кнопки при нажатии
+        Button other_button = findViewById(R.id.BtnFind);
+        other_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#5B3C2C"))); // Изменяем цвет отжатой кнопки
 
     }
     // рисуем список танцев на странице, которые получили с сервера
