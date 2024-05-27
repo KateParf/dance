@@ -108,6 +108,12 @@ a:active:focus {
   --bs-gradient: none;
 }
 
+.btn-check+.btn {
+  color: #4a2a21;
+  background-color: #f1e4dc;
+  border: 1px solid #4a2a21;
+}
+.btn-check:hover+.btn,
 .btn-check:checked+.btn {
   color: #fff;
   background-color: #4a2a21;
