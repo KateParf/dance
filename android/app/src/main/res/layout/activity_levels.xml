@@ -7,7 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".levels">
 
-    <FrameLayout
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bgandroid">
+    <fragment
+        android:id="@+id/hatFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.example.myapplication1.HatFragment"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -21,10 +33,8 @@
 
             <LinearLayout
                 android:id="@+id/levelsScroll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="120dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -33,14 +43,20 @@
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:fontFamily="@font/monotypecorsiva"
-                    android:text="Сложность"
-                    android:textSize="60sp" />
+                    android:text="Танцы по сложности"
+                    android:textSize="35sp"
+                    android:textColor="@color/white"/>
 
+                <LinearLayout
+                    android:background="@color/main_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card_light"
                     android:layout_width="300dp"
                     android:layout_height="235dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="50dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:onClick="goOnMovement"
@@ -68,7 +84,7 @@
                     android:id="@+id/card_mid"
                     android:layout_width="300dp"
                     android:layout_height="235dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="50dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:onClick="goOnMovement">
@@ -95,7 +111,7 @@
                     android:id="@+id/card_hard"
                     android:layout_width="300dp"
                     android:layout_height="235dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="50dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:onClick="goOnMovement">
@@ -117,19 +133,16 @@
                         android:text="@string/hard"
                         android:textSize="39sp" />
                 </androidx.cardview.widget.CardView>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:src="@drawable/fon"/>
-            </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:backgroundTint="@color/main_background"/>
+                </LinearLayout>
+                </LinearLayout>
 
 
         </ScrollView>
-        <fragment
-            android:id="@+id/hatFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.example.myapplication1.HatFragment"
-            app:layout_constraintTop_toTopOf="parent"/>
-    </FrameLayout>
+    </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

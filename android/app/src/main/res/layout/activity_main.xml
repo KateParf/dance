@@ -6,10 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".dances">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bgandroid">
+        <fragment
+            android:id="@+id/hatFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.example.myapplication1.HatFragment" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bgandroid">
+        >
         <View
             android:layout_width="wrap_content"
             android:layout_height="430dp"
@@ -72,11 +83,7 @@
                 android:gravity="left"/>
         </LinearLayout>
     </FrameLayout>
+    </LinearLayout>
 
-   <fragment
-        android:id="@+id/hatFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.example.myapplication1.HatFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

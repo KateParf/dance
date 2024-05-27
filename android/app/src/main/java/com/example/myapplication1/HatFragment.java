@@ -2,9 +2,6 @@ package com.example.myapplication1;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 public class HatFragment extends Fragment {
 
@@ -80,7 +79,7 @@ public class HatFragment extends Fragment {
                     sectionsLayout.setVisibility(View.GONE);
                     isHeaderExpanded = false;
                 } else {
-                    params.height = 500; // Новая высота шапки
+                    params.height = 570; // Новая высота шапки
                     headerLayout.setLayoutParams(params);
                     sectionsLayout.setVisibility(View.VISIBLE);
                     isHeaderExpanded = true;

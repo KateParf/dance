@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/header_main"
         android:layout_width="match_parent"
-        android:background="#C3B0BB"
+        android:background="#80FFE2E2"
         android:layout_height="55dp"
         >
         <TextView
@@ -52,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5sp"
                 android:layout_marginTop="60dp"
+                android:layout_marginBottom="5dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
@@ -67,6 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5sp"
+                android:layout_marginBottom="5dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
@@ -86,6 +88,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="start"
+                android:layout_marginBottom="5dp"
                 android:onClick="goOnLevel"
                 android:text="@string/level"
                 android:textColor="@color/white"
@@ -101,6 +104,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="start"
+                android:layout_marginBottom="5dp"
                 android:onClick="goOnMovement"
                 android:text="@string/movements"
                 android:textColor="@color/white"
