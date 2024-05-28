@@ -13,6 +13,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -92,28 +93,53 @@ public class dance extends AppCompatActivity {
             txtLevel.setText(level);
             txtHistory.setText(history);
 
-
             //Видео
             JSONArray videosArray = dance.getJSONArray("videos");
             if (videosArray.length() > 0) {
-            JSONObject video = videosArray.getJSONObject(0);
-            // Получаем первый объект видео
+                ImageView imageView = findViewById(R.id.playV);
+                imageView.setImageResource(R.drawable.play);
+
+                JSONObject video = videosArray.getJSONObject(0); // Получаем первый объект видео
                 String videoUrl = video.getString("url");
-            WebView webview = findViewById(R.id.video);
-            WebSettings webSettings = webview.getSettings();
-            webSettings.setJavaScriptEnabled(true);
-            webview.setWebViewClient(new WebViewClient());
 
+                WebView webview = findViewById(R.id.video);
+                WebSettings webSettings = webview.getSettings();
+                webSettings.setJavaScriptEnabled(true);
+                webview.setWebViewClient(new WebViewClient());
 
-                // Получаем URL из объекта видео
-            webview.loadUrl(videoUrl);
+                // Определение, YouTube или VK
+                String directVideoUrl;
+                if (videoUrl.contains("youtube.com") || videoUrl.contains("youtu.be")) {
+                    // YouTube
+                    String videoId;
+                    if (videoUrl.contains("youtu.be")) {
+                        videoId = videoUrl.substring(videoUrl.lastIndexOf("/") + 1);
+                    } else {
+                        videoId = videoUrl.substring(videoUrl.indexOf("v=") + 2);
+                        int ampersandPosition = videoId.indexOf("&");
+                        if (ampersandPosition != -1) {
+                            videoId = videoId.substring(0, ampersandPosition);
+                        }
+                    }
+                    directVideoUrl = "https://www.youtube.com/embed/" + videoId;
+                } else if (videoUrl.contains("vk.com")) {
+                    // VK
+                    String videoId = videoUrl.substring(videoUrl.lastIndexOf("/") + 1);
+                    directVideoUrl = "https://vk.com/video_ext.php?oid=-1&id=" + videoId;
+                } else {
+                    // Другие платформы - можно добавить обработку для других платформ, если нужно
+                    directVideoUrl = videoUrl;
+                }
 
-                //Подпись под видео
+                webview.loadUrl(directVideoUrl);
+                // Подпись под видео
                 TextView txtVideo = findViewById(R.id.textVideo);
+                txtVideo.setVisibility(View.VISIBLE); // Отображаем подпись
                 markwon.setMarkdown(txtVideo, "## Видео\n ");
 
-
+                // Ссылка под видео
                 TextView textView = findViewById(R.id.textVideoLink);
+                textView.setVisibility(View.VISIBLE); // Отображаем ссылку
 
                 SpannableString spannableString = new SpannableString(name);
                 ClickableSpan clickableSpan = new ClickableSpan() {
@@ -132,12 +158,20 @@ public class dance extends AppCompatActivity {
                 };
 
                 spannableString.setSpan(clickableSpan, 0, name.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
                 textView.setText(spannableString);
                 textView.setMovementMethod(LinkMovementMethod.getInstance());
+            } else {
+                // Скрываем элементы, если видео нет
+                findViewById(R.id.video).setVisibility(View.GONE);
+                findViewById(R.id.textVideo).setVisibility(View.GONE);
+                findViewById(R.id.textVideoLink).setVisibility(View.GONE);
             }
-            else{}
 
+
+            if (videosArray.length() == 0) {
+                txtScheme.setPadding(0, 0, 0, 0); // Убираем отступы сверху
+                txtHistory.setPadding(0, 0, 0, 0); // Убираем отступы сверху
+            }
 
         } catch (JSONException e) {
             throw new RuntimeException(e);

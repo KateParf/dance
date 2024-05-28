@@ -13,6 +13,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -81,24 +82,37 @@ public class mov extends AppCompatActivity {
 
             //Видео
             JSONArray videosArray = move.getJSONArray("videos");
+            WebView videoLayout = findViewById(R.id.video);
+
             if (videosArray.length() > 0) {
-                JSONObject video = videosArray.getJSONObject(0); // Получаем первый объект видео
+                ImageView imageView = findViewById(R.id.playV);
+                imageView.setImageResource(R.drawable.play);
+                JSONObject video = videosArray.getJSONObject(0);
                 String videoUrl = video.getString("url");
+
+                // Получить идентификатор видео из URL
+                String videoId = videoUrl.substring(videoUrl.lastIndexOf("/") + 1, videoUrl.indexOf("?"));
+
+                // Формирование прямой ссылки на видео файл
+                String directVideoUrl = "https://www.youtube.com/embed/" + videoId;
+
                 WebView webview = findViewById(R.id.video);
                 WebSettings webSettings = webview.getSettings();
                 webSettings.setJavaScriptEnabled(true);
                 webview.setWebViewClient(new WebViewClient());
 
+                webview.loadUrl(directVideoUrl);
 
-                // Получаем URL из объекта видео
-                webview.loadUrl(videoUrl);
 
-                //Подпись под видео
+
+                // Подпись под видео
                 TextView txtVideo = findViewById(R.id.textVideo);
+                txtVideo.setVisibility(View.VISIBLE); // Отображаем подпись
                 markwon.setMarkdown(txtVideo, "## Видео\n ");
 
-
+                // Ссылка под видео
                 TextView textView = findViewById(R.id.textVideoLink);
+                textView.setVisibility(View.VISIBLE); // Отображаем ссылку
 
                 SpannableString spannableString = new SpannableString(name);
                 ClickableSpan clickableSpan = new ClickableSpan() {
@@ -117,12 +131,17 @@ public class mov extends AppCompatActivity {
                 };
 
                 spannableString.setSpan(clickableSpan, 0, name.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
                 textView.setText(spannableString);
                 textView.setMovementMethod(LinkMovementMethod.getInstance());
+            } else {
+                // Скрываем элементы, если видео нет
+                findViewById(R.id.video).setVisibility(View.GONE);
+                findViewById(R.id.textVideo).setVisibility(View.GONE);
+                findViewById(R.id.textVideoLink).setVisibility(View.GONE);
             }
-            else{}
-
+            if (videosArray.length() == 0) {
+                txtScheme.setPadding(0, 0, 0, 0); // Убираем отступы сверху
+            }
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
