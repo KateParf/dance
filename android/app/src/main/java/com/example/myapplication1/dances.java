@@ -265,10 +265,17 @@ public class dances extends AppCompatActivity {
         RadioGroup radioGroup = findViewById(R.id.GroupRadio);//смена партнера
         int selectedId = radioGroup.getCheckedRadioButtonId();
         boolean changePartn = true;
+        int flag;
         if (selectedId == R.id.YesRadio) {
-        } else {
+            flag=1;
+        } else if(selectedId == R.id.NoRadio){
             changePartn = false;
+            flag=1;
         }
+        else{
+            flag=2;
+        }
+
         boolean finalChangePartn = changePartn;
 
         SeekBar volumeSeekBar = findViewById(R.id.volumeSeekBar);//кол-во пар
@@ -288,7 +295,7 @@ public class dances extends AppCompatActivity {
                         Log.e("JSON parse error", resError);
                     } else
                         DrawDances(resObj,
-                                spinner_typesValue, spinner_periodValue, spinner_levelsValue, finalChangePartn, seekBarValue
+                                spinner_typesValue, spinner_periodValue, spinner_levelsValue, finalChangePartn, seekBarValue,flag
                         );
                     return null;
                 }
@@ -344,70 +351,137 @@ public class dances extends AppCompatActivity {
     }
     // рисуем список танцев на странице, которые получили с сервера
 
-    public void DrawDances(JSONArray dances, String spinner_typesValue, String spinner_periodValue, String spinner_levelsValue, boolean changePartn , int seekBarValue) {
+    public void DrawDances(JSONArray dances, String spinner_typesValue, String spinner_periodValue, String spinner_levelsValue, boolean changePartn , int seekBarValue,int flag) {
         Log.e("DANCE", "DrawDances begin");
         String r = "";
         LinearLayout linearLayout = findViewById(R.id.pnlDance);
 
+
         for (int i = 0; i < dances.length(); i++) {
-            try {
-                JSONObject dance = dances.getJSONObject(i);
-                String type = dance.getJSONObject("type").getString("name");
-                String epoch = dance.getJSONObject("epoch").getString("name");
-                String level = dance.getJSONObject("level").getString("name");
-                boolean changePartner = dance.getBoolean("changePartner");
-                int countOfPairs = dance.getInt("countOfPairs");
+            if (flag == 1) {
+                try {
+                    JSONObject dance = dances.getJSONObject(i);
+                    String type = dance.getJSONObject("type").getString("name");
+                    String epoch = dance.getJSONObject("epoch").getString("name");
+                    String level = dance.getJSONObject("level").getString("name");
+                    boolean changePartner = dance.getBoolean("changePartner");
+                    int countOfPairs = dance.getInt("countOfPairs");
+                    if(seekBarValue==0){
+                        countOfPairs=0;
+                    }
 
-                if (
-                        ((spinner_typesValue  == "") || spinner_typesValue.equals(type)) &&
-                        ((spinner_levelsValue == "") || spinner_levelsValue.equals(level)) &&
-                        ((spinner_periodValue == "") || spinner_periodValue.equals(epoch)) &&
-                        (changePartn == changePartner) &&
-                        (seekBarValue == countOfPairs)
-                    )
-                {
+                    if (
+                            ((spinner_typesValue == "") || spinner_typesValue.equals(type)) &&
+                                    ((spinner_levelsValue == "") || spinner_levelsValue.equals(level)) &&
+                                    ((spinner_periodValue == "") || spinner_periodValue.equals(epoch)) &&
+                                    (changePartn == changePartner) &&
+                                    (seekBarValue == countOfPairs)
+                    ) {
 
-                    String name = dance.getString("name");
-                    String direction = "Направление: " + type;
-                    String period = "Эпоха: " + epoch;
-                    String complex = "Сложность: " + level;
+                        String name = dance.getString("name");
+                        String direction = "Направление: " + type;
+                        String period = "Эпоха: " + epoch;
+                        String complex = "Сложность: " + level;
 
-                    LinearLayout cardLayout = new LinearLayout(this);
-                    int id = Integer.parseInt(dance.getString("id"));
-                    cardLayout.setOnClickListener(v -> onClickDance(id));
+                        LinearLayout cardLayout = new LinearLayout(this);
+                        int id = Integer.parseInt(dance.getString("id"));
+                        cardLayout.setOnClickListener(v -> onClickDance(id));
 
-                    cardLayout.setBackgroundColor(Color.parseColor((i % 2 == 0) ? "#D0C8C3" : "#EFE4DD"));
-                    cardLayout.setOrientation(LinearLayout.VERTICAL);
+                        cardLayout.setBackgroundColor(Color.parseColor((i % 2 == 0) ? "#D0C8C3" : "#EFE4DD"));
+                        cardLayout.setOrientation(LinearLayout.VERTICAL);
 
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                    );
-                    layoutParams.setMargins(10, 10, 10, 10); // Отступы слева, сверху, справа, снизу
-                    cardLayout.setLayoutParams(layoutParams);
-                    cardLayout.setPadding(10, 10, 10, 10);
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        layoutParams.setMargins(10, 10, 10, 10); // Отступы слева, сверху, справа, снизу
+                        cardLayout.setLayoutParams(layoutParams);
+                        cardLayout.setPadding(10, 10, 10, 10);
 
-                    TextView txtName = new TextView(this);
-                    txtName.setText(name);
-                    cardLayout.addView(txtName);
+                        TextView txtName = new TextView(this);
+                        txtName.setText(name);
+                        cardLayout.addView(txtName);
 
-                    TextView txtDirection = new TextView(this);
-                    txtDirection.setText(direction);
-                    cardLayout.addView(txtDirection);
+                        TextView txtDirection = new TextView(this);
+                        txtDirection.setText(direction);
+                        cardLayout.addView(txtDirection);
 
-                    TextView txtEpoch = new TextView(this);
-                    txtEpoch.setText(period);
-                    cardLayout.addView(txtEpoch);
+                        TextView txtEpoch = new TextView(this);
+                        txtEpoch.setText(period);
+                        cardLayout.addView(txtEpoch);
 
-                    TextView txtComplexity = new TextView(this);
-                    txtComplexity.setText(complex);
-                    cardLayout.addView(txtComplexity);
+                        TextView txtComplexity = new TextView(this);
+                        txtComplexity.setText(complex);
+                        cardLayout.addView(txtComplexity);
 
-                    linearLayout.addView(cardLayout); // Добавляем карточку в корневой Layout
+                        linearLayout.addView(cardLayout); // Добавляем карточку в корневой Layout
+                    } else continue;
+                } catch (JSONException e) {
+                    r += "!!! ERROR !!!" + "\n\n";
                 }
-                else continue;
-            } catch (JSONException e) {
-                r += "!!! ERROR !!!" + "\n\n";
+
+
+            }
+            else{
+                try {
+                    JSONObject dance = dances.getJSONObject(i);
+                    String type = dance.getJSONObject("type").getString("name");
+                    String epoch = dance.getJSONObject("epoch").getString("name");
+                    String level = dance.getJSONObject("level").getString("name");
+                    boolean changePartner = dance.getBoolean("changePartner");
+                    int countOfPairs = dance.getInt("countOfPairs");
+                    if(seekBarValue==0){
+                        countOfPairs=0;
+                    }
+
+                    if (
+                            ((spinner_typesValue == "") || spinner_typesValue.equals(type)) &&
+                                    ((spinner_levelsValue == "") || spinner_levelsValue.equals(level)) &&
+                                    ((spinner_periodValue == "") || spinner_periodValue.equals(epoch)) &&
+                                    (seekBarValue == countOfPairs)
+                    ) {
+
+                        String name = dance.getString("name");
+                        String direction = "Направление: " + type;
+                        String period = "Эпоха: " + epoch;
+                        String complex = "Сложность: " + level;
+
+                        LinearLayout cardLayout = new LinearLayout(this);
+                        int id = Integer.parseInt(dance.getString("id"));
+                        cardLayout.setOnClickListener(v -> onClickDance(id));
+
+                        cardLayout.setBackgroundColor(Color.parseColor((i % 2 == 0) ? "#D0C8C3" : "#EFE4DD"));
+                        cardLayout.setOrientation(LinearLayout.VERTICAL);
+
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        layoutParams.setMargins(10, 10, 10, 10); // Отступы слева, сверху, справа, снизу
+                        cardLayout.setLayoutParams(layoutParams);
+                        cardLayout.setPadding(10, 10, 10, 10);
+
+                        TextView txtName = new TextView(this);
+                        txtName.setText(name);
+                        cardLayout.addView(txtName);
+
+                        TextView txtDirection = new TextView(this);
+                        txtDirection.setText(direction);
+                        cardLayout.addView(txtDirection);
+
+                        TextView txtEpoch = new TextView(this);
+                        txtEpoch.setText(period);
+                        cardLayout.addView(txtEpoch);
+
+                        TextView txtComplexity = new TextView(this);
+                        txtComplexity.setText(complex);
+                        cardLayout.addView(txtComplexity);
+
+                        linearLayout.addView(cardLayout); // Добавляем карточку в корневой Layout
+                    } else continue;
+                } catch (JSONException e) {
+                    r += "!!! ERROR !!!" + "\n\n";
+                }
             }
         }
     } // DrawDances
