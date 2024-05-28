@@ -96,7 +96,7 @@
                 android:textSize="22sp" />
 
             <TextView
-                android:id="@+id/goOnMovement"
+                android:id="@+id/goOnMoves"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5sp"
@@ -105,7 +105,7 @@
                 android:focusable="true"
                 android:gravity="start"
                 android:layout_marginBottom="5dp"
-                android:onClick="goOnMovement"
+                android:onClick="goOnMoves"
                 android:text="@string/movements"
                 android:textColor="@color/white"
                 android:fontFamily="@font/philosopher"

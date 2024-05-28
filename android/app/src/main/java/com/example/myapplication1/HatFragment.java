@@ -47,12 +47,10 @@ public class HatFragment extends Fragment {
         myTextView2.setOnClickListener(this::goOnLevel);
 
         // Найдите TextView по ID
-        TextView myTextView3 = view.findViewById(R.id.goOnMovement);
+        TextView myTextView3 = view.findViewById(R.id.goOnMoves);
 
         // Зарегистрируйте обработчик onClick
-        myTextView3.setOnClickListener(this::goOnMovement);
-
-
+        myTextView3.setOnClickListener(this::goOnMoves);
 
 
 //        // Найдите TextView по ID
@@ -60,7 +58,6 @@ public class HatFragment extends Fragment {
 //        ToggleButton myButton = view.findViewById(R.id.toggle_button);
 //        // Зарегистрируйте обработчик onClick
 //        myButton.setOnClickListener(this::onClick);
-
 
 
         headerLayout = view.findViewById(R.id.header_main);
@@ -111,12 +108,15 @@ public class HatFragment extends Fragment {
         startActivity(intent);
     }
 
-public void goOnMain(View view){
-    Intent intent = new Intent(getActivity(), MainActivity.class);
-    startActivity(intent);
-}
+    public void goOnMain(View view) {
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
+    }
 
 
-
+    public void goOnMoves(View view) {
+        Intent intent = new Intent(getActivity(), moves.class);
+        startActivity(intent);
+    }
 
 }

@@ -92,14 +92,17 @@ public class dance extends AppCompatActivity {
             txtLevel.setText(level);
             txtHistory.setText(history);
 
+
             //Видео
+            JSONArray videosArray = dance.getJSONArray("videos");
+            JSONObject video = videosArray.getJSONObject(0); // Получаем первый объект видео
+            String videoUrl = video.getString("url");
             WebView webview = findViewById(R.id.video);
             WebSettings webSettings = webview.getSettings();
             webSettings.setJavaScriptEnabled(true);
             webview.setWebViewClient(new WebViewClient());
-            JSONArray videosArray = dance.getJSONArray("videos");
-            JSONObject video = videosArray.getJSONObject(0); // Получаем первый объект видео
-            String videoUrl = video.getString("url");
+
+
             // Получаем URL из объекта видео
             webview.loadUrl(videoUrl);
 
