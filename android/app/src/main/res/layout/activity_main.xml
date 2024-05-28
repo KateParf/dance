@@ -23,7 +23,7 @@
         >
         <View
             android:layout_width="wrap_content"
-            android:layout_height="430dp"
+            android:layout_height="450dp"
             android:background="#80FFE2E2"
             android:layout_marginTop="240dp"
             android:layout_marginStart="15dp"

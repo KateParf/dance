@@ -1,7 +1,18 @@
 package com.example.myapplication1;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -13,6 +24,7 @@ import androidx.core.view.WindowInsetsCompat;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import io.noties.markwon.Markwon;
 
 public class dance extends AppCompatActivity {
@@ -36,12 +48,17 @@ public class dance extends AppCompatActivity {
                     (resStatus, resObj, resError) -> {
                         if (!resStatus) {
                             DrawError(resError);
-                        } else
+
+                        } else {
                             DrawDanceActivity(resObj);
+                        }
                         return null;
                     }
             ).execute("http://85.236.190.126:5001/api/dance/" + String.valueOf(index));
         }
+
+
+
     }
 
     private void DrawError(String error) {
@@ -75,10 +92,50 @@ public class dance extends AppCompatActivity {
             txtLevel.setText(level);
             txtHistory.setText(history);
 
+            //Видео
+            WebView webview = findViewById(R.id.video);
+            WebSettings webSettings = webview.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+            webview.setWebViewClient(new WebViewClient());
+            JSONArray videosArray = dance.getJSONArray("videos");
+            JSONObject video = videosArray.getJSONObject(0); // Получаем первый объект видео
+            String videoUrl = video.getString("url");
+            // Получаем URL из объекта видео
+            webview.loadUrl(videoUrl);
+
+            //Подпись под видео
+            TextView txtVideo = findViewById(R.id.textVideo);
+            markwon.setMarkdown(txtVideo, "## Видео\n ");
+
+
+            TextView textView = findViewById(R.id.textVideoLink);
+
+            SpannableString spannableString = new SpannableString(name);
+            ClickableSpan clickableSpan = new ClickableSpan() {
+                @Override
+                public void onClick(View widget) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl));
+                    startActivity(browserIntent);
+                }
+                @Override
+                public void updateDrawState(TextPaint ds) {
+                    super.updateDrawState(ds);
+                    ds.setColor(Color.parseColor("#5B3C2C")); // Задаем цвет текста
+                    ds.setUnderlineText(false); // Убираем подчеркивание
+                }
+            };
+
+            spannableString.setSpan(clickableSpan, 0, name.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            textView.setText(spannableString);
+            textView.setMovementMethod(LinkMovementMethod.getInstance());
+
+
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
     }
+
 
 
 }

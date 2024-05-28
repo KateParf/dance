@@ -37,7 +37,6 @@ android {
 
 dependencies {
     implementation ("io.noties.markwon:core:4.1.2")
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
