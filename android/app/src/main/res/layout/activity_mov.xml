@@ -37,6 +37,7 @@
           android:padding="10dp">
         <TextView
             android:id="@+id/txtName"
+            android:fontFamily="@font/philosopher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Танец"
@@ -104,6 +105,7 @@
           </LinearLayout>
         </LinearLayout>
         <TextView
+            android:fontFamily="@font/philosopher"
             android:id="@+id/txtScheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

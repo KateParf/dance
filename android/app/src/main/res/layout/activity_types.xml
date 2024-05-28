@@ -40,11 +40,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
-                    android:fontFamily="@font/monotypecorsiva"
+                    android:fontFamily="@font/philosopher"
                     android:text="Танцы по направлениям"
                     android:textSize="35sp"
                     android:textColor="@color/white"/>
                 <LinearLayout
+                    android:layout_gravity="center"
+                    android:paddingStart="10dp"
                     android:background="@color/main_background"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -78,7 +80,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Аллеманды"
                             android:textSize="30sp" />
@@ -104,7 +106,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Бранли"
                             android:textSize="30sp" />
@@ -140,7 +142,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Котильоны"
                             android:textSize="30sp" />
@@ -168,7 +170,7 @@
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
                             android:clickable="true"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Контрдансы"
                             android:textSize="30sp" />
@@ -201,7 +203,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Народные"
                             android:textSize="30sp" />
@@ -227,7 +229,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Галопы"
                             android:textSize="30sp" />
@@ -260,7 +262,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Лендлеры"
                             android:textSize="30sp" />
@@ -286,7 +288,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Марши"
                             android:textSize="30sp" />
@@ -319,7 +321,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Вальсы"
                             android:textSize="30sp" />
@@ -345,7 +347,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Кадрили"
                             android:textSize="30sp" />
@@ -378,7 +380,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Мазурки"
                             android:textSize="30sp" />
@@ -404,7 +406,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Минуэты"
                             android:textSize="30sp" />
@@ -437,7 +439,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Паваны"
                             android:textSize="30sp" />
@@ -463,7 +465,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Полонезы"
                             android:textSize="30sp" />
@@ -496,7 +498,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Польки"
                             android:textSize="30sp" />
@@ -522,7 +524,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Современные"
                             android:textSize="30sp" />
@@ -555,7 +557,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Танго"
                             android:textSize="30sp" />
@@ -581,7 +583,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginTop="130dp"
-                            android:fontFamily="@font/monotypecorsiva"
+                            android:fontFamily="@font/philosopher"
                             android:gravity="center"
                             android:text="Тустепы"
                             android:textSize="30sp" />
