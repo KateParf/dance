@@ -2,9 +2,6 @@ package com.example.myapplication1;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 public class HatFragment extends Fragment {
 
@@ -48,12 +47,10 @@ public class HatFragment extends Fragment {
         myTextView2.setOnClickListener(this::goOnLevel);
 
         // Найдите TextView по ID
-        TextView myTextView3 = view.findViewById(R.id.goOnMovement);
+        TextView myTextView3 = view.findViewById(R.id.goOnMoves);
 
         // Зарегистрируйте обработчик onClick
-        myTextView3.setOnClickListener(this::goOnMovement);
-
-
+        myTextView3.setOnClickListener(this::goOnMoves);
 
 
 //        // Найдите TextView по ID
@@ -61,7 +58,6 @@ public class HatFragment extends Fragment {
 //        ToggleButton myButton = view.findViewById(R.id.toggle_button);
 //        // Зарегистрируйте обработчик onClick
 //        myButton.setOnClickListener(this::onClick);
-
 
 
         headerLayout = view.findViewById(R.id.header_main);
@@ -80,7 +76,7 @@ public class HatFragment extends Fragment {
                     sectionsLayout.setVisibility(View.GONE);
                     isHeaderExpanded = false;
                 } else {
-                    params.height = 500; // Новая высота шапки
+                    params.height = 570; // Новая высота шапки
                     headerLayout.setLayoutParams(params);
                     sectionsLayout.setVisibility(View.VISIBLE);
                     isHeaderExpanded = true;
@@ -112,12 +108,15 @@ public class HatFragment extends Fragment {
         startActivity(intent);
     }
 
-public void goOnMain(View view){
-    Intent intent = new Intent(getActivity(), MainActivity.class);
-    startActivity(intent);
-}
+    public void goOnMain(View view) {
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
+    }
 
 
-
+    public void goOnMoves(View view) {
+        Intent intent = new Intent(getActivity(), moves.class);
+        startActivity(intent);
+    }
 
 }

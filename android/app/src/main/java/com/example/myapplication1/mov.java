@@ -27,86 +27,71 @@ import org.json.JSONObject;
 
 import io.noties.markwon.Markwon;
 
-public class dance extends AppCompatActivity {
+public class mov extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_dance);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.dance), (v, insets) -> {
+        setContentView(R.layout.activity_mov);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mov), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
         Intent intent = getIntent();
-        if (intent.hasExtra("danceId")) {
-            int index = intent.getIntExtra("danceId", 0);
+        if (intent.hasExtra("moveId")) {
+            String index = intent.getStringExtra("moveId");
             new JsonTask(this,
                     (resStatus, resObj, resError) -> {
                         if (!resStatus) {
                             DrawError(resError);
 
                         } else {
-                            DrawDanceActivity(resObj);
+                            DrawMove(resObj);
                         }
                         return null;
                     }
-            ).execute("http://85.236.190.126:5001/api/dance/" + String.valueOf(index));
+            ).execute("http://85.236.190.126:5001/api/move/" +index);
         }
-
-
-
     }
-
     private void DrawError(String error) {
         TextView txtRes = findViewById(R.id.txtScheme);
         txtRes.setText("!!! ERROR !!! " + error);
     }
 
-
-
-    private void DrawDanceActivity(JSONArray dances) {
+    private void DrawMove(JSONArray moves) {
         try {
-            JSONObject dance = dances.getJSONObject(0);
-            String name = dance.getString("name");
-            String epoch = dance.getJSONObject("epoch").getString("name");
-            String level = "Сложность: " + dance.getJSONObject("level").getString("name");
-            String schemeMarkdown = dance.getString("scheme");
-            String history = "История и факты: " + dance.getString("history");
+            JSONObject move = moves.getJSONObject(0);
+            String name = move.getString("name");
+            String schemeMarkdown = move.getString("description");
+
 
             TextView txtName = findViewById(R.id.txtName);
-            TextView txtEpoch = findViewById(R.id.txtEpoch);
-            TextView txtLevel = findViewById(R.id.txtLevel);
             TextView txtScheme = findViewById(R.id.txtScheme);
-            TextView txtHistory = findViewById(R.id.txtHistory);
+
 
             // Создаем экземпляр Markwon и применяем Markdown к txtScheme
             Markwon markwon = Markwon.create(this);
-            markwon.setMarkdown(txtScheme, "## Схема танца:\n " + schemeMarkdown);
+            markwon.setMarkdown(txtScheme, "## Схема движения:\n " + schemeMarkdown);
 
             txtName.setText(name);
-            txtEpoch.setText(epoch);
-            txtLevel.setText(level);
-            txtHistory.setText(history);
+
 
 
             //Видео
-            JSONArray videosArray = dance.getJSONArray("videos");
+            JSONArray videosArray = move.getJSONArray("videos");
             if (videosArray.length() > 0) {
-            JSONObject video = videosArray.getJSONObject(0);
-            // Получаем первый объект видео
+                JSONObject video = videosArray.getJSONObject(0); // Получаем первый объект видео
                 String videoUrl = video.getString("url");
-            WebView webview = findViewById(R.id.video);
-            WebSettings webSettings = webview.getSettings();
-            webSettings.setJavaScriptEnabled(true);
-            webview.setWebViewClient(new WebViewClient());
+                WebView webview = findViewById(R.id.video);
+                WebSettings webSettings = webview.getSettings();
+                webSettings.setJavaScriptEnabled(true);
+                webview.setWebViewClient(new WebViewClient());
 
 
                 // Получаем URL из объекта видео
-            webview.loadUrl(videoUrl);
+                webview.loadUrl(videoUrl);
 
                 //Подпись под видео
                 TextView txtVideo = findViewById(R.id.textVideo);
@@ -138,12 +123,10 @@ public class dance extends AppCompatActivity {
             }
             else{}
 
-
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
     }
-
 
 
 }
