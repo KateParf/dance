@@ -13,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/bgandroid">
+        android:background="@drawable/bgandroid"
+        tools:ignore="MissingConstraints">
         <fragment
             android:id="@+id/hatFragment"
             android:layout_width="match_parent"

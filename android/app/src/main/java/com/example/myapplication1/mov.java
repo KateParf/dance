@@ -81,44 +81,47 @@ public class mov extends AppCompatActivity {
 
             //Видео
             JSONArray videosArray = move.getJSONArray("videos");
-            JSONObject video = videosArray.getJSONObject(0); // Получаем первый объект видео
-            String videoUrl = video.getString("url");
-            WebView webview = findViewById(R.id.video);
-            WebSettings webSettings = webview.getSettings();
-            webSettings.setJavaScriptEnabled(true);
-            webview.setWebViewClient(new WebViewClient());
+            if (videosArray.length() > 0) {
+                JSONObject video = videosArray.getJSONObject(0); // Получаем первый объект видео
+                String videoUrl = video.getString("url");
+                WebView webview = findViewById(R.id.video);
+                WebSettings webSettings = webview.getSettings();
+                webSettings.setJavaScriptEnabled(true);
+                webview.setWebViewClient(new WebViewClient());
 
 
-            // Получаем URL из объекта видео
-            webview.loadUrl(videoUrl);
+                // Получаем URL из объекта видео
+                webview.loadUrl(videoUrl);
 
-            //Подпись под видео
-            TextView txtVideo = findViewById(R.id.textVideo);
-            markwon.setMarkdown(txtVideo, "## Видео\n ");
+                //Подпись под видео
+                TextView txtVideo = findViewById(R.id.textVideo);
+                markwon.setMarkdown(txtVideo, "## Видео\n ");
 
 
-            TextView textView = findViewById(R.id.textVideoLink);
+                TextView textView = findViewById(R.id.textVideoLink);
 
-            SpannableString spannableString = new SpannableString(name);
-            ClickableSpan clickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(View widget) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl));
-                    startActivity(browserIntent);
-                }
-                @Override
-                public void updateDrawState(TextPaint ds) {
-                    super.updateDrawState(ds);
-                    ds.setColor(Color.parseColor("#5B3C2C")); // Задаем цвет текста
-                    ds.setUnderlineText(false); // Убираем подчеркивание
-                }
-            };
+                SpannableString spannableString = new SpannableString(name);
+                ClickableSpan clickableSpan = new ClickableSpan() {
+                    @Override
+                    public void onClick(View widget) {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl));
+                        startActivity(browserIntent);
+                    }
 
-            spannableString.setSpan(clickableSpan, 0, name.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    @Override
+                    public void updateDrawState(TextPaint ds) {
+                        super.updateDrawState(ds);
+                        ds.setColor(Color.parseColor("#5B3C2C")); // Задаем цвет текста
+                        ds.setUnderlineText(false); // Убираем подчеркивание
+                    }
+                };
 
-            textView.setText(spannableString);
-            textView.setMovementMethod(LinkMovementMethod.getInstance());
+                spannableString.setSpan(clickableSpan, 0, name.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
+                textView.setText(spannableString);
+                textView.setMovementMethod(LinkMovementMethod.getInstance());
+            }
+            else{}
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
