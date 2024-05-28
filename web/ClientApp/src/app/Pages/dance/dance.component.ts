@@ -61,7 +61,7 @@ export class DanceComponent {
     this.markdownService.renderer.link = (href, title, text) => {
       let prefix = text.substring(0, 3);
       if (prefix == "vid") {
-        return `<button class="vidbtn vid" viddata="${text.substring(4)}" >(>) ${text.substring(4)}</button>`;
+        return `<button class="vidbtn vid" viddata="${text.substring(4)}" >${text.substring(4)}</button>`;
       } else
         if (prefix == "mov") {
           return `<strong><a href="/move/${href}">${text.substring(4)}</a></strong>`;

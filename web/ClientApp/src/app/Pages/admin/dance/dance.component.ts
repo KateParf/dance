@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { MarkdownService } from 'ngx-markdown';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DanceEpoch, DanceLevel, DanceType } from 'src/app/Models/models';
+import { SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-catalog',
@@ -35,7 +36,8 @@ export class AdminDanceComponent {
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, 
     route: ActivatedRoute, private router: Router, 
-    private markdownService: MarkdownService) {
+    private markdownService: MarkdownService,
+    private authService: SocialAuthService) {
     
     this.baseUrl = baseUrl;
 
@@ -105,6 +107,26 @@ export class AdminDanceComponent {
         ()=>console.log("Done")
       );
   }
+
+  //-- auth
+
+  user?: any;
+
+  ngOnInit() {
+    const userName  = sessionStorage.getItem('GoogleAuthName');
+    const userEmail = sessionStorage.getItem('GoogleAuthEmail');
+    if (userName && userEmail)
+      this.user = {name: userName, email: userEmail};
+    else    
+      this.authService.authState.subscribe((user) => {
+        if (user) {
+          this.user = user;
+          sessionStorage.setItem('GoogleAuthName', user.name);
+          sessionStorage.setItem('GoogleAuthEmail', user.email);
+        }
+      });
+  }  
+
 }
 
 class Dance {

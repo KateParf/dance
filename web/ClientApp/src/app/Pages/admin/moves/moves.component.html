@@ -1,22 +1,32 @@
-<h1 id="tableLabel" class="mainalign">Список движений</h1>
+<div *ngIf="! user" class="container d-flex mainalign align-items-center">
+  <h1>Чтобы пользоваться редактором, нужна авторизация</h1>
+  <div class="mx-3 p-0"><asl-google-signin-button type='icon' size='medium'></asl-google-signin-button></div>
+</div>
 
-<p *ngIf="!moves?.length" class="mainalign"><em>Loading...</em></p>
+<div *ngIf="user">
+  <p class="mainalign">
+    Редактор: <strong>{{ user.name }}</strong> / <strong>{{ user.email }}</strong>
+  </p>
+  <h1 id="tableLabel" class="mainalign">Список движений</h1>
 
-<div class="row contentcontainer mainalign">
+  <p *ngIf="!moves?.length" class="mainalign"><em>Loading...</em></p>
 
-  <div id="movesTable" *ngIf="moves.length" class="movesTable">
+  <div class="row contentcontainer mainalign">
 
-    <a href="/admin/move/new">Добавить</a>
-    <br><br>
+    <div id="movesTable" *ngIf="moves.length" class="movesTable">
 
-    <table class='table table-striped' aria-labelledby="tableLabel">
-      <tbody>
-        <tr *ngFor="let move of moves">
-          <td>{{ move.id }}</td>
-          <td><a href="/admin/move/{{ move.name }}">{{ move.name }}</a></td>
-        </tr>
-      </tbody>
-    </table>
+      <a href="/admin/move/new">Добавить</a>
+      <br><br>
 
+      <table class='table table-striped' aria-labelledby="tableLabel">
+        <tbody>
+          <tr *ngFor="let move of moves">
+            <td>{{ move.id }}</td>
+            <td><a href="/admin/move/{{ move.name }}">{{ move.name }}</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
   </div>
 </div>

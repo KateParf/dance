@@ -12,6 +12,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { MarkdownModule } from 'ngx-markdown';
 import { SafeHtmlPipe } from './pipes/keep-html.pipe';
 
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './Pages/home/home.component';
@@ -65,6 +67,9 @@ import { AdminMoveComponent } from './Pages/admin/move/move.component';
     BsDropdownModule.forRoot(),
     MarkdownModule.forRoot(),
 
+    SocialLoginModule,
+    GoogleSigninButtonModule,
+
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'dancetypes', component: DanceTypesComponent },
@@ -84,7 +89,25 @@ import { AdminMoveComponent } from './Pages/admin/move/move.component';
 
     ]),
   ],
-  providers: [],
+  providers: [ {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        lang: 'ru',
+        providers: [ {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '626102860964-1c77nmgogb9q3blfudu4hpku7hbft27h.apps.googleusercontent.com',
+              { 
+                oneTapEnabled: false, // default is true 
+              }
+            )
+        } ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+  } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

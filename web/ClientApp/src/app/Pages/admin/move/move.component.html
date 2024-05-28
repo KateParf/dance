@@ -1,27 +1,37 @@
-<h1 id="tableLabel" class="mainalign">Редактор движения</h1>
+<div *ngIf="! user" class="container d-flex mainalign align-items-center">
+  <h1>Чтобы пользоваться редактором, нужна авторизация</h1>
+  <div class="mx-3 p-0"><asl-google-signin-button type='icon' size='medium'></asl-google-signin-button></div>
+</div>
 
-<p *ngIf="! move">
-  <em>Загрузка ...</em>
-</p>
+<div *ngIf="user">
+  <p class="mainalign">
+    Редактор: <strong>{{ user.name }}</strong> / <strong>{{ user.email }}</strong>
+  </p>
+  <h1 id="tableLabel" class="mainalign">Редактор движения</h1>
 
-<div class="contentcontainer mainalign" *ngIf="move">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input type="hidden" formControlName="id" />
+  <p *ngIf="! move">
+    <em>Загрузка ...</em>
+  </p>
 
-    <div class="fieldHdr">Название</div>
-    <input style="width:100%;" formControlName="name" />
+  <div class="contentcontainer mainalign" *ngIf="move">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="id" />
 
-    <br><br>
-    <div class="fieldHdr">Описание</div>
-    <textarea style="width:100%; height: 300px;" formControlName="description"></textarea>
+      <div class="fieldHdr">Название</div>
+      <input style="width:100%;" formControlName="name" />
 
-    <br>
-    <hr>
-    <div class="fieldHdr">Видео танца из которого движение</div>
-    <textarea style="width:100%; height: 100px;" formControlName="videos"></textarea>
+      <br><br>
+      <div class="fieldHdr">Описание</div>
+      <textarea style="width:100%; height: 300px;" formControlName="description"></textarea>
 
-    <br>
-    <button type="submit" class="btn btn-primary" id="submitmove">Сохранить</button>
+      <br>
+      <hr>
+      <div class="fieldHdr">Видео танца из которого движение</div>
+      <textarea style="width:100%; height: 100px;" formControlName="videos"></textarea>
 
-  </form>
+      <br>
+      <button type="submit" class="btn btn-primary" id="submitmove">Сохранить</button>
+
+    </form>
+  </div>
 </div>

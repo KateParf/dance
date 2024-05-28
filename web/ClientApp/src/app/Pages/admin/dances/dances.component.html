@@ -1,22 +1,33 @@
-<h1 id="tableLabel" class="mainalign">Список танцев</h1>
+<div *ngIf="! user" class="container d-flex mainalign align-items-center">
+  <h1>Чтобы пользоваться редактором, нужна авторизация</h1>
+  <div class="mx-3 p-0"><asl-google-signin-button type='icon' size='medium'></asl-google-signin-button></div>
+</div>
 
-<p *ngIf="!dances?.length" class="mainalign"><em>Loading...</em></p>
+<div *ngIf="user">
+  <p class="mainalign">
+    Редактор: <strong>{{ user.name }}</strong> / <strong>{{ user.email }}</strong>
+  </p>
 
-<div class="row contentcontainer mainalign">
+  <h1 id="tableLabel" class="mainalign">Список танцев</h1>
 
-  <div id="dancesTable" *ngIf="dances.length" class="dancesTable">
+  <p *ngIf="!dances?.length" class="mainalign"><em>Loading...</em></p>
 
-    <a href="/admin/dance/0">Добавить</a>
-    <br><br>
+  <div class="row contentcontainer mainalign">
 
-    <table class='table table-striped' aria-labelledby="tableLabel">
-      <tbody>
-        <tr *ngFor="let dance of dances">
-          <td>{{ dance.id }}</td>
-          <td><a href="/admin/dance/{{ dance.id }}">{{ dance.name }}</a></td>
-        </tr>
-      </tbody>
-    </table>
+    <div id="dancesTable" *ngIf="dances.length" class="dancesTable">
 
+      <a href="/admin/dance/0" style="border: 1px solid black; padding: 10px;">Добавить</a>
+      <br><br>
+
+      <table class='table table-striped' aria-labelledby="tableLabel">
+        <tbody>
+          <tr *ngFor="let dance of dances">
+            <td>{{ dance.id }}</td>
+            <td><a href="/admin/dance/{{ dance.id }}">{{ dance.name }}</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
   </div>
 </div>

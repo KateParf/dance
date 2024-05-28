@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from "@angular/router";
 import { MarkdownService } from 'ngx-markdown';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-catalog',
@@ -14,6 +15,8 @@ export class AdminMoveComponent {
   private moveId: number | undefined;
   private moveName: string = "";
   private baseUrl: string = "";
+  user?: SocialUser;
+  loggedIn?: boolean;
 
   form = new FormGroup({
     id: new FormControl(0),
@@ -24,7 +27,8 @@ export class AdminMoveComponent {
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string,
     route: ActivatedRoute, private router: Router,
-    private markdownService: MarkdownService) {
+    private markdownService: MarkdownService,
+    private authService: SocialAuthService) {
 
     this.baseUrl = baseUrl;
 
@@ -48,8 +52,15 @@ export class AdminMoveComponent {
       }, error => console.error(error));
     } else {
       this.move = new Move();
-    }
+    }  
   }
+  
+  ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
+  } 
 
   onSubmit() {
     const data = this.form.value;

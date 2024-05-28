@@ -1,6 +1,17 @@
-<div class="container mainalign">
-  <h1>Редактор танцев и движений</h1>
-  <br>
-  <a href="/admin/dances/"><button class="btn btn-primary">Танцы</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="/admin/moves/"><button class="btn btn-primary">Движения</button></a>
+<div *ngIf="! user" class="container d-flex mainalign align-items-center">
+  <h1>Чтобы пользоваться редактором, нужна авторизация</h1>
+  <div class="mx-3 p-0"><asl-google-signin-button type='icon' size='medium'></asl-google-signin-button></div>
+</div>
+
+<div *ngIf="user">
+  <p class="mainalign">
+    Редактор: <strong>{{ user.name }}</strong> / <strong>{{ user.email }}</strong>
+  </p>
+  
+  <div class="mainalign">
+    <h1>Редактор танцев и движений</h1>
+    <br>
+    <a href="/admin/dances/"><button class="btn btn-primary">Танцы</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="/admin/moves/"><button class="btn btn-primary">Движения</button></a>
+  </div>
 </div>

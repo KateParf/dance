@@ -43,8 +43,7 @@
     <div class="videoButtonGroup mt-2 p-2 d-flex justify-content-between">
 
       <div style="color: #FFF;">
-        <input type="checkbox" class="vidbtn btn-check" (click)="stopRound()" id="round"/>
-        <label class="btn btn-outline-primary" for="round">Зациклить</label>
+        <button class="btn btn-outline-primary vidbtn" id="round" (click)="stopRound()">Повтор</button>
         {{ seqFrom }} {{ seqTo }}
       </div>
 
@@ -102,7 +101,9 @@
   <div class="danceContent">
     <div class="danceTitle">Схема танца</div>
 
-    <button class="vidbtn vid" (click)="playFromToFormat('01:11', '01:16')" >(>) DEMO</button>
+    <!-- 
+      <button class="vidbtn vid" (click)="playFromToFormat('01:11', '01:16')" >(>) DEMO</button>
+    -->
 
     <div class="danceScheme" #scheme id="danceScheme" [innerHTML]="danceScheme | safeHtml"></div>
 
