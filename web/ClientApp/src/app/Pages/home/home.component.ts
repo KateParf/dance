@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent {
   baseUrl: string;
-  public info: IndexInfo|undefined;
+  public info: IndexInfo | undefined;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute) {
     this.baseUrl = baseUrl;
@@ -17,6 +17,16 @@ export class HomeComponent {
     this.http.get<IndexInfo>(baseUrl + 'api/indexinfo').subscribe(result => {
       this.info = result;
     }, error => console.error(error));
+  }
+
+  downloadApk() {
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', '/Media/Images/bg.jpg');
+    link.setAttribute('download', `bg.jpg`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   }
 }
 

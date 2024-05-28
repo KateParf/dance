@@ -211,6 +211,10 @@ a.dancecardlink:hover div {
   text-decoration: none;
 }
 
+.table>:not(caption)>*>*{
+  background-color: #00000000;
+}
+
 td {
   text-decoration: none;
 }

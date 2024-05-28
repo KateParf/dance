@@ -30,15 +30,15 @@
 
   <div class="danceMedia" *ngIf="dance">
 
-    <!-- демо плеер для отладки -->
+    <!-- демо плеер для отладки 
     <video id="player1" class="video-js vjs-default-skin player" controls preload="auto">
       <source src="/Media/Video/Australian swing waltz.mp4" type="video/mp4">
-    </video>
+    </video> -->
 
-    <!-- основной видео плеер
+    <!-- основной видео плеер-->
     <video id="player1" class="video-js vjs-default-skin player" controls data-setup='{ "techOrder": ["youtube"] }'>
       <source src="{{ dance.videos[0].url }}" type="video/youtube" />
-    </video> -->
+    </video> 
 
     <div class="videoButtonGroup mt-2 p-2 d-flex justify-content-between">
 
