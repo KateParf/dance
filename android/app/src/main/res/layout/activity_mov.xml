@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mov"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mov">
+
+
+
+  <ScrollView
+      android:id="@+id/pnlScroll"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scrollbars="horizontal|vertical"
+      android:background="@drawable/bgandroid">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+        <fragment
+            android:id="@+id/hatFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.example.myapplication1.HatFragment"
+            app:layout_constraintTop_toTopOf="parent"/>
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          android:padding="10dp">
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Танец"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="25dp"
+            tools:layout_editor_absoluteY="117dp"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"/>
+
+
+      </LinearLayout>
+      <LinearLayout
+          android:backgroundTint="@color/main_background"
+          android:id="@+id/pnlDance"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="#ffffff"
+          android:orientation="vertical"
+          android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+
+          <WebView
+              android:layout_marginTop="20dp"
+              android:layout_marginHorizontal="5dp"
+              android:id="@+id/video"
+              android:layout_width="match_parent"
+              android:layout_height="220dp"/>
+          <TextView
+              android:id="@+id/textVideo"
+              android:layout_marginTop="10dp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+
+              android:textColor="#5B3C2C"
+              >
+
+          </TextView>
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/play"
+                android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_marginStart="10dp"
+                android:id="@+id/textVideoLink"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textColor="#5B3C2C"
+                >
+
+            </TextView>
+          </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/txtScheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="419dp" />
+
+
+
+      </LinearLayout>
+
+    </LinearLayout>
+  </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
