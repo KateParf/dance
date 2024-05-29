@@ -32,9 +32,9 @@ public class dances extends AppCompatActivity {
     TextView textSeek;
 
     String[] types = {"", "Аллеманды", "Бранли", "Котильоны",
-            "Контрдансы", "Народные", "Галопы", "Лендлеры", "Марши",
-            "Вальсы", "Кадрили", "Мазурки", "Минуэты", "Паваны",
-            "Полонезы", "Польки", "Современные", "Танго", "Тустепы"
+            "Контрдансы", "Народные танцы", "Галопы", "Лендлеры", "Марши",
+            "Вальсы", "Кадрили", "Мазурки", "Менуэты", "Паваны",
+            "Полонезы", "Польки", "Современные танцы", "Танго", "Тустепы и фокстроты","Сиквенсы и прочее"
     };
 
     String[] period = {"", "Средние века", "18 век", "19 век",
@@ -154,7 +154,7 @@ public class dances extends AppCompatActivity {
                     } else if (cardId == R.id.card_minuets) {
                         spinnerTypesValue = "Менуэты";
                     } else if (cardId == R.id.card_folkdances) {
-                        spinnerTypesValue = "Народные";
+                        spinnerTypesValue = "Народные танцы";
                     } else if (cardId == R.id.card_pawans) {
                         spinnerTypesValue = "Паваны";
                     } else if (cardId == R.id.card_polonaises) {
@@ -162,11 +162,13 @@ public class dances extends AppCompatActivity {
                     } else if (cardId == R.id.card_polkas) {
                         spinnerTypesValue = "Польки";
                     } else if (cardId == R.id.card_moderndance) {
-                        spinnerTypesValue = "Современные";
+                        spinnerTypesValue = "Современные танцы";
                     } else if (cardId == R.id.card_tango) {
                         spinnerTypesValue = "Танго";
                     } else if (cardId == R.id.card_twosteps) {
-                        spinnerTypesValue = "Тустепы";
+                        spinnerTypesValue = "Тустепы и фокстроты";
+                    } else if(cardId == R.id.card_sequences){
+                        spinnerTypesValue ="Сиквенсы и прочее";
                     }
 
                     // Устанавливаем значение в Spinner
@@ -299,11 +301,11 @@ public class dances extends AppCompatActivity {
                         );
                     return null;
                 }
-        ).execute("http://85.236.190.126:5001/api/dances");
+        ).execute("https://dancebook.runasp.net/api/dances");
     }
     public void BtnReset(View v) {
-        String[] types = {"","Аллеманды", "Бранли", "Котильоны", "Контрдансы", "Народные", "Галопы", "Лендлеры", "Марши",
-                "Вальсы", "Кадрили", "Мазурки", "Минуэты", "Паваны", "Полонезы", "Польки", "Современные", "Танго", "Тустепы"
+        String[] types = {"","Аллеманды", "Бранли", "Котильоны", "Контрдансы", "Народные тагцы", "Галопы", "Лендлеры", "Марши",
+                "Вальсы", "Кадрили", "Мазурки", "Менуэты", "Паваны", "Полонезы", "Польки", "Современные танцы", "Танго", "Тустепы и фокстроты","Сиквенсы и прочее"
         };
 
         String[] period = {"", "Средние века", "18 век", "19 век", "20 век", "21 век"};

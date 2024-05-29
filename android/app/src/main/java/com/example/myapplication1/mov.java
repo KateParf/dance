@@ -53,7 +53,7 @@ public class mov extends AppCompatActivity {
                         }
                         return null;
                     }
-            ).execute("http://85.236.190.126:5001/api/move/" +index);
+            ).execute("https://dancebook.runasp.net/api/move/" +index);
         }
     }
     private void DrawError(String error) {

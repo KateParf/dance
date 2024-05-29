@@ -36,13 +36,15 @@
         <item>Мазурки</item>
         <item>Марши</item>
         <item>Менуэты</item>
-        <item>Народные</item>
+        <item>Народные танцы</item>
         <item>Паваны</item>
         <item>Полонезы</item>
         <item>Польки</item>
-        <item>Современные</item>
+        <item>Современные танцы</item>
         <item>Танго</item>
         <item>Тустепы</item>
+        <item>Сиквенсы и прочее</item>
+
     </string-array>
 
     <string-array name="periods_array">

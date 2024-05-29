@@ -43,7 +43,7 @@ public class moves extends AppCompatActivity {
                     }
                     return null;
                 }
-        ).execute("http://85.236.190.126:5001/api/movescatalog");
+        ).execute("https://dancebook.runasp.net/api/movescatalog");
     }
     public void DrawMoves(JSONArray moves) throws JSONException {
         LinearLayout linearLayout = findViewById(R.id.pnlMoves);
