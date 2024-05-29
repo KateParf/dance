@@ -55,7 +55,7 @@ public class dance extends AppCompatActivity {
                         }
                         return null;
                     }
-            ).execute("hhttps://dancebook.runasp.net/api/dance/" + String.valueOf(index));
+            ).execute("https://dancebook.runasp.net/api/dance/" + String.valueOf(index));
         }
 
 
@@ -76,7 +76,7 @@ public class dance extends AppCompatActivity {
             String epoch = dance.getJSONObject("epoch").getString("name");
             String level = "Сложность: " + dance.getJSONObject("level").getString("name");
             String schemeMarkdown = dance.getString("scheme");
-            String history = "История и факты: " + dance.getString("history");
+            String historyMarkdown = dance.getString("history");
 
             TextView txtName = findViewById(R.id.txtName);
             TextView txtEpoch = findViewById(R.id.txtEpoch);
@@ -87,11 +87,13 @@ public class dance extends AppCompatActivity {
             // Создаем экземпляр Markwon и применяем Markdown к txtScheme
             Markwon markwon = Markwon.create(this);
             markwon.setMarkdown(txtScheme, "## Схема танца:\n " + schemeMarkdown);
+            markwon.setMarkdown(txtHistory, "## История и факты:\n " + historyMarkdown);
+
 
             txtName.setText(name);
             txtEpoch.setText(epoch);
             txtLevel.setText(level);
-            txtHistory.setText(history);
+
 
             //Видео
             JSONArray videosArray = dance.getJSONArray("videos");
