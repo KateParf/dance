@@ -22,8 +22,8 @@ export class HomeComponent {
   downloadApk() {
     const link = document.createElement('a');
     link.setAttribute('target', '_blank');
-    link.setAttribute('href', '/Media/Images/bg.jpg');
-    link.setAttribute('download', `bg.jpg`);
+    link.setAttribute('href', '/Media/app-debug.apk');
+    link.setAttribute('download', `app-debug.apk`);
     document.body.appendChild(link);
     link.click();
     link.remove();
