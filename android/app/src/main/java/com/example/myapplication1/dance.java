@@ -55,7 +55,7 @@ public class dance extends AppCompatActivity {
                         }
                         return null;
                     }
-            ).execute("hhttps://dancebook.runasp.net/api/dance/" + String.valueOf(index));
+            ).execute("https://dancebook.runasp.net/api/dance/" + String.valueOf(index));
         }
 
 

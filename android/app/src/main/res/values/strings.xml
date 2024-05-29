@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application1</string>
+    <string name="app_name">DanceBook</string>
     <string name="name_header_main">Хореографическая книжка</string>
     <string name="directions">Направления</string>
 
