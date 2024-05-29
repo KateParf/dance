@@ -32,9 +32,9 @@ public class DancesController : ControllerBase
         .Where(d => filterLevel == null || (d.Level.Id == Int32.Parse(filterLevel)))
         .Where(d => filterEpoch == null || (d.Epoch.Id == Int32.Parse(filterEpoch)))
         .Where(d =>
-            (filterPartnerExchYes == "true" && (d.ChangePartner == true)) ||
-            (filterPartnerExchNo == "true" && (d.ChangePartner == false))
-        )
+        ((filterPartnerExchYes == null) && (filterPartnerExchNo == null)) ||
+        ((filterPartnerExchYes == "true" && (d.ChangePartner == true))) ||
+        ((filterPartnerExchNo == "true" && (d.ChangePartner == false))))
         .Where(d => filterCountOfPartners == null || (d.CountOfPairs == Int32.Parse(filterCountOfPartners)))
         .Where(d => filterSearch == null || d.Name.ToLower().Contains(filterSearch.ToLower()))
 

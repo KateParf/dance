@@ -18,6 +18,12 @@ html {
 	}
 }
 
+.mainalign {
+	padding-right: calc(5% - 10px);
+	padding-left: 5%;
+	max-width: 1600px !important;
+}
+
 .box-shadow {
 	box-shadow: 0 .25rem .75rem #2e1a0030;
 	background-color: #2e1a0030;
@@ -50,5 +56,4 @@ html {
 input::placeholder {
 	opacity: 0.7;
 	color: #909090;
-  }
-
+}

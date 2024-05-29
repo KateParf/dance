@@ -53,6 +53,14 @@ export class DanceComponent {
       this.danceLevel = this.dance.level.name;
       this.danceType = this.dance.type.name;
 
+      setTimeout(() => {
+        const p = this.getPlayer();
+        if (p) {
+          //p.play();
+          p.pause();
+        }
+      }, 3000);
+      
     }, error => console.error(error));
   }
 

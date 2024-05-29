@@ -36,7 +36,9 @@
     </video> -->
 
     <!-- основной видео плеер-->
-    <video id="player1" class="video-js vjs-default-skin player" controls data-setup='{ "techOrder": ["youtube"] }'>
+    <video id="player1" class="video-js vjs-default-skin player" controls 
+      preload="auto"
+      data-setup='{ "techOrder": ["youtube"] }'>
       <source src="{{ dance.videos[0].url }}" type="video/youtube" />
     </video> 
 

@@ -3,7 +3,7 @@
 /* Provide sufficient contrast against white background */
 body {
   background-image: url("/Media/Images/bg.jpg");
-  background-color: #9e827e;
+  background-color: #fbf7f3;
   background-repeat: no-repeat;
   background-size: 100%;
   xfont-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -53,7 +53,6 @@ a:active:focus {
 .mainalign {
   padding-right: calc(5% - 10px);
   padding-left: 5%;
-  max-width: 1600px !important;
 }
 
 .row {
