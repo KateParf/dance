@@ -146,7 +146,7 @@ public class dances extends AppCompatActivity {
                     } else if (cardId == R.id.card_cotillions) {
                         spinnerTypesValue = "Котильоны";
                     } else if (cardId == R.id.card_landlers) {
-                        spinnerTypesValue = "Лeндлеры";
+                        spinnerTypesValue = "Лендлеры";
                     } else if (cardId == R.id.card_mazurkas) {
                         spinnerTypesValue = "Мазурки";
                     } else if (cardId == R.id.card_marches) {
